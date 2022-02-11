@@ -1,0 +1,175 @@
+
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css"/>
+
+{% include 'header.html' %}
+<style>
+   table {
+     width:100%;
+   }
+   table, th, td {
+     border: 1px solid black;
+     border-collapse: collapse;
+   }
+   th, td {
+     padding: 15px;
+     text-align: left;
+   }
+   table#t01 tr:nth-child(even) {
+     background-color: #eee;
+   }
+   table#t01 tr:nth-child(odd) {
+    background-color: #fff;
+   }
+   table#t01 th {
+     background-color: black;
+     color: white;
+   }
+   .activate {
+	background-color: #f75757;
+	}
+   </style>
+
+
+<!-- Header Close --> 
+
+<div class="main-wrapper ">
+
+<section class="section blog-wrap bg-gray">
+
+  <form class="form-register" id="form_register" action="#" method="post">
+
+    <div class="container">
+        <div class="row">
+            
+
+            <div class="col-lg-3">
+                <div class="sidebar-wrap">
+
+
+
+	           <div class="sidebar-widget latest-post card border-0 p-4 mb-3 " style="background: #212529;	color: #fff; border-radius: 25px;">
+				<a class="btn btn-solid-border btn-round-full {% if request.endpoint == 'my_account' %}activate {% endif %} " href="{{url_for('my_account')}}" style="margin: 8px;" >My Account</a>
+			
+	
+		
+				<a class="btn btn-solid-border btn-round-full {% if request.endpoint == 'renewal' %}activate {% endif %}" href="{{url_for('renewal')}}" style="margin: 8px;" >Renewal</a>
+
+			
+		
+				<a class="btn btn-solid-border btn-round-full{% if request.endpoint == 'referral' %}activate {% endif %}" href="/referral" style="margin: 8px;">Referral</a>
+
+			
+		
+        <a class="btn btn-solid-border btn-round-full {% if request.endpoint == 'view_server_settings' or request.endpoint == 'server_settings' %}activate {% endif %}" href="{{url_for('view_server_settings')}}" style="margin: 8px;">Server Settings</a>		
+        
+	          </div>
+
+	
+          </div>
+	</div>  
+						
+						<div class="col-lg-9">
+                                        {% with messages = get_flashed_messages() %}
+                                             {% if messages %}
+                                                  {% for message in messages %}
+                                                       {% if message=="OTP has been sent to your registered email" %}
+                                                       <div class="success">
+                                                            
+                                                            {{message}}
+                              
+                                                            
+                                                       </div>
+                                                       {% else %}
+                                             
+                                             
+                                                       <div class="error">
+                                                                 {{message}}
+                                                            </div>
+                                                       {% endif %}
+                                                  {% endfor %}
+                                             {% endif %}
+                                        {% endwith %}                               
+
+
+                                   <div class="row">
+                                     
+
+								<div class="box-body table-responsive">
+                           <span class="label" style="font-weight: bold;">Amount Details:</span>
+                           <br><br>
+                           <table>
+                             <tr>
+                               <th>Product Name</th>
+                               <th>Amount</th> 
+                             </tr>
+                             {% for bill_information in bill_pay %}
+                             <tr>
+                               <td>{{bill_information[3]}}</td>
+                               <td>{{bill_information[2]}}</td>
+                             </tr>
+                           {% endfor %}
+                           <tr>
+                                   <th>Total Amount</th>
+                                   <th>{{total_bill_amount}}</th> 
+                           </tr>
+                           </table>
+                        </div>
+                        <a href="{{url_for('my_account')}}" class="btn btn-main-green">OK</a>
+
+
+                                   </div>
+						</div>
+
+
+
+        </div>
+
+    
+    </div>
+  </form>  
+</section>
+</div>
+<!-- footer Start -->
+
+   
+{% include 'footer.html' %}
+
+    <!-- 
+    Essential Scripts
+    =====================================-->
+
+    
+    <!-- Main jQuery -->
+    <script src="plugins/jquery/jquery.js"></script>
+    <script src="js/contact.js"></script>
+    <!-- Bootstrap 4.3.1 -->
+    <script src="plugins/bootstrap/js/popper.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+   <!--  Magnific Popup-->
+    <script src="plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+    <!-- Slick Slider -->
+    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+    <!-- Counterup -->
+    <script src="plugins/counterup/jquery.waypoints.min.js"></script>
+    <script src="plugins/counterup/jquery.counterup.min.js"></script>
+
+    <!-- Google Map -->
+    <script src="plugins/google-map/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>    
+    
+    <script src="js/script.js"></script>
+
+
+    <style>
+
+.about-to-expire {
+  background-color: pink;
+}
+    </style>
+
+
+
+  </body>
+  </html>

@@ -1,0 +1,351 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css"/>
+
+
+
+
+{% include 'headernew.html' %}
+<style>.new_card_box .new_card_features ul li:last-child {
+    margin-bottom: 5px;
+} </style>
+<style>
+.new_card_box {  width: 100%; }
+.new_card_box .new_card_pricebox {
+    float: left;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 0px;
+	border-bottom: 1px solid rgba(36, 39, 44, 0.06);
+}
+.new_card_box .new_card_infobox {
+    float: left;
+    width: 100%;
+    height: 52px;
+}
+a { color:black}
+span { margin-left:20px; }
+
+</style>
+
+<style>
+.discount_slider {
+    border: none; 
+     box-shadow: 0 2px 4px 0 rgba(36, 39, 44, 0.15); 
+    margin-bottom: 0px;
+     overflow: hidden; 
+    width: 228px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.discount_percent_section_price {
+    display: inline-block;
+    font-size: 26px;
+    font-family: roboto, sans-serif;
+    font-weight: 500;
+    margin-top: 14px;
+    margin-bottom: 18px;
+	color:#472dc2;
+}
+
+.discount_percent_section_prices {
+    display: inline-block;
+    font-size: 20px;
+    font-family: roboto, sans-serif;
+    font-weight: 500;
+    margin-top: 22px;
+    margin-bottom: 10px;
+}
+
+
+.discount_section {
+    height: 114px;
+	padding: 1px;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #4EC6DE, #4EC6DE);
+}
+
+.discount_percent_sections {
+    background: #fff;
+    margin: 4px;
+    border-radius: 4px;
+}
+
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+
+#customers tr:nth-child(even){background-color: #fff;}
+
+#customers tr:hover {background-color: #fff;}
+
+#customers th {
+ 
+  text-align: center;
+  font-size: 12px;
+  background-color: #fff;
+  color: #000;
+
+}
+</style>
+
+
+
+<!-- Header Close --> 
+
+
+
+<!-- Section About End -->
+ 
+
+<!--  Section Services End -->
+<!-- Section Testimonial Start -->
+
+
+
+<section class="section">
+
+
+    {% include 'menu.html' %}
+
+
+        <form class="form-register" autocomplete="off" id="form_register" action="#" method="post">
+
+ 
+        <div class="container">
+
+
+
+						 	{% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if message == "Link sent to the provided email" %}
+                                        <div class="success">
+
+                                            {{message}}
+
+
+                                        </div>
+                                    {% else %}
+
+                                        <div class="error">
+
+                                            {{message}}
+
+
+                                        </div>
+                                   
+                                   
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+
+            <div class="row">
+                <div class="col-lg-12">
+
+							<div class="box-tools pull-right" style="text-align:right">
+	
+		<a href="{{url_for('view_referral')}}" class="btn btn-success" style="font-size:12px;" >View List</a>
+		</a>
+</div>	<br>	
+								<div class="new_card_infobox">
+							
+								<div class="new_card_info" style="background-image: linear-gradient(to bottom, #139ee8, #0865cc);">
+									<p class="card_title" style="margin-bottom: 0;"> Referral </p>
+										
+                                </div>
+					    </div>
+                    <div class="cta-item  bg-white p-5 rounded">
+                        
+                            
+                        
+
+                       
+
+
+                        <div class="row">
+
+
+
+
+                             <div class="col-lg-6 ml-auto col-sm-6">
+                                <div class="form-group">
+                                    <label>Email Domain *</label>
+                                    <input type="email" name="email" id="email" class="form-control" maxlength="255"  value="{{ref_email}}" >
+
+                                </div>
+                            </div>
+
+
+
+                          
+
+
+                           
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                          <label>First Name *</label>
+                                          <input type="text" class="form-control" id="first_name" name="first_name" maxlength="64" value="{{ref_first_name}}"  >
+                                         
+                                      </div>
+                            </div> 
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                     <div class="form-group">
+                                          <label>Last Name *</label>
+                                          <input type="text" class="form-control" id="last_name" name="last_name"  maxlength="64" value="{{ref_last_name}}"  >
+                                         
+                                      </div>
+    
+                                </div>
+
+
+ <div class="col-lg-12 col-md-6 col-sm-6">
+                                <div class="form-group" style="text-align:center">
+                                    <input type="submit" class="add_to_cart"  name="submit" value="Submit"/>
+        
+                                </div>
+                            </div> 
+                                
+
+                                
+                                  
+                                
+                        </div>
+
+
+                      
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+
+
+
+<!-- Section Testimonial End -->
+
+
+
+<style>
+
+
+
+
+.menuclass:hover {
+    outline: 0;
+    background-image: linear-gradient(to bottom, #139ee8, #0865cc);
+		color:#fff;
+		 
+  transition: 0.25s;
+}
+
+
+::selection {
+  background-color: #4EC6DE;
+}
+
+
+
+
+
+@media only screen and (max-width: 990px) {
+  
+.add_to_cart {
+    border-radius: 4px;
+    background-color: #472dc2;
+    color: #fff;
+    border: 1px solid #472dc2;
+    margin-bottom: 4px;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 4px;
+    text-align: center;
+    width: 50%;
+    height: 40px;
+    outline: none;
+}
+
+
+
+}
+
+@media only screen and (min-width: 990px) {
+
+
+
+}
+
+
+
+
+
+
+</style>
+<!-- footer Start -->
+<footer class="footer section">
+	<div class="container">
+		
+		
+		{% include 'footer.html' %}
+<style>
+
+.new_card_box .new_card_features{ height:200px; overflow-y:scroll; border-top: 0px solid  }</style>
+
+
+<script>
+    $(document).ready(function() {
+
+
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+        return this.optional(element) || /^[A-Za-z  ]*$/.test(value);
+        }, "Please Enter Alphabets Only");
+        jQuery.validator.addMethod("capsonly", function(value, element) {
+        return this.optional(element) || /^[A-Z]*$/.test(value);
+        }, "Please Enter Capital Letters");
+        $("#form_register").validate({
+            rules: {
+                email: { required: true,maxlength:255},
+                first_name: { required: true,maxlength:64,lettersonly:true},
+                last_name: { required: true,maxlength:64,lettersonly:true},
+                location_name:  { required: true,maxlength:64,lettersonly:true},
+                address: { required: true}
+            },
+            messages: {
+                email: { required: 'Please Enter Your Email' },
+                first_name: { required: 'Please Enter Your First Name' },
+                last_name: { required: 'Please Enter Your Last Name' },
+                location_name: { required: 'Please Enter Your Location/Site Name' },
+                address: { required: 'Please Enter Your Address' }
+            },
+        errorPlacement: function(error, element) {
+                if (element.hasClass('select2')) {
+                  error.insertAfter(element.next('.select2'));
+                } else {
+                  error.insertAfter(element);
+                }
+            }
+
+        });
+    });
+
+
+</script>
+
+  </body>
+  </html>

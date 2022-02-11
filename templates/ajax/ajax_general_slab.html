@@ -1,0 +1,29 @@
+<ul>
+    {% for general_users in general_user |sort(attribute='user_pricing_id') %}
+    {% set general_lower_value = general_users.lower_value.split('>') %}
+        <li 
+        {% if users_count != "0" %}
+            {% if general_users.lower_value | int <= users_count | int <= general_users.higher_value | int %} style="color:green" 
+                {% else %}
+                    {% if general_users.higher_value == "" and general_lower_value[1] | int < users_count | int %}
+                    style="color:green"
+                    {% else %}
+                    style="color:black"
+                    {% endif %}
+
+            {% endif %}
+        {% endif %}     
+            >
+            {% if general_users.lower_value.startswith('>') %}
+                {{general_users.lower_value.replace('>','> ')}}  users	
+            {% else %}
+                {{general_users.lower_value}} to {{general_users.higher_value}} users	
+            {% endif %}
+            
+            <span style="float: right;margin-right: 8px;font-family:sans-serif">-&nbsp;&nbsp;	{{session['currency_symbol']}}{{general_users.amount}} / Month </span>
+            
+        
+        </li>
+
+    {% endfor %}
+</ul>

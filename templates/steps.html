@@ -1,0 +1,71 @@
+                                                
+      <div class="container">
+        <ul class="progressbar" >
+           
+        
+                  
+                  <a class="nav-link {% if request.endpoint=='company_details' %}actived{% else %}active{% endif %} " href="/company_details"><li >Company Details</li></a>
+                  {% if count_values.0.company_count==0 %}
+                     <a >Plan Selection</a>
+
+                  {% else %}
+                           <a class="nav-link {% if request.endpoint=='plan_selection' %}actived{% else %}active{% endif %} " href="/plan_selection"><li >Plan Selection</li></a>
+                     {% endif %}
+                     
+               {% if count_values.0.reg_user_type!="F" %}
+                  
+                  {% if count_values.0.company_count==0 %}
+                     <a >Product Selection</a>
+                  
+                  {% else %}
+               
+                     
+                        <a class="nav-link {% if request.endpoint=='pricing' %}actived{% else %}active{% endif %} " href="/pricing"  ><li >Product Selection</li> </a>
+                        
+
+                  {% endif %}
+
+
+                  {% if count_values.0.product_count==0 %}
+                     <a >User Selection</a>
+                  
+                  {% else %}
+                  
+                     <a class="nav-link {% if request.endpoint=='user_selection' %}actived{% else %}active{% endif %} "  href="/user_selection"> <li >User Selection </li></a>
+                     
+                  {% endif %}  
+
+                  {% if count_values.0.user_selection_count==0 %}
+                     <a >Cloud Setup</a>
+                  
+                  {% else %}  
+                  
+                     <a class="nav-link {% if request.endpoint=='server_settings' %}actived{% else %}active{% endif %} " href="/server_settings" ><li >Cloud Setup </li></a>
+                     
+                  {% endif %} 
+                  {% if session['cloud_setup']=='p' %}
+                     <a class="nav-link {% if request.endpoint=='private_setup' %}actived{% else %}active{% endif %} " href="/private_setup"> <li >Private Setup </li></a>
+                  {% endif %}   
+                  
+                  {% if count_values.0.cloud_selection_count==0 %}
+                     <a >Estimation</a>
+               
+                  {% else %} 
+                     
+                     <a class="nav-link {% if request.endpoint=='estimation' %}actived{% else %}active{% endif %} " href="/estimation"><li  >Estimation </li></a>
+                     
+                  {% endif %}
+
+               {% endif %}
+
+
+               {% if count_values.0.cloud_selection_count==0 %}
+                  <a >Billing</a>
+            
+               {% else %}      
+                  
+                  <a class="nav-link {% if request.endpoint=='billing_information' %}actived{% else %}active{% endif %} " href="/billing_information"><li >Billing </li></a>
+                  
+               {% endif %}     
+        </ul>
+      </div>

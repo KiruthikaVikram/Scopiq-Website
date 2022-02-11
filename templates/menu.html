@@ -1,0 +1,16 @@
+
+<div class="sidebar-widget bg-white rounded tags p-4 mb-3" style="text-align: center;">
+
+		<a href="{{url_for('my_account')}}" {% if request.endpoint=='my_account' %} class="menuclasss" {% else %} class="menuclass" {% endif %}>My Account</a>
+		<a href="{{url_for('upgrade_company')}}" {% if request.endpoint=='upgrade_company' %} class="menuclasss" {% else %} class="menuclass" {% endif %}>Company</a>
+		<a href="{{url_for('upgrade_package')}}" {% if request.endpoint=='upgrade_package' %} class="menuclasss" {% else %} class="menuclass" {% endif %}>Change Package</a>
+		<a href="{{url_for('upgrade_user')}}" {% if request.endpoint=='upgrade_user' %} class="menuclasss" {% else %} class="menuclass" {% endif %}>Change Users</a>
+		<a href="{{url_for('upgrade_cloud')}}" {% if request.endpoint=='upgrade_cloud' %} class="menuclasss" {% else %} class="menuclass" {% endif %}>Change Cloud</a>
+		<a href="{{url_for('company_users')}}" {% if request.endpoint=='company_users' %} class="menuclasss" {% else %} class="menuclass" {% endif %}>Company Users</a>
+		<a href="{{url_for('payment_history_report')}}" {% if request.endpoint=='payment_history_report' %} class="menuclasss" {% else %} class="menuclass" {% endif %}>Payment History</a>
+		<a href="{{url_for('view_referral')}}" {% if request.endpoint=='view_referral' %} class="menuclasss" {% else %} class="menuclass" {% endif %}>Referral</a>
+	</div> 
+
+
+                 
+                           

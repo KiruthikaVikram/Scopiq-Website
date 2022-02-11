@@ -1,0 +1,360 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css"/>
+
+{% include 'headernew.html' %}
+
+
+<!--  Section Services Start -->
+
+
+<section class="section service border-top">
+	<div class="container">
+      <!-- <button type="button" class="btn btn-info btn-lg" style="font-size: 14px;font-weight: 600;border-radius: 8px;" data-toggle="modal" data-target="#myModal">Free Trial</button> -->
+		<div class="row justify-content-center">
+			<div class="col-lg-12 text-center">
+				<div class="section-title">
+        <br>
+        <h3>Product Selection</h3>
+
+				 {% include 'steps.html' %}    
+
+				</div>
+			</div>
+		</div> <br>
+     <form class="address-form" id="form_register"method="post" >
+		<div class="row justify-content-center">
+		
+
+			 {% for package_lists in package_list |sort(attribute='pkg_id')%} 
+
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="swiper-container swiper-container-horizontal">
+                                   
+					<div class="swiper-wrapper">
+            <div class="swiper-slide new_card_box" style="width: 100%; margin-right: 20px;">
+              <div class="new_card_infobox">
+                <div class="new_card_info{{package_lists.pkg_id}}">
+                   <p class="card_title"> {{package_lists.pkg_name}} </p>
+                </div>
+              </div>
+              <div class="new_card_pricebox">
+                <p>
+                    <span style="font-family:sans-serif">{{session['currency_symbol']}} {{ package_lists.package_amount }}</span>
+                    <span> {% if package_lists.pkg_id==4 %} / Product {% endif %}  / Year</span>
+                </p>
+              </div>
+              <div class="new_card_features" style="overflow-y:scroll">
+                <p>Includes</p>
+                  <ul>
+                      {% if package_lists.pkg_id==4 %}
+
+                        {% for product_lists in product_list %}
+                          
+                              <li>  <input type="checkbox" name="cus_pro" class="cus_pro" value="{{product_lists.product_id}}" {% if prod_selec_list[1]==4 %}{% for prod_id in prod_selec_list[2] %} {% if prod_id | int==product_lists.product_id %}Checked{% endif %} {% endfor %} {% endif %}> &nbsp;&nbsp; {{product_lists.product_name}}</li>
+                            
+                        {% endfor %}
+
+                      {% else %}
+                                
+                        {% for product_id in package_lists.product_id %}
+                        
+                            {% for product_lists in product_list %}
+                            
+                              {% if product_id | int== product_lists.product_id  %}
+                                <li> {{product_lists.product_name}} </li> 
+                              {% endif %} 
+                            {% endfor %}
+                        {% endfor %}    
+
+                      {% endif %}
+
+                </ul>
+            </div>
+                                                  
+            {% if package_lists.pkg_id==4 %}
+
+              <div class="new_card_features" style="height:140px">    
+                <p>Price Calculation</p>
+                  <ul>
+                    <li> 
+                      Product Price 
+                        <span style="margin-left:37px;">-&nbsp;&nbsp;	
+                        <span  class="admin_user_amount" style="font-family:sans-serif" > {{session['currency_symbol']}} 
+                          <span id="price">
+                            {% if prod_selec_list[1]==4 %}
+                              {{prod_selec_list[4]}}
+                            {% else %}
+                              0
+                            {% endif %}
+                          </span>
+                        </span> 
+      
+                     </li>
+                      <b>
+                      <li class="blink_mes" style="color:green;display:none">You Save	
+                        <span style="margin-left:55px;">-&nbsp;&nbsp;	<span  class="general_user_amount" style="font-family:sans-serif"> {{session['currency_symbol']}}  
+                          <span id="discount">
+                            {% if prod_selec_list[1]==4 %}
+                              {{prod_selec_list[5]}}
+                            {% else %}
+                              0
+                            {% endif %}
+                          </span>  
+                        </span>
+                      </li>
+                      </b>
+                      <hr>
+                      
+                      <li>Total Amount	
+                        <span style="margin-left:40px;font-family:sans-serif">- &nbsp;{{session['currency_symbol']}} 
+                          <span id="payable">{% if prod_selec_list[1]==4 %}
+                                {{prod_selec_list[3]}}
+                                {% else %}
+                                0
+                                {% endif %}
+                          </span>
+                      </li>  
+                                    
+                      <input type="hidden" name="actual_amount" id="actual_amount" value="{{prod_selec_list[4]}}">
+
+                      <input type="hidden" name="discount_amount" id="discount_amount" value="{{prod_selec_list[5]}}">
+
+                      <input type="hidden" name="totamont" id="totamont" value="{{prod_selec_list[3]}}">
+
+                </ul>           
+              </div>
+                
+            {% endif %}
+
+              <div class="new_card_btns">
+
+                {% if package_lists.pkg_id==4 %}            
+                  <button name="addtocart" value="{{package_lists.pkg_id}}" id="cusbtn" style="display:none" class="{% if prod_selec_list[1] == package_lists.pkg_id %} add_to_carts{% else %} add_to_cart {% endif %}">Add To Cart</button>	
+
+                {% else %}
+
+                  <button name="addtocart" value="{{package_lists.pkg_id}}"  class="{% if prod_selec_list[1] == package_lists.pkg_id %} add_to_carts{% else %} add_to_cart{% endif %}">Add To Cart</button>
+      
+                {% endif %}       
+
+                <input type="hidden" value="{{package_lists.pkg_id}}" name="pkg_name_{{package_lists.pkg_id}}" id="pkg_name">  
+
+                <input type="hidden" value="{{package_lists.package_amount}}" name="pkg_amount_{{package_lists.pkg_id}}" id="pkg_amount">   
+
+              </div>
+            </div> 
+          </div>                     
+					
+        </div>
+			</div>
+
+      {% endfor %}				
+
+
+
+
+
+<!-- <div class="container"> -->
+        <!-- Trigger the modal with a button -->
+        
+      
+        <!-- Modal -->
+    <!-- <div class="modal fade" id="myModal" >
+        <div class="modal-dialog"> -->
+          
+            <!-- Modal content-->
+            <!-- <div class="modal-content" style="width: 90%;">
+              <div class="modal-header">
+                <h4 class="modal-title">  Free Trial</h4>
+
+                <button type="button" class="btn btn-main pull-right" data-dismiss="modal" style="margin-left: 182px;padding: 2px 4px; font-size: 9px;">X</button>
+
+              </div>
+              <div class="modal-body">
+
+                                               
+                <div class="swiper-slide new_card_box" style="width: 280px; margin-left: 72px;">
+                    <div class="new_card_infobox">
+        
+                        <div class="new_card_info">
+                          <p class="card_title"> Standard </p>
+                            
+                                        </div>
+                      </div>
+                    <div class="new_card_pricebox" style="height: 100px;">
+                                    
+                        <h2 style="font-family:sans-serif">{{session['currency_symbol']}}0</h2>
+                        <p class="text-muted">3 Months</p>
+                                </div>
+                    <div class="new_card_features" style="height: 138px;min-height: 141px;">
+                      <p>Includes</p>
+                        <ul>
+                            <li> <i class="ti-control-forward mr-3"></i> Document Management</li>
+                            <li> <i class="ti-control-forward mr-3"></i>  5 General Users</li>
+                            <li> <i class="ti-control-forward mr-3"></i>  5 Limited Users</li>
+
+                            <li> <i class="ti-control-forward mr-3"></i>  2 Admin Users</li>
+                        </ul>
+                                </div>
+
+                              <input type="hidden" value="0" name="pkg_amount_5" id="pkg_amount">   
+
+ <button name="addtocart" value="5"  class="btn btn-small btn-main mt-3 btn-round-full" style="margin-left: 78px; margin-bottom: 12px; font-size: 14px;font-weight: 600;border-radius: 8px;">Add To Cart</button>
+                   
+                </div> 
+						
+              </div>
+              
+            </div> -->
+            
+        <!-- </div>
+    </div>
+        
+</div> -->
+
+
+		</div>
+  </form>
+
+	</div><br><br>
+</section>
+
+
+<style>
+
+    input {
+        height: 11px;
+        width: 17px;
+        text-align: center;
+        font-size: 26px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    input[type=checkbox], input[type=radio] {
+        margin: -5px 0 0;
+        line-height: normal;
+    }
+    
+    .new_card_pricebox { text-align:center}
+    
+    .new_card_box .new_card_btns button.add_to_carts {
+        border-radius: 4px;
+        background-color: green;
+        color: #fff;
+        border: 1px solid green;
+        margin-bottom: 4px;
+        font-family: Roboto, sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+    
+    
+</style>
+
+
+
+
+
+
+<!-- footer Start -->
+<footer class="footer section">
+	<div class="container">
+		
+		
+{% include 'footer.html' %}
+
+
+
+<script>
+
+$(document).ready(function(){
+
+  
+  {% if prod_selec_list[1]==4  %}
+  var allVals = [{{prod_selec_list[2]}}];
+  $("#cusbtn").show();
+  $(".blink_mes").show()
+  {% else %}
+  $(".blink_mes").hide()
+  var allVals = []
+  {% endif %}
+  //alert(allVals)
+  
+        $('input[type="checkbox"]').click(function(){
+          
+         
+
+            if($(this).prop("checked") == true){
+
+              allVals.push($(this).val());
+             
+            }
+            else{
+
+             var vals= $(this).val();
+           
+              // var y = allVals;
+              var remove_Item = vals;
+
+              allVals=$.grep(allVals, function(value) {
+                return value != remove_Item;
+              });
+              // alert('Array after removing the element = '+allVals);
+              // alert($(this).val());
+              // allVals.pop($(this).val());
+            }
+          if(allVals != '')
+          {
+            $("#cusbtn").show();
+            
+          }
+          else
+          {
+            $("#cusbtn").hide()
+          }
+            var url = '/ajax_load_customize';
+            $.ajax({
+            type:"GET",
+            url:url,
+            data:{
+                'allVals':'"'+allVals+'"'
+            },
+            success: function (data) {
+             
+              var res = data.split(",");
+             
+              if(res[1]!=0)
+              {
+              $(".blink_mes").show()
+              }
+              else
+              {
+                $(".blink_mes").hide()
+              }
+              
+              $("#price").html(res[0])
+              $("#actual_amount").val(res[0])
+              $("#discount").html(res[1])
+              $("#discount_amount").val(res[1])
+              $("#payable").html(res[2])
+              $("#totamont").val(res[2])
+            // $("#state").html(data)
+            }
+          });
+            
+           
+            
+        });
+    });
+</script>
+
+  </body>
+  </html>
+
+  
+<!--  Section Services End -->

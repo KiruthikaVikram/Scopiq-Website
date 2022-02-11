@@ -1,0 +1,227 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css">
+
+
+{% include 'header.html' %}
+
+<style>
+.error
+{
+color:red;
+
+ }
+ 
+.has-error
+ {
+color:red;
+
+ }
+ .success{
+     color:green
+ }
+       
+
+/* .country_code{
+   text-transform:uppercase;
+} */
+</style>
+<body>
+	<div class="page-content" >
+		<div class="wizard-v3-content">
+			<div class="wizard-form">
+ 
+							
+				<div class="wizard-header">
+					<p>Billing Information</p>
+				</div>
+		        <form class="form-register" id="form_register" action="#" method="post">
+
+                  <div class="steps clearfix"><ul role="tablist"><li role="tab" aria-disabled="false"  aria-selected="true"><a id="form-total-t-0" href="#" aria-controls="form-total-p-0"><span class="current-info audible"> </span><div class="title">
+			            	<span class="step-icon"><i class="zmdi zmdi-account"></i></span>
+			            	<span class="step-text">SignIn</span>
+			            </div></a></li><li role="tab" aria-disabled="false" ><a id="form-total-t-1" href="#" aria-controls="form-total-p-1"><div class="title">
+			            	<span class="step-icon"><i class="zmdi zmdi-lock"></i></span>
+			            	<span class="step-text" style="margin-left: -11px;">Verification</span>
+			            </div></a></li><li role="tab" aria-disabled="false" class="first current"><a id="form-total-t-2" href="/company_details" aria-controls="form-total-p-2"><div class="title">
+			            	<span class="step-icon"><i class="zmdi zmdi-card"></i></span>
+			            	<span class="step-text" style="margin-left: -6px;" >Company</span>
+			            </div></a></li><li role="tab" aria-disabled="false" class="first current"><a id="form-total-t-3" href="/product_selection" aria-controls="form-total-p-3"><div class="title">
+			            	<span class="step-icon"><i class="zmdi zmdi-receipt"></i></span>
+							<span class="step-text" style="margin-left: -3px;" >Products</span>
+						</div></a></li><li role="tab" aria-disabled="false" class="first current"><a id="form-total-t-3" href="#" aria-controls="form-total-p-3"><div class="title">
+			            	<span class="step-icon"><i class="zmdi zmdi-receipt"></i></span>
+			            	<span class="step-text" style="margin-left: 8px;" >Billing</span>	
+			            </div></a></li></ul></div>
+
+
+
+		        	<div id="form-total" >
+		        		<!-- SECTION 1 -->
+			            <h2>
+			            	
+			            </h2>
+			            <section>
+											<div class="inner">
+												<h3>Payment Information:</h3>
+												
+												<div class="form-row">
+													<div class="form-holder form-holder-2">
+														<input type="radio" name="radio1" id="pay-1" value="pay-1" checked>
+														<label class="pay-1-label" for="pay-1"><img src="/static/images/wizard_v3_icon_1.png" alt="pay-1">Credit Card</label>
+
+
+												  <input type="radio" name="radio1" id="pay-2" value="pay-2">
+												  <label class="pay-2-label" for="pay-2"><img src="/static/images/wizard_v3_icon_2.png" alt="pay-2">Paypal</label>
+
+												  <input type="radio" name="radio1" id="pay-1" value="pay-1" >
+												  <label class="pay-1-label" for="pay-1"><img src="/static/images/wizard_v3_icon_1.png" alt="pay-1"> <br>Debit Card</label>
+
+												  <input type="radio" name="radio1" id="pay-1" value="pay-1" >
+												  <label class="pay-1-label" for="pay-1"><img src="/static/images/netbank.jpeg" width="50px" alt="pay-1"> <br>Net Banking</label>
+												</div>
+											</div>
+												  <div class="form-row">
+														<div class="form-holder form-holder-2">
+												   <input type="radio" name="radio1" id="pay-1" value="pay-1" >
+												  <label class="pay-1-label" for="pay-1"><img src="/static/images/netbank.jpeg" width="50px" alt="pay-1"> <br>Gpay</label>
+
+												  <input type="radio" name="radio1" id="pay-2" value="pay-2">
+												  <label class="pay-2-label" for="pay-2"><img src="/static/images/wizard_v3_icon_2.png" alt="pay-2">Paypal</label>
+
+													</div>
+												</div>
+												
+												
+												
+									  </div>
+					<!-- <div id="tables"></div> -->
+
+				</section>
+			
+			</div>
+			 
+
+			<div class="actions clearfix">
+				
+					<ul role="menu" aria-label="Pagination">
+
+						   
+							<a  href="{{url_for('product_selection')}}"class="sub btn-main-green ">Back</a>
+	
+							<li class="disabled" aria-disabled="true"></li>
+							
+									 
+							<li aria-hidden="false">
+								
+									<input type="submit" class="sub" id="btnsave" name="submit" value="Submit"/>
+	
+							</li>
+	
+	
+							
+						</ul>
+				</div> 
+
+
+		        </form>
+			</div>
+		</div>
+    </div>
+    <style>
+			.sub {padding: 0;
+				color: #fff;	
+				text-decoration: blink;
+
+border: none;
+border-radius: 3px;
+-o-border-radius: 3px;
+-ms-border-radius: 3px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+display: inline-flex;
+height: 45px;
+width: 140px;
+justify-content: center;
+-o-justify-content: center;
+-ms-justify-content: center;
+-moz-justify-content: center;
+-webkit-justify-content: center;
+-o-align-items: center;
+-ms-align-items: center;
+-moz-align-items: center;
+-webkit-align-items: center;
+align-items: center;
+background: #24c1e8;
+font-family: 'Roboto', sans-serif;
+font-size: 16px;
+font-weight: 400;
+cursor: pointer;}
+			.label { transform: translateY(-23px) scale(1);
+-o-transform: translateY(-23px) scale(1);
+-ms-transform: translateY(-23px) scale(1);
+-moz-transform: translateY(-23px) scale(1);
+-webkit-transform: translateY(-23px) scale(1);
+color: #24c1e8;}
+		</style>
+
+
+
+{% include 'footer.html' %}
+
+	
+<script>
+		$(document).ready(function() {
+
+			jQuery.validator.addMethod("lettersonly", function(value, element) {
+			return this.optional(element) || /^[A-Za-z  ]*$/.test(value);
+			}, "Please Enter Alphabets Only");
+			jQuery.validator.addMethod("capsonly", function(value, element) {
+			return this.optional(element) || /^[A-Z]*$/.test(value);
+			}, "Please Enter Capital Letters");
+			$("#form_register").validate({
+				rules: {
+					invoice_Company: { required: true},
+					country: { required: true},
+					gst_vat: { required: true,maxlength:64},
+					address:{ required: true}
+
+				},
+				messages: {
+					invoice_Company: { required: 'Please Enter Invoice Company Name' },
+					country: { required: 'Please Select Country' },
+					gst_vat: { required: 'Please Enter GST/VAT' },
+					address: { required: 'Please Enter Address' }
+
+				},
+			errorPlacement: function(error, element) {
+					if (element.hasClass('select2')) {
+						error.insertAfter(element.next('.select2'));
+					} else {
+						error.insertAfter(element);
+					}
+				}
+
+			});
+
+		// 	$("#subscription").change(function (e) {
+		// 			var subscription_type=$(this).val();
+		// 			var url = "ajax_load_subs_totamnt";
+		// 			// alert(department)
+		// 			$.ajax({
+		// 			url:url,
+		// 			data:{'subscription_type':subscription_type
+		// 			},
+		// 			success: function (data) {
+		// 			$("#tables").html(data);
+		// 			}
+		// 			});
+      // });
+		});
+	
+ 
+</script>
+
+
+</body>
+</html>

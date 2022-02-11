@@ -1,0 +1,506 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css"/>
+
+{% include 'headernew.html' %}
+
+
+<!-- Header Close --> 
+
+
+
+
+<!-- Section About End -->
+ 
+
+<!--  Section Services End -->
+<!-- Section Testimonial Start -->
+<section class="section testimonial bg-gray">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-7 text-center">
+				<div class="section-title" style="margin-bottom: 0px;">
+					<h3 class="mt-3 ">User Selection</h3> 
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-xs-12">
+			<div class="row">
+                 <div class="swiper-slide new_card_box" style="width: 90%; margin-left: 60px;">
+                        
+                      
+                              {% include 'steps.html' %}
+                              <br>
+                    
+                     </div>
+				 <ul style="margin-left: 8px;">
+					  <li class="home_productSection1_left homeSection pb_10">
+                           
+                            <form class="address-form" id="form_register"method="post" >
+							<div class="swiper-container swiper-container-horizontal">
+                                   
+								 <div class="swiper-wrapper">
+
+
+
+                                    
+					<div class="swiper-slide new_card_box" style="width: 280px; margin-right: 20px;">
+						<div class="new_card_infobox">
+							
+								<div class="new_card_info" style="background-image: linear-gradient(to bottom, #139ee8, #0865cc);">
+									<p class="card_title"> {{user_type_name[0][0]}}  </p>
+										
+                                </div>
+					    </div>
+						<div class="new_card_pricebox">
+                            <p>Plan Price</p>
+                                <p> 
+                                        <div class="numbers">
+                                                Users <span style="margin-left:60px"> <span class="minus">-</span>
+                                                <input type="number" pattern="\d*" max="" name="admin_count" class="users_count" id="admin_count" user_type="1" value="{% if user_selec_list!=None %}{{user_selec_list[1]}}{%else%}0{%endif%}"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"/>
+                                                <span class="plus">+</span>
+                                            </span>
+                                            </div>     
+                                </p>
+                        </div>
+
+                        <div class="calculated-price">
+                               Calculated Price : <span style= "font-size: 20px; margin-left: 20px;" class="admin_user_amount" >{{session['currency_symbol']}} {% if user_selec_list!=None %}{{user_selec_list[2]}}{%else%}0{%endif%}</span>
+
+  
+                                
+
+
+</div>
+
+                        <span style="overflow-y:scroll">
+						<div class="new_card_features">
+                            <p><b>Price Features</b></p>
+                            
+								<ul>
+                                    {% for admin_users in admin_user %}
+                                    <li>
+                                        {% if admin_users.lower_value.startswith('>') %}
+                                            {{admin_users.lower_value.replace('>','> ')}}  users	
+                                        {% else %}
+                                            {{admin_users.lower_value}} to {{admin_users.higher_value}} users	
+                                        {% endif %}
+                                        {% if loop.index > 3 %}
+                                        <span style="float: right;margin-right: 14px;">-&nbsp;&nbsp;	{{session['currency_symbol']}}{{admin_users.amount}} / Month </span>
+                                        {% else %}
+                                        <span style="float: right;margin-right: 8px;">-&nbsp;&nbsp;	{{session['currency_symbol']}}{{admin_users.amount}} / Month </span>
+                                        {% endif  %}
+                                    
+                                    </li>
+
+                                    {% endfor %}
+                                    <!-- <li> 11 to 20 users	<span style="margin-left:14px;">-&nbsp;&nbsp;	$12 / Month </span></li>
+                                    <li>21 to 50 users	<span style="margin-left:13px;">-&nbsp;&nbsp;	$10 / Month </span></li>
+                                    <li>51 to 100 users	<span style="margin-left:7px;">-&nbsp;&nbsp;	$8 / Month </span></li>
+                                    <li>> 100 users	<span style="margin-left:26px;">-&nbsp;&nbsp;	$6 / Month </span></li>
+                                     -->
+                                </ul>
+                                
+                        </div>
+
+                        <div class="new_card_features" style="overflow-y:scroll">
+                                <p><b>Key Features</b></p>
+                                    <ul>
+                                            <li>  Document Builder</li>
+                                            <li>  Setup Design Control </li>
+                                            <li>   Document Management </li>
+                                            <li>   Document Sharing </li>
+                                            <li>   Permission-based security </li>
+                                            <li>   Role Assignments to users </li>
+                                            <li>   Document Rearrange &amp; Modification </li>
+                                            <li>   Print Management </li>
+                                            <li>   Archiving &amp; Retention </li>
+                                            <li>   Access rights </li>
+                                            <li>   Easy to use drag & drop forms  </li>
+                                            <li>   Dashboard Communication control </li>
+                                            <li>   Hierarchy &amp; Access Control </li>
+                                            <li>   Enables Searching </li>
+                                            <li>   Reporting &amp; Analytics’ </li>
+                                            <li>   One Year Support and updates </li>
+            
+                                        <hr> 
+                                    </ul>
+                                    
+                            </div>
+                        </span>                                                                                                                         
+				
+                                                 
+						<!-- <div class="new_card_btns">
+                                <a href="/server_settings" >
+                            <button name="Add to Cart" class="add_to_cart">Select Plan</button>		
+                        </a>
+                        </div> -->
+                    </div>
+
+
+
+                    <div class="swiper-slide new_card_box" style="width: 280px; margin-right: 20px;">
+                            <div class="new_card_infobox">
+                                
+                                    <div class="new_card_info">
+                                        <p class="card_title"> {{user_type_name[1][0]}}  </p>
+                                            <p class="card_review">
+                                                <span class="star-ratings-sprite">
+                                                    <span style="width:94%" class="star-ratings-sprite-rating">
+                                                    </span>
+                                                </span>
+                                                
+                                            </p> 
+                                    </div>
+                            </div>
+                            <div class="new_card_pricebox">
+                                <p>Plan Price</p>
+                                    <p> 
+                                            <div class="numbers">
+                                                    Users <span style="margin-left:60px"> <span class="minus">-</span>
+                                                    <input type="number" user_type="2"   class="users_count" name="general_count" id="general_count" max="" value="{% if user_selec_list!=None %}{{user_selec_list[3]}}{%else%}0{%endif%}" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
+                                                    <span class="plus">+</span>
+                                                </span>
+                                                </div>     
+                                    </p>
+                            </div>
+    
+                            <div class="calculated-price">
+                                   Calculated Price : <span style= "font-size: 20px; margin-left: 20px;" class="general_user_amount" >{{session['currency_symbol']}} {% if user_selec_list!=None %}{{user_selec_list[4]}}{%else%}0{%endif%} </span>
+    
+      
+                                    
+    
+    
+    </div>
+    
+                            <span style="overflow-y:scroll">
+                            <div class="new_card_features">
+                                <p><b>Price Features</b></p>
+                                    <ul>
+                                            {% for general_users in general_user %}
+                                            <li>
+                                                {% if general_users.lower_value.startswith('>') %}
+                                                    {{general_users.lower_value.replace('>','> ')}}  users	
+                                                {% else %}
+                                                    {{general_users.lower_value}} to {{general_users.higher_value}} users	
+                                                {% endif %}
+                                                
+                                                <span style="float: right;margin-right: 8px;">-&nbsp;&nbsp;	{{session['currency_symbol']}}{{general_users.amount}} / Month </span>
+                                                
+                                            
+                                            </li>
+        
+                                            {% endfor %}
+                                        
+                                    </ul>
+                                    
+                            </div>
+    
+                            <div class="new_card_features" style="overflow-y:scroll">
+                                    <p><b>Key Features</b></p>
+                                        <ul>
+                                                <li>  Purchased Modules View Access</li>
+                                                <li>  Document Modification Request </li>
+                                                <li>  Limited Print control </li>
+                                                <li>  Limited Access rights </li>
+                                                <li>  Dashboard Communication View </li>
+                                                <li>  Hierarchy Document View  </li>
+                                                <li>  Enables Search </li>
+                                                                
+                                            <hr> 
+                                        </ul>
+                                        
+                                </div>
+                            </span>                                                                                                                         
+                    
+                                                     
+                            <!-- <div class="new_card_btns">
+                                    <a href="/server_settings" >
+                                <button name="Add to Cart" class="add_to_cart">Select Plan</button>
+                            </a>		
+                            </div> -->
+                        </div>
+
+
+
+                        <div class="swiper-slide new_card_box" style="width: 280px; margin-right: 20px;">
+                                <div class="new_card_infobox">
+                                    
+                                        <div class="new_card_info" style="background-image: linear-gradient(to bottom, #c813e8, #9708cc);">
+                                            <p class="card_title"> {{user_type_name[2][0]}}  </p>
+                                                <p class="card_review">
+                                                    <span class="star-ratings-sprite">
+                                                        <span style="width:94%" class="star-ratings-sprite-rating">
+                                                        </span>
+                                                    </span>
+                                                    
+                                                </p> 
+                                        </div>
+                                </div>
+                                <div class="new_card_pricebox">
+                                    <p>Plan Price</p>
+                                        <p> 
+                                                <div class="numbers">
+                                                        Users <span style="margin-left:60px"> <span class="minus">-</span>
+                                                        <input type="number" max="" user_type="3"   class="users_count" name="limited_count" id="limited_count"  value="{% if user_selec_list!=None %}{{user_selec_list[5]}}{%else%}0{%endif%}" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"/>
+                                                        <span class="plus">+</span>
+                                                    </span>
+                                                    </div>     
+                                        </p>
+                                </div>
+        
+                                <div class="calculated-price">
+                                       Calculated Price : <span style= "font-size: 20px; margin-left: 20px;" class="limited_user_amount" >{{session['currency_symbol']}} {% if user_selec_list!=None %}{{user_selec_list[6]}}{%else%}0{%endif%} </span>
+        
+          
+                                        
+        
+        
+        </div>
+        
+                                <span style="overflow-y:scroll">
+                                <div class="new_card_features">
+                                    <p><b>Price Features</b></p>
+                                        <ul>
+                                                {% for limited_users in limited_user %}
+                                                <li>
+                                                    {% if limited_users.lower_value.startswith('>') %}
+                                                        {{limited_users.lower_value.replace('>','> ')}}  users	
+                                                    {% else %}
+                                                        {{limited_users.lower_value}} to {{limited_users.higher_value}} users	
+                                                    {% endif %}
+ 
+                                                    
+                                                    <span style="float: right;margin-right: 8px;">-&nbsp;&nbsp;	{{session['currency_symbol']}}{{limited_users.amount}} / Month </span>
+                                                    
+                                                
+                                                </li>
+            
+                                                {% endfor %}
+                                                                                        
+                                        </ul>
+                                        
+                                </div>
+        
+                                <div class="new_card_features" style="overflow-y:scroll">
+                                        <p><b>Key Features</b></p>
+                                            <ul>
+                                                <li>  Standard DMS Module View Access</li>
+                                                <li>  Request for Document Modification </li>
+                                                <li>  Dashboard Communication View </li>
+                                                <li>  Enables Searching </li>
+                                                                    
+                                                <hr> 
+                                            </ul>
+                                            
+                                    </div>
+                                </span>                                                                                                                         
+                        
+                                                         
+                                <!-- <div class="new_card_btns">
+                                        <a href="/server_settings" >
+                                    <button name="Add to Cart" class="add_to_cart">Select Plan</button>		
+                                </a>
+                                </div> -->
+                            </div>
+
+
+                            <div class="swiper-slide new_card_box" style="width: 280px; margin-right: 20px;">
+                                    
+                                <div class="new_card_infobox">
+                                    
+                                        <div class="new_card_info" style="background-image: linear-gradient(to bottom,#2fd5b6, #15ab7f);">
+                                            <p class="card_title"> Total Summary  </p>
+                                                <p class="card_review">
+                                                    <span class="star-ratings-sprite">
+                                                        <span style="width:94%" class="star-ratings-sprite-rating">
+                                                        </span>
+                                                    </span>
+                                                    
+                                                </p> 
+                                        </div>
+                                </div>
+                              
+        
+                            
+        
+                                <span style="overflow-y:scroll">
+                                <div class="new_card_features">
+                                    <p><b>Price Features</b></p>
+                                        <ul>
+                                            <li> {{user_type_name[0][0]}} 	<span style="margin-left:37px;">-&nbsp;&nbsp;	<span  class="admin_user_amount" > {{session['currency_symbol']}} {% if user_selec_list!=None %}{{user_selec_list[2]}}{%else%}0{%endif%}</span>  / Month </span></li>
+                                            <li> {{user_type_name[1][0]}}	<span style="margin-left:29px;">-&nbsp;&nbsp;	<span  class="general_user_amount"> {{session['currency_symbol']}} {% if user_selec_list!=None %}{{user_selec_list[4]}}{%else%}0{%endif%}</span> / Month </span></li>
+                                            <li>{{user_type_name[2][0]}}	<span style="margin-left:33px;">- &nbsp;<span  class="limited_user_amount"> {{session['currency_symbol']}} {% if user_selec_list!=None %}{{user_selec_list[6]}}{%else%}0{%endif%}</span> / Month </span></li>
+
+                                            <hr>
+
+                                            <input type="hidden" value="{{user_selec_list[2]}}" name="adminus" id="adminus">
+                                            <input type="hidden" value="{{user_selec_list[4]}}" name="genus" id="genus">
+                                            <input type="hidden" value="{{user_selec_list[6]}}" name="limus" id="limus">
+
+                                             <input type="hidden" value="{{user_selec_list[7]}}" name="totamnt" id="totamnt">
+
+
+                                            <li>Total Amount	<span style="margin-left:33px;">- &nbsp;<span  class="total_amount"> {{session['currency_symbol']}} {% if user_selec_list!=None %}{{user_selec_list[7]}}{%else%}0{%endif%}</span> / Month </span></li>  
+                                            
+
+                                        </ul>
+                                        
+                                </div>
+
+                                </span>       
+                                <input type="hidden" id="max_val" value="">                                                                                      
+                        
+                                <span id="select_user_error" style="color:red"></span>            
+                                <div class="new_card_btns">
+                                   
+                                        <a href="/server_settings" >
+                                    <button name="Add to Cart" id="select_plan" class="add_to_cart">Select Plan</button>		
+                                </a>
+                                </div>
+                            </div>    
+
+
+                                                                                                        </div>
+                                                                                                        </div>
+</form>
+								 
+					  </li>
+					  
+				 </ul>
+			</div>
+	  </div>
+	<div class="container">
+		<div class="testimonial-wrap">
+			
+			<br><br>&nbsp;<br>&nbsp;
+
+		</div>
+	</div>
+</section>
+<!-- Section Testimonial End -->
+
+
+
+<!-- footer Start -->
+<footer class="footer section">
+	<div class="container">
+		
+		
+		{% include 'footer.html' %}
+
+
+<script>
+
+
+$(document).ready(function() {
+    $('#select_plan').click(function(){
+            var admin_user_count=$('#admin_count').val();
+            var general_user_count=$('#general_count').val();
+            var limited_user_count=$('#limited_count').val();
+            
+            if(admin_user_count==0 &&  general_user_count==0 &&  limited_user_count==0 ){
+              $('#select_user_error').html('Select Atleast One User')
+              return false
+            }
+            else{
+                this.submit();
+            }
+
+            
+    });	
+   
+        $('.minus').click(function () {
+            var $input = $(this).parent().find('input');
+            var count = parseInt($input.val()) - 1;
+            count = count < 0 ? 0 : count;
+            $input.val(count);
+            $input.change();
+            return false;
+        });
+        $('.plus').click(function () {
+            var $input = $(this).parent().find('input');
+            // $input.val(parseInt($input.val()) + 1);
+            var maximum=$('#max_val').val();
+            if(maximum==""){
+                $input.val(parseInt($input.val()) + 1);
+                
+            }
+            else{
+                var count = parseInt($input.val()) + 1;
+                count = count > maximum ? maximum : count;
+                $input.val(count);
+            }
+            $input.change();
+            return false;
+        });
+
+
+       
+
+
+        // $('.users_count').keyup(function(){
+            $(".users_count").bind("keyup change", function(e) {
+
+                var sess="{{session['currency_symbol']}}";
+            var users_count=this.value;
+            if(users_count == '')
+            {
+                users_count=0
+            }
+            var usertype=$(this).attr("user_type");
+            var url='/ajax_load_user_amount';
+            $.ajax({
+			type:"GET",
+			url:url,
+			data:{
+				 'users_count':users_count,
+                 'usertype':usertype
+			 },
+			success: function (data) {
+                new_amount=data.split('@')[0]
+                maximum_value=data.split('@')[1]
+                $('#max_val').val(maximum_value);
+                dat=users_count*new_amount;
+                              
+                if (usertype==1){
+                    $(".admin_user_amount").html(sess+' '+dat)
+                  
+                    $("#adminus").val(dat)
+                    $("#admin_count").attr("max", maximum_value);
+                    
+                }
+                else if (usertype==2){
+                    $(".general_user_amount").html(sess+' '+dat)
+                    $("#genus").val(dat)
+                    $("#general_count").attr("max", maximum_value);
+                   
+                }
+                else if (usertype==3){
+                    $(".limited_user_amount").html(' '+sess+' '+dat)
+                    $("#limus").val(dat)
+                    $("#limited_count").attr("max", maximum_value);
+                    
+                }
+
+                var adminus = $("#adminus").val();
+                 var genus = $("#genus").val();
+                 var limus = $("#limus").val();
+                var totalamounts=parseFloat(adminus)+parseFloat(genus)+parseFloat(limus);
+                    $(".total_amount").html('$ '+totalamounts)
+                 $("#totamnt").val(totalamounts)
+			      
+                  
+			}
+		 });
+        })
+
+
+        
+    });</script>
+  </body>
+  </html>

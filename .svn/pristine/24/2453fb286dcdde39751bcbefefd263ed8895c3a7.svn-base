@@ -1,0 +1,181 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css"/>
+
+{% include 'headernew.html' %}
+
+
+<!--  Section Services Start -->
+
+
+<section class="section service border-top">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-12 text-center">
+				<div class="section-title">
+        <br>
+        <h3>Cloud Setup</h3>
+				 {% include 'steps.html' %}    
+
+				</div>
+			</div>
+		</div> <br>
+     <form class="address-form" id="form_register"method="post" >
+		<div class="row justify-content-center">
+		
+
+
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="swiper-container swiper-container-horizontal">
+                                   
+					<div class="swiper-wrapper">
+            <div class="swiper-slide new_card_box" style="width: 100%; margin-right: 20px;">
+              <div class="new_card_infobox">
+                <div class="new_card_info" style="background-image: linear-gradient(to bottom, #c813e8, #9708cc);">
+                   <p class="card_title"> Amazon </p>
+                </div>
+              </div>
+              <div class="new_card_pricebox">
+                <p>
+                        <p>
+                                <span></span>
+                              
+                                <span>0/ Year</span>
+                            </p>
+                </p>
+              </div>
+              <div class="new_card_features" style="overflow-y:scroll">
+                <p>Includes</p>
+                <ul>
+                    
+                        <li>4GB Ram </li> 
+                        <li>Amazon Simple Storage Service </li>
+                        <li>Powerful data and relationship management </li>
+
+              
+
+                            </ul>
+            </div>
+                                                  
+           
+
+              <div class="new_card_btns">
+
+                <button name="cloud_package" value="" class="add_to_cart"><a href="/estimation">Add To Cart</a></button>	
+
+              </div>
+            </div> 
+          </div>                     
+					
+        </div>
+      </div>
+      
+
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="swiper-container swiper-container-horizontal">
+                                   
+					<div class="swiper-wrapper">
+            <div class="swiper-slide new_card_box" style="width: 100%; margin-right: 20px;">
+              <div class="new_card_infobox">
+                <div class="new_card_info" style="background-image: linear-gradient(to bottom,#2fd5b6, #15ab7f);">
+                   <p class="card_title"> GoDaddy </p>
+                </div>
+              </div>
+              <div class="new_card_pricebox">
+                <p>
+                        <p>
+                                <span></span>
+                              
+                                <span>0/ Year</span>
+                            </p>
+                </p>
+              </div>
+              <div class="new_card_features" style="overflow-y:scroll">
+                <p>Includes</p>
+                <ul>
+                    
+                  <li>8GB Ram </li> 
+                  <li>GoDaddy Simple Storage </li>       
+
+              
+
+                            </ul>
+            </div>
+                                                  
+           
+
+              <div class="new_card_btns">
+
+              
+             <button name="cloud_package" value="" class="add_to_cart"><a href="/estimation">Add To Cart</a></button>	
+
+              </div>
+            </div> 
+          </div>                     
+					
+        </div>
+			</div>
+
+
+
+
+		</div>
+  </form>
+
+	</div>
+</section>
+
+
+<style>
+
+    input {
+        height: 11px;
+        width: 17px;
+        text-align: center;
+        font-size: 26px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    input[type=checkbox], input[type=radio] {
+        margin: -5px 0 0;
+        line-height: normal;
+    }
+    
+    .new_card_pricebox { text-align:center}
+    
+    .new_card_box .new_card_btns button.add_to_carts {
+        border-radius: 4px;
+        background-color: green;
+        color: #fff;
+        border: 1px solid green;
+        margin-bottom: 4px;
+        font-family: Roboto, sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+    
+    
+</style>
+
+
+
+
+<!-- footer Start -->
+<footer class="footer section">
+	<div class="container">
+		
+		
+{% include 'footer.html' %}
+
+
+
+
+  </body>
+  </html>
+
+  
+<!--  Section Services End -->

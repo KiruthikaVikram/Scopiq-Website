@@ -1,0 +1,442 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css"/>
+
+
+
+
+{% include 'headernew.html' %}
+<style>.new_card_box .new_card_features ul li:last-child {
+    margin-bottom: 5px;
+} </style>
+<style>
+.new_card_box {  width: 100%; }
+.new_card_box .new_card_pricebox {
+    float: left;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 0px;
+	border-bottom: 1px solid rgba(36, 39, 44, 0.06);
+}
+.new_card_box .new_card_infobox {
+    float: left;
+    width: 100%;
+    height: 52px;
+}
+a { color:black}
+span { margin-left:20px; }
+
+</style>
+
+<style>
+.discount_slider {
+    border: none; 
+     box-shadow: 0 2px 4px 0 rgba(36, 39, 44, 0.15); 
+    margin-bottom: 0px;
+     overflow: hidden; 
+    width: 228px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.discount_percent_section_price {
+    display: inline-block;
+    font-size: 26px;
+    font-family: roboto, sans-serif;
+    font-weight: 500;
+    margin-top: 14px;
+    margin-bottom: 18px;
+	color:#472dc2;
+}
+
+.discount_percent_section_prices {
+    display: inline-block;
+    font-size: 20px;
+    font-family: roboto, sans-serif;
+    font-weight: 500;
+    margin-top: 22px;
+    margin-bottom: 10px;
+}
+
+
+.discount_section {
+    height: 114px;
+	padding: 1px;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #4EC6DE, #4EC6DE);
+}
+
+.discount_percent_sections {
+    background: #fff;
+    margin: 4px;
+    border-radius: 4px;
+}
+
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+
+#customers tr:nth-child(even){background-color: #fff;}
+
+#customers tr:hover {background-color: #fff;}
+
+#customers th {
+ 
+  text-align: center;
+  font-size: 12px;
+  background-color: #fff;
+  color: #000;
+
+}
+</style>
+
+
+
+<!-- Header Close --> 
+
+
+
+<!-- Section About End -->
+ 
+
+<!--  Section Services End -->
+<!-- Section Testimonial Start -->
+
+
+
+<section class="section">
+
+
+{% include 'menu.html' %}
+
+
+        <form class="form-register" id="form_register" action="#" method="post">
+
+ 
+        <div class="container">
+
+
+
+						 	{% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if message=="Updated Successfully" %}
+                                        <div class="success">
+
+                                            {{message}}
+
+
+                                        </div>
+                                    {% else %}
+
+
+                                        <div class="error">
+                                            {{message}}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+
+            <div class="row">
+                <div class="col-lg-12">
+
+								
+								<div class="new_card_infobox">
+							
+								<div class="new_card_info" style="background-image: linear-gradient(to bottom, #139ee8, #0865cc);">
+									<p class="card_title" style="margin-bottom: 0;"> My Account </p>
+										
+                                </div>
+					    </div>
+                    <div class="cta-item  bg-white p-5 rounded">
+                        
+                            
+                        
+
+                       
+
+
+                        <div class="row">
+
+
+
+
+                            <div class="col-lg-6 ml-auto col-sm-6">
+                                <div class="form-group">
+                                    <label>Email Domain *</label>
+                                    <input type="text" class="form-control"  name="email" id="email" maxlength="255" value="{{email_domain}}">
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 ml-auto col-sm-6" id="company"  >
+                                <div class="form-group">
+                                    <label>Enter Company Name *</label>
+                                    <input type="text" name="company_name" id="company_name" class="form-control" value="{{comp_name}}">
+         
+                                </div>
+                            </div>
+
+                            <!-- <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Company Name *</label>
+                                   <select class="form-control" name="sample_company" id="sample_company">
+                                <option value=""> Select Company</option>
+                                {% for sample_cmpy_lists in sample_cmpy_list %}
+                                <option value="{{sample_cmpy_lists[0]}}" {% if comp_name==sample_cmpy_lists[0] %}selected{% endif %}>{{sample_cmpy_lists[0]}}</option>
+                                {% endfor %}
+                                <option value="new" >New</option>
+                            </select>
+
+                                </div>
+
+                            </div> -->
+
+<!-- 
+                            <div class="col-lg-12 col-md-6 col-sm-6" id="company"  style="display:none">
+                                <div class="form-group">
+                                    <label>Enter Company Name *</label>
+                                    <input type="text" name="company_name" id="company_name" class="form-control" >
+         
+                                </div>
+                            </div>  -->
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Site Name *</label>
+                                     <input type="text" class="form-control"  name="site_name" id="site_name"  maxlength="100" value="{{usr_site_name}}">
+        
+                                </div>
+                            </div> 
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Country Name *</label>
+                                         <select class="form-control form_select" name="country" id="country" disabled >
+                                <option value=""> Select country Name</option>
+                                    {% for country in countries_list %}
+                                        <option {% if country.country_id == com_country %}selected="selected"{% endif %} value="{{country.country_id}}">{{ country.country_name}}
+                                        </option>
+                                    {% endfor  %}
+                            </select>
+    
+                                    </div>
+    
+                                </div>
+
+
+
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>State Name *</label>
+                                         <select class="form-control form_select" name="state" id="state" disabled >
+                                <option value=""> Select State Name</option>
+                                {% for state in states_list %}
+                                    <option  {% if state.state_id == com_state %}selected="selected"{% endif %} value="{{state.state_id}}">{{ state.state_name}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>City Name *</label>
+                                         <select class="form-control form_select" name="city" id="city" disabled>
+                                <option value=""> Select City Name</option>
+                                {% for city in cities_list %}
+                                <option  {% if city.city_id == com_city %}selected="selected"{% endif %} value="{{city.city_id}}">{{city.city_name}} </option>
+								{% endfor %}
+                            </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Address *</label>
+                                     <input type="text" class="form-control"  name="address" id="address" value="{{addr}}">
+        
+                                </div>
+                            </div> 
+
+
+                            <div class="col-lg-12 col-md-6 col-sm-6">
+                                <div class="form-group" style="text-align:center">
+                                    <input type="submit" class="add_to_cart"  name="submit" value="Submit"/>
+        
+                                </div>
+                            </div> 
+
+
+
+                                
+                                  
+                                
+                        </div>
+
+
+                      
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+
+
+
+<!-- Section Testimonial End -->
+
+
+
+<style>
+
+
+
+
+.menuclass:hover {
+    outline: 0;
+    background-image: linear-gradient(to bottom, #139ee8, #0865cc);
+		color:#fff;
+		 
+  transition: 0.25s;
+}
+
+
+::selection {
+  background-color: #4EC6DE;
+}
+
+
+
+
+
+@media only screen and (max-width: 990px) {
+  
+.add_to_cart {
+    border-radius: 4px;
+    background-color: #472dc2;
+    color: #fff;
+    border: 1px solid #472dc2;
+    margin-bottom: 4px;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 4px;
+    text-align: center;
+    width: 50%;
+    height: 40px;
+    outline: none;
+}
+
+
+
+}
+
+@media only screen and (min-width: 990px) {
+
+
+
+}
+
+
+
+
+
+
+</style>
+<!-- footer Start -->
+<footer class="footer section">
+	<div class="container">
+		
+		
+		{% include 'footer.html' %}
+<style>
+
+.new_card_box .new_card_features{ height:200px; overflow-y:scroll; border-top: 0px solid  }</style>
+
+
+
+<script>
+
+		
+        $(document).ready(function() {
+
+            jQuery.validator.addMethod("lettersonly", function(value, element) {
+            return this.optional(element) || /^[A-Za-z  ]*$/.test(value);
+            }, "Please Enter Alphabets Only");
+            jQuery.validator.addMethod("capsonly", function(value, element) {
+            return this.optional(element) || /^[A-Z]*$/.test(value);
+            }, "Please Enter Capital Letters");
+                $("#form_register").validate({
+                    rules: {
+                        company_name: { required: true,maxlength:100},
+                        address: { required: true},
+                        
+                        email: { required: true,maxlength:255},
+                                 sample_company:{required:true},
+                                 country:{required:true},
+                                 state:{required:true},
+                                 city:{required:true},
+                                 site_name:{required:true},
+                                 currency_type:{required:true}
+                        
+                    },
+                    messages: {
+                        company_name: { required: 'Please Enter Company Name' },
+                        address: { required: 'Please Enter Address' },
+                        email: { required: 'Please Enter Email Domain' },
+                                 sample_company:{required:'Please Select Company Name'},
+                                 country:{required:'Please Select Country Name'},
+                                 state:{required:'Please Select State Name'},
+                                 city:{required:'Please Select City Name'},
+                                 site_name:{required:'Please Enter Site Name'},
+                                 currency_type:{required:'Please Select Currency Name'}
+                    },
+                errorPlacement: function(error, element) {
+                        if (element.hasClass('select2')) {
+                        error.insertAfter(element.next('.select2'));
+                        } else {
+                        error.insertAfter(element);
+                        }
+                    }
+    
+                });
+    //                   $("#sample_company").change(function(e)
+    //  {
+    //   var val=this.value;
+    //      if( val=="new"){
+    //          $("#company").show();
+    //            $("#company_name").focus();
+    //      }
+    //      else{
+    //         $("#company").hide();
+    //      }
+
+    //  });
+  
+            
+        });
+
+
+
+
+
+
+</script>
+
+  </body>
+  </html>

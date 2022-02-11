@@ -1,0 +1,427 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+<link rel="stylesheet" href="static/css1/style.css">
+
+{% include 'headernew.html' %}
+
+<!-- Header Close -->
+
+<style>.new_card_box .new_card_features ul li:last-child {
+		margin-bottom: 5px;
+	} </style>
+	<style>
+	.new_card_box {  width: 100%; }
+	.new_card_box .new_card_pricebox {
+		float: left;
+		width: 100%;
+		margin-top: 2px;
+		margin-bottom: 0px;
+		border-bottom: 1px solid rgba(36, 39, 44, 0.06);
+	}
+	.new_card_box .new_card_infobox {
+		float: left;
+		width: 100%;
+		height: 52px;
+	}
+	a { color:black}
+	span { margin-left:20px; }
+	
+	</style>
+	
+	<style>
+	.discount_slider {
+		border: none; 
+		 box-shadow: 0 2px 4px 0 rgba(36, 39, 44, 0.15); 
+		margin-bottom: 0px;
+		 overflow: hidden; 
+		width: 228px;
+		border-radius: 4px;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+	}
+	
+	.discount_percent_section_price {
+		display: inline-block;
+		font-size: 26px;
+		font-family: roboto, sans-serif;
+		font-weight: 500;
+		margin-top: 14px;
+		margin-bottom: 18px;
+		color:#472dc2;
+	}
+	
+	.discount_percent_section_prices {
+		display: inline-block;
+		font-size: 20px;
+		font-family: roboto, sans-serif;
+		font-weight: 500;
+		margin-top: 22px;
+		margin-bottom: 10px;
+	}
+	
+	
+	.discount_section {
+		height: 114px;
+		padding: 1px;
+		text-align: center;
+		background-image: linear-gradient(to bottom, #4EC6DE, #4EC6DE);
+	}
+	
+	.discount_percent_sections {
+		background: #fff;
+		margin: 4px;
+		border-radius: 4px;
+	}
+	
+	
+	#customers td, #customers th {
+	  border: 1px solid #ddd;
+	  padding: 8px;
+	  text-align: center;
+	  font-size: 12px;
+	}
+	
+	#customers tr:nth-child(even){background-color: #fff;}
+	
+	#customers tr:hover {background-color: #fff;}
+	
+	#customers th {
+	 
+	  text-align: center;
+	  font-size: 12px;
+	  background-color: #fff;
+	  color: #000;
+	
+	}
+	</style>
+	
+
+<!-- Section Cta Start -->
+<section class="section">
+		{% include 'menu.html' %}
+        <div class="container">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+              {% for category,message in messages %}
+                      <div class="{{category}}">
+
+                          {{message}}
+
+                      </div>
+
+              {% endfor %}
+          {% endif %}
+      {% endwith %}
+
+
+	  <form class="form-register" id="form_register" action="#" method="post">
+
+			<div class="container">
+	
+				<div class="row" style="min-height: 700px;">
+					<div class="col-lg-12">
+
+							<div class="new_card_infobox">
+							
+									<div class="new_card_info" style="background-image: linear-gradient(to bottom, #139ee8, #0865cc);">
+										<p class="card_title" style="margin-bottom: 0;"> Billing Information </p>
+											
+									</div>
+							</div>
+
+						<div class="cta-item  bg-white p-5 rounded">			   
+						   
+	
+							<div class="row" style="height:400px;">
+	
+	
+								<div class="col-lg-12 ml-auto col-sm-6">
+									<div class="form-group">
+										<label>Invoice Company Name *</label>
+										<input type="text" class="form-control"  name="invoice_Company" id="invoice_Company" maxlength="255" value="{{session['company_name']}}">
+	
+									</div>
+								</div>
+	
+	
+	
+								<div class="col-lg-6 col-md-6 col-sm-6">
+									<div class="form-group">
+										<label>GST/VAT *</label>
+										<input type="text" class="form-control"  name="gst_vat" id="gst_vat" maxlength="100" value="{{gst_vat}}">
+	
+									</div>
+	
+								</div>
+								
+								<div class="col-lg-6 col-md-6 col-sm-6">
+									<div class="form-group">
+										<label>Attention To *</label>
+										<input type="text" class="form-control"  name="user_name" id="user_name" maxlength="100" value="">
+	
+									</div>
+	
+								</div>
+								<div class="col-lg-12 col-md-6 col-sm-6">
+									<div class="form-group">
+										<input type="checkbox" /> 
+										&nbsp;Same As Company Address 
+									</div>	
+							   </div>
+	
+								
+								<div class="col-lg-6 col-md-6 col-sm-6">
+									<div class="form-group">
+										<label>Invoice Billing Address *</label>
+										<input type="text" class="form-control" name="invoice_address" id="invoice_address"  value="">
+			
+									</div>
+								</div> 
+	
+								<div class="col-lg-6 col-md-6 col-sm-6" id="countries">
+										<div class="form-group">
+											<label>Country Name *</label>
+											<select name="country" id="country" class="form-control" >
+													<option value=""> Select Country Name</option>
+														{% for country in countries_list %}
+														<option value="{{country[0]}}" >{{country[1]}}</option>
+														{% endfor %}
+												</select>
+										</div>
+		
+								</div>
+	
+								<div class="col-lg-6 col-md-6 col-sm-6" id="company_countries" style="display:none">
+									<div class="form-group">
+										<label>Country Name *</label>
+										<select name="comp_country" id="countrys" class="form-control" >
+												<option value=""> Select Country Name</option>
+												{% for country in countries_list %}
+													{% if comp_country_id==country[0] %}
+													<option value="{{country[0]}}"  selected  >{{country[1]}}</option>
+													{% endif %}  
+												{% endfor %}
+											</select>
+									</div>
+		
+								</div>
+									
+	
+	
+	
+	
+								<div class="col-lg-6 col-md-6 col-sm-6" id="ajax_states">
+									<div class="form-group">
+										<label>State Name *</label>
+										<select name="state" id="state" class="form-control" >
+											<option value=""> Select State Name</option>
+										</select>	
+									</div>
+								</div>
+	
+								<div class="col-lg-6 col-md-6 col-sm-6" id="states_list" style="display:none">
+									<div class="form-group">
+										<label>State Name *</label>
+										<select name="comp_state" id="states"class="form-control" >
+											<option value=""> Select State Name</option>
+											{% for state in states_list %}
+												{% if comp_state_id==state[0] %}
+													<option value="{{state[0]}}" selected >{{ state[1]}}</option>
+												{% endif %}
+											{% endfor %}
+										</select>	
+									</div>
+								</div>
+	
+	
+	
+								<div class="col-lg-6 col-md-6 col-sm-6" id="ajax_cities">
+									<div class="form-group">
+										<label>City Name *</label>
+										<select  name="city" id="city" class="form-control" >
+											<option value=""> Select City Name</option>
+										</select>
+									</div>
+								</div>
+	
+								<div class="col-lg-6 col-md-6 col-sm-6" id="cities_list" style="display:none">
+										<div class="form-group">
+											<label>City Name *</label>
+											<select  name="comp_city" id="city" class="form-control" >
+												<option value=""> Select City Name</option>
+												{% for city in cities_list %}
+													{% if comp_city_id==city[0] %}
+														<option value="{{city[0]}}" selected >{{ city[1]}}</option>
+													{% endif %}
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+	
+						
+	
+									<div class="col-lg-12 col-md-6 col-sm-6">
+										<div class="form-group">
+											<label>Total Amount(Including {{session['gst']}} GST) : {{session['currency_symbol']}}{{total_gst_amnt}}</label>
+											
+				
+										</div>
+									</div> 
+									
+									<div class="col-lg-12 col-md-6 col-sm-6">
+										<h2>Payment Information:</h2> <br>
+										
+										<br><br>
+									</div>		
+	
+									
+									  <input type="submit" class="add_to_cart"  name="submit" value="Submit"/>
+									
+							</div>
+	
+	
+						 
+	
+	
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+        
+
+            </div>
+</section>
+<!--  Section Cta End-->
+
+
+
+<!-- footer Start -->
+<footer class="footer section">
+	<div class="container">
+		
+		
+        {% include 'footer.html' %}
+        
+        
+
+
+		<script>
+			$(document).ready(function() {
+	
+				jQuery.validator.addMethod("lettersonly", function(value, element) {
+				return this.optional(element) || /^[A-Za-z  ]*$/.test(value);
+				}, "Please Enter Alphabets Only");
+				jQuery.validator.addMethod("capsonly", function(value, element) {
+				return this.optional(element) || /^[A-Z]*$/.test(value);
+				}, "Please Enter Capital Letters");
+				$("#form_register").validate({
+					rules: {
+						invoice_Company: { required: true},
+						gst_vat: { required: true,maxlength:64},
+						invoice_address:{ required: true},
+						country:{required:true},
+						state:{required:true},
+						city:{required:true},
+						user_name:{required:true},
+						currency_type:{required:true}
+	
+					},
+					messages: {
+						invoice_Company: { required: 'Please Enter Invoice Company Name' },
+						gst_vat: { required: 'Please Enter GST/VAT' },
+						invoice_address: { required: 'Please Enter Invoice Billing Address' },
+						country:{required:'Please Select Country Name'},
+						state:{required:'Please Select State Name'},
+						city:{required:'Please Select City Name'},
+						user_name:{required:'Please Enter Attention To'},
+						currency_type:'Please Select Currency Name'
+	
+					},
+				errorPlacement: function(error, element) {
+						if (element.hasClass('select2')) {
+							error.insertAfter(element.next('.select2'));
+						} else {
+							error.insertAfter(element);
+						}
+					}
+	
+				});
+	
+	
+	
+				$('input[type="checkbox"]').click(function(){
+						if($(this).prop("checked") == true){
+							var url = '/ajax_load_invoice_address';
+							$.ajax({
+								type:"GET",
+								url:url,
+								success: function (data) {
+									
+									new_data=data.replace(/[()]/g,'')
+									country_id=new_data.split('@')[0]
+									state_id=new_data.split('@')[1]
+									city_id=new_data.split('@')[2]
+									address=new_data.split('@')[3].replace(/'/g,'');
+	
+									$("#invoice_address").val(address);
+									$("#countries").hide();
+									$("#company_countries").show();
+									$("#states_list").show();
+									$("#ajax_states").hide();
+									$("#cities_list").show();
+									$("#ajax_cities").hide();
+								
+	
+								}
+							});
+						}
+						else if($(this).prop("checked") == false){
+							$("#invoice_address").val("");
+							$("#country").val("");
+							$("#state").val("");
+							$("#city").val("");
+							$("#countries").show()
+							$("#company_countries").hide()
+							$("#states_list").hide();
+							$("#ajax_states").show();
+							$("#cities_list").hide();
+							$("#ajax_cities").show();
+						}
+				});
+	
+				$("#country").change(function (e) {
+					var country=$(this).val();
+					var url = '/ajax_load_state';
+					$.ajax({
+						type:"GET",
+						url:url,
+						data:{
+							'country':country
+						},
+						success: function (data) {
+							$("#state").html(data)
+						}
+					});
+				});
+	
+				$("#state").change(function (e) {
+					var state=$(this).val();
+					var url = "/ajax_load_city";
+					$.ajax({
+						url:url,
+						data:{'state':state
+						},
+						success: function (data) {
+							$("#city").html(data)
+						}
+					});
+				  });
+	
+	
+			});
+	 
+	</script>
+	
+
+  </body>
+  </html>

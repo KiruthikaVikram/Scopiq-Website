@@ -1,0 +1,258 @@
+{% include 'header.html' %}
+
+
+	<meta charset="utf-8">
+	<title>SCOPiQ</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	
+	<link rel="stylesheet" type="text/css" href="static/css/roboto-font.css">
+	<link rel="stylesheet" type="text/css" href="static/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	<!-- datepicker -->
+	<link rel="stylesheet" type="text/css" href="static/css/jquery-ui.min.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="static/css/style.css"/>
+</head>
+
+<style>
+.error
+{
+color:red;
+
+ }
+ 
+.has-error
+ {
+color:red;
+
+ }
+ .success{
+     color:green
+ }
+       
+
+/* .country_code{
+   text-transform:uppercase;
+} */
+</style>
+
+
+<body>
+	<div class="page-content" >
+		<div class="wizard-v3-content">
+			<div class="wizard-form">
+ 
+							
+				<div class="wizard-header">
+					<p>SignIn</p>
+				</div>
+		        <form class="form-register" id="form_register" action="#" method="post">
+
+<div class="steps clearfix"><ul role="tablist"><li role="tab" aria-disabled="false" class="first current" aria-selected="true"><a id="form-total-t-0" href="signup.html" aria-controls="form-total-p-0"><span class="current-info audible"> </span><div class="title">
+			            	<span class="step-icon"><i class="zmdi zmdi-account"></i></span>
+			            	<span class="step-text">SignIn</span>
+			            </div></a></li><li role="tab" aria-disabled="false"><a id="form-total-t-1" href="#" aria-controls="form-total-p-1"><div class="title">
+			            	<span class="step-icon"><i class="zmdi zmdi-lock"></i></span>
+			            	<span class="step-text" style="margin-left: -11px;">Verification</span>
+			            </div></a></li><li role="tab" aria-disabled="false" ><a id="form-total-t-2" href="#" aria-controls="form-total-p-2"><div class="title">
+			            	<span class="step-icon"><i class="zmdi zmdi-card"></i></span>
+			            	<span class="step-text" style="margin-left: -6px;" >Company</span>
+			            </div></a></li><li role="tab" aria-disabled="false" class="last"><a id="form-total-t-3" href="#" aria-controls="form-total-p-3"><div class="title">
+			            	<span class="step-icon"><i class="zmdi zmdi-receipt"></i></span>
+							<span class="step-text" style="margin-left: -3px;" >Products</span>
+						</div></a></li><li role="tab" aria-disabled="false" class="last"><a id="form-total-t-3" href="#" aria-controls="form-total-p-3"><div class="title">
+			            	<span class="step-icon"><i class="zmdi zmdi-receipt"></i></span>
+			            	<span class="step-text" style="margin-left: 8px;" >Billing</span>	
+			            </div></a></li></ul></div>
+
+
+
+		        	<div id="form-total" >
+		        		<!-- SECTION 1 -->
+			            <h2>
+			            	
+			            </h2>
+			            <section>
+			               <div class="inner">
+								{% with messages = get_flashed_messages() %}
+								    {% if messages %}
+										{% for message in messages %}
+											{% if message=="Added Successfully" or message=="Updated Successfully"%}
+												<div class="success">
+													<div class="alert alert-success fade in">
+														<i class="fa fa-check"></i>
+														<a href="" class="close" data-dismiss="alert">&times;</a>
+														<strong>{{ message }}</strong>
+														<meta http-equiv="refresh" content="10"/>
+
+													</div>
+												</div>
+											{% else %}
+					
+					
+												<div class="error">
+													<div class="alert alert-danger fade in">
+														<i class="fa fa-ban"></i>
+														<a href="" class="close" data-dismiss="alert">&times;</a>
+														<strong>{{message}}</strong>
+													</div>
+													</div>
+											{% endif %}
+										{% endfor %}
+									{% endif %}
+								{% endwith %}
+
+								<div class="form-row">
+										<div class="form-holder form-holder-2">
+											<label class="form-row-inner">
+												<input type="email" name="email" id="email" class="form-control" maxlength="255" >
+												<span class="label" >Your Email</span>
+													<span class="border"></span>
+											</label>
+										</div>
+										<div class="form-holder form-holder-2">
+											<label class="form-row-inner">
+												<input type="password" name="password" id="password" class="form-control"  >
+												<span class="label">Password</span>
+												<span class="border"></span>
+											</label>
+										</div>
+									</div>
+									
+	
+									
+								</div>
+										</section>
+							
+								</div><div class="actions clearfix">
+							
+							<ul role="menu" aria-label="Pagination">
+	
+							
+															<a href="{{url_for('signup')}}" class="sub">New User ? </a>
+	
+								<li class="disabled" aria-disabled="true"></li>
+	
+													
+								<li aria-hidden="false">
+										<input type="submit" class="sub"  value="Submit"/>
+								</li>
+	
+	
+								
+							</ul></div>
+
+
+		        </form>
+			</div>
+		</div>
+    </div>
+    <style>
+			.sub {padding: 0;
+				color: #fff;	
+				text-decoration: blink;
+
+border: none;
+border-radius: 3px;
+-o-border-radius: 3px;
+-ms-border-radius: 3px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+display: inline-flex;
+height: 45px;
+width: 140px;
+justify-content: center;
+-o-justify-content: center;
+-ms-justify-content: center;
+-moz-justify-content: center;
+-webkit-justify-content: center;
+-o-align-items: center;
+-ms-align-items: center;
+-moz-align-items: center;
+-webkit-align-items: center;
+align-items: center;
+background: #24c1e8;
+font-family: 'Roboto', sans-serif;
+font-size: 16px;
+font-weight: 400;
+cursor: pointer;}
+			.label { transform: translateY(-23px) scale(1);
+-o-transform: translateY(-23px) scale(1);
+-ms-transform: translateY(-23px) scale(1);
+-moz-transform: translateY(-23px) scale(1);
+-webkit-transform: translateY(-23px) scale(1);
+color: #24c1e8;}
+		</style>
+
+
+	<script src="static/js/jquery-3.3.1.min.js"></script>
+	<script src="static/js/jquery.steps.js"></script>
+	<script src="static/js/jquery-ui.min.js"></script>
+	<script src="static/js/main.js"></script>
+	<script src="{{url_for('static', filename='js/vali/jquery.validate.js')}}"></script>
+	<script>
+			$(document).ready(function() {
+				$("#email").on("keypress",function(e)
+				{
+
+					var startpos=e.currentTarget.selectionStart;
+					if(e.which ==32 && startpos==0)
+					e.preventDefault();
+				}
+				);
+
+				jQuery.validator.addMethod("lettersonly", function(value, element) {
+				return this.optional(element) || /^[A-Za-z  ]*$/.test(value);
+				}, "Please Enter Alphabets Only");
+				jQuery.validator.addMethod("capsonly", function(value, element) {
+				return this.optional(element) || /^[A-Z]*$/.test(value);
+				}, "Please Enter Capital Letters");
+				$("#form_register").validate({
+					rules: {
+						email: { required: true,maxlength:255},
+						password: { required: true},
+						
+					},
+					messages: {
+						email: { required: 'Please Enter Your Email' },
+						password: { required: 'Please Enter Password' },
+					},
+				errorPlacement: function(error, element) {
+						if (element.hasClass('select2')) {
+						  error.insertAfter(element.next('.select2'));
+						} else {
+						  error.insertAfter(element);
+						}
+					}
+	
+				});
+			});
+   
+   
+	</script>
+
+ 
+ 
+
+</body>
+
+{% include 'footer.html' %}
+
+<!-- <style>.inner .form-row .form-holder .label {
+  position: absolute;
+  top: 23px;
+  left: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  /* color: #666; */
+  transform-origin: 0 0;
+  transition: all .2s ease;
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  -ms-transition: all .2s ease;
+} -->
+
+
+

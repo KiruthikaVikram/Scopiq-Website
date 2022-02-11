@@ -1,0 +1,431 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css"/>
+
+{% include 'header.html' %}
+
+
+<!-- Header Close --> 
+
+<div class="main-wrapper ">
+<!-- Slider Start -->
+<section class="slider">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9 col-md-10">
+				<div class="block">
+					<span class="d-block mb-3 text-white text-capitalize">&nbsp;</span>
+					<h2 class="animated fadeInUp mb-5" style="color:#fff">Make the Move to Paperless Processes and Digital Storage with Easy-to-Use Document Management Software.
+						</h1> <br>
+						{% if session['userid'] %}
+						<a href="/my_account"  class="btn btn-main animated fadeInUp btn-round-full" >Get started<i class="btn-icon fa fa-angle-right ml-2"></i></a> <br>
+						{% else%}
+						<a href="/register"  class="btn btn-main animated fadeInUp btn-round-full" >Get started<i class="btn-icon fa fa-angle-right ml-2"></i></a> <br>
+						{% endif %}
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Section Intro Start -->
+<br>
+<!-- <section class="section intro">
+	<div class="container">
+		
+		<div class="row justify-content-center">
+			<div class="col-lg-4 col-md-6 col-12">
+				<div class="intro-item mb-5 mb-lg-0"> 
+					<i class="ti-desktop color-one"></i>
+					<h4 class="mt-4 mb-3">Modern & Responsive design</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ducimus.</p>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="intro-item mb-5 mb-lg-0">
+					<i class="ti-medall color-one"></i> 
+					<h4 class="mt-4 mb-3">Awarded licensed company</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ducimus.</p>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="intro-item">
+					<i class="ti-layers-alt color-one"></i>
+					<h4 class="mt-4 mb-3">Build your website Professionally</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ducimus.</p>
+				</div>
+			</div> 
+		</div>
+	</div>
+</section> -->
+
+<!-- Section Intro END -->
+<!-- Section About Start -->
+
+
+<section class="section service border-top" style="padding: 23px 0 !important;">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-7 text-center">
+					<div class="section-title">
+						<h2 class="mt-3 content-title ">ScopiQ Key Features </h2>
+					</div>
+				</div>
+			</div>
+	
+			<div class="row justify-content-center">
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="service-item mb-5">
+						<i class="ti-control-forward mr-3"></i>
+						<h4 class="mb-3">Document Storage</h4>
+					</div>
+				</div>
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+						<h4 class="mb-3">Search Engine</h4>
+					</div>
+				</div>
+	
+				
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+							<h4 class="mb-3">Digital Signature</h4>
+						</div>
+					</div>
+		
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+						<h4 class="mb-3">Multiple Approvals</h4>
+					</div>
+				</div>
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+							<h4 class="mb-3">Multiple output formats</h4>
+						</div>
+				</div>
+		
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+						<h4 class="mb-3">Pre-built Templates</h4>
+					</div>
+				</div>
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+							<h4 class="mb-3">Print Management</h4>
+						</div>
+				</div>
+		
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+						<h4 class="mb-3">Alert Messaging</h4>
+					</div>
+				</div>
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+							<h4 class="mb-3">Document Delivery</h4>
+						</div>
+				</div>
+		
+				
+					<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+								<i class="ti-control-forward mr-3"></i>
+							<h4 class="mb-3">Document Indexing</h4>
+						</div>
+					</div>
+		
+					<div class="col-lg-4 col-md-6 col-sm-6">
+							<div class="service-item mb-5">
+								<i class="ti-control-forward mr-3"></i>
+								<h4 class="mb-3">Archiving &amp; Retention</h4>
+							</div>
+					</div>
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+							<h4 class="mb-3">Document Tracking</h4>
+						</div>
+				</div>
+		
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+						<h4 class="mb-3">Dashboard Communication</h4>
+					</div>
+				</div>
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+							<h4 class="mb-3">Permission-based security</h4>
+						</div>
+				</div>
+		
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+						<h4 class="mb-3">Access Controls</h4>
+					</div>
+				</div>
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+							<h4 class="mb-3">Document Tree View</h4>
+						</div>
+				</div>
+		
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+						<h4 class="mb-3">Backup &amp; Restore</h4>
+					</div>
+				</div>
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+							<h4 class="mb-3">Knowledge Base</h4>
+						</div>
+				</div>
+		
+				
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+							<h4 class="mb-3">Analytics and Reporting</h4>
+						</div>
+				</div>
+		
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="service-item mb-5">
+							<i class="ti-control-forward mr-3"></i>
+						<h4 class="mb-3">Remote mobile access</h4>
+					</div>
+				</div>
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+								<i class="ti-control-forward mr-3"></i>
+							<h4 class="mb-3">Sharing Document</h4>
+						</div>
+				</div>
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+								<i class="ti-control-forward mr-3"></i>
+							<h4 class="mb-3">Easy to use drag &amp; drop forms builder</h4>
+						</div>
+					</div>
+		
+				<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+								<i class="ti-control-forward mr-3"></i>
+							<h4 class="mb-3">Automatic version naming and numbering</h4>
+						</div>
+					</div>
+	
+				<div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="service-item mb-5">
+						</div>
+					</div>		
+	
+					
+	
+	
+	
+			</div>
+		</div>
+	</section>
+
+
+<section class="section about position-relative" style="padding: 0px 0;">
+	<div class="bg-about"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 offset-lg-6 offset-md-0">
+				<div class="about-item ">
+					<h2 class="mt-3 mb-4 position-relative content-title">About ScopiQ</h2>
+					<div class="about-content">
+						<h4 class="mb-3 position-relative"></h4>
+						<p class="mb-5">ScopiQ Document Management System [DMS] is a extremely important document management software. It is easy to create customizable electronic forms with no needed for IT and also anywhere,anytime and any form of ScopiQ eclipse forms.</p> <br>
+
+						
+
+						<a href="/about" class="btn btn-main btn-round-full">Read More</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Section About End -->
+<!-- section Counter Start -->
+<section class="section counter" style="padding: 67px 0 !important;">
+	
+</section>
+<!-- section Counter End  -->
+<!--  Section Services Start -->
+
+<!--  Section Services End -->
+ <!-- Section Cta Start --> 
+<section class="section cta">
+	<div class="container">
+		<div class="row">
+
+				<div class="col-lg-6">
+						<div class="cta-item  bg-white p-5 rounded">
+							<h2 class="mt-2 mb-4">Advantages</h2>
+		
+						
+							<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Eliminate mistakes</p>
+							<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Reduce Operational Costs</p>
+							<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Reduce the number of process stakeholders</p>
+							<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Ensure Data accuracy</p>
+							<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Promote paperless and green practices</p>
+							<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Improve internal communication channels</p>
+							<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Secured storage and recovery</p>
+							<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Standardization of approval process</p>
+						</div>
+					</div>
+					
+			<div class="col-lg-6">
+				<div class="cta-item  bg-white p-5 rounded">
+					<h2 class="mt-2 mb-4">Supported Platform</h2>
+
+				
+					<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Linux</p>
+					<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Ubuntu</p>
+					<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Windows</p>
+					<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Mac OS</p>
+					<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Macintosh</p>
+					<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Android</p>
+					<p class="lead mb-4"> <i class="ti-control-forward mr-3 text-color"></i> Windows Phone</p>
+					<p class="lead mb-4"> </i> &nbsp;</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--  Section Cta End-->
+
+<!-- Section Testimonial End -->
+<section class="section latest-blog bg-2">
+	<div class="container">
+		<div class="row justify-content-center">
+
+			<div class="col-lg-12 text-center">
+				<div class="section-title">
+					<h3 class="mt-3  text-white">Payment Mode</h3> <br>
+					<img src="https://www.techjockey.com/assets/new-assets/images/payment_method_icon.png" style="width: 100%;">
+				</div>
+			</div>
+
+			<div class="col-lg-4 text-center">
+					<div class="section-title" style="margin-bottom: 3px;">
+						<h3 class="mt-3  text-white"> <i class="ti-control-forward mr-3 text-color"></i> Free Trial [ 30 days Only]</h3> <br>
+						
+					</div>
+				</div>
+
+				<div class="col-lg-4 text-center">
+						<div class="section-title" style="margin-bottom: 3px;">
+							<h3 class="mt-3  text-white"> <i class="ti-control-forward mr-3 text-color"></i> Monthly</h3> <br>
+							
+						</div>
+					</div>
+
+					<div class="col-lg-4 text-center">
+							<div class="section-title" style="margin-bottom: 3px;">
+								<h3 class="mt-3  text-white"> <i class="ti-control-forward mr-3 text-color"></i> Quarterly &nbsp;</h3> <br>
+								
+							</div>
+						</div>
+
+						<div class="col-lg-4 text-center">
+								<div class="section-title">
+									<h3 class="mt-3  text-white" style="font-size: 21px;"> <i class="ti-control-forward mr-3 text-color"></i> Onetime [Perpetual Licence]</h3> <br>
+									
+								</div>
+							</div>
+
+						<div class="col-lg-4 text-center">
+								<div class="section-title">
+									<h3 class="mt-3  text-white"> <i class="ti-control-forward mr-3 text-color"></i> Yearly &nbsp; </h3> <br>
+									
+								</div>
+							</div>
+
+							<div class="col-lg-4 text-center">
+									<div class="section-title">
+										<h3 class="mt-3  text-white"> <i class="ti-control-forward mr-3 text-color"></i> Transaction</h3> <br>
+										
+									</div>
+								</div>
+
+							
+
+
+		</div>
+
+		
+	</div>
+</section>
+
+<section class="mt-70 position-relative">
+	<div class="container">
+	<div class="cta-block-2 bg-gray p-5 rounded border-1">
+		<div class="row justify-content-center align-items-center ">
+			<div class="col-lg-7">
+				<span class="text-color">For Every type business</span>
+				<h2 class="mt-2 mb-4 mb-lg-0">Entrust Your Project to Our Best Team of Professionals</h2>
+			</div>
+			<div class="col-lg-4">
+				<a href="/contact" class="btn btn-main btn-round-full float-lg-right ">Contact Us</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+</section>
+<style>.service-item i {
+		position: absolute;
+		left: 47px;
+		top: 3px;
+		font-size: 24px;
+		opacity: 1.4;
+  }
+  
+  .mb-5, .my-5 {
+    margin-bottom: 0!important;
+}
+
+h4, .h4 {
+    font-size: 18px;
+    line-height: 30px;
+}
+
+
+</style>
+{% include 'footer.html' %}
+
+  </body>
+  </html>
+   

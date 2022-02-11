@@ -1,0 +1,657 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+<link rel="stylesheet" href="static/css1/style.css">
+
+{% include 'header.html' %}
+
+<!-- Header Close -->
+
+<script type="text/javascript">
+    var RecaptchaOptions = {
+       theme : 'custom',
+       custom_theme_widget: 'recaptcha_widget'
+    };
+    </script>
+    
+<style>
+.field-icon {
+  float: left;
+  margin-left: 226px;
+  margin-top: -30px;
+  position: relative;
+  z-index: 2;
+}
+
+
+</style>
+
+
+<style>
+.form-control:placeholder-shown:not(:focus) + * {
+    opacity: 1;
+    transform: translateY(30px);
+    margin-left: 10px;
+}
+
+
+.field {
+  display: flex;
+  flex-flow: column-reverse;
+}
+
+label, input {
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+
+
+
+input:focus {
+  outline: 0;
+  border-bottom: 1px solid #666;
+}
+
+
+
+input:placeholder-shown + label {
+  cursor: text;
+  max-width: 66.66%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform-origin: left bottom;
+  transform: translate(0, 2.125rem) scale(1.5);
+}
+/**
+* By default, the placeholder should be transparent. Also, it should 
+* inherit the transition.
+*/
+::-webkit-input-placeholder {
+  opacity: 0;
+  transition: inherit;
+}
+/**
+* Show the placeholder when the input is focused.
+*/
+input:focus::-webkit-input-placeholder {
+  opacity: 1;
+}
+/**
+* When the element is focused, remove the label transform.
+* Also, do this when the placeholder is _not_ shown, i.e. when 
+* there's something in the input at all.
+*/
+input:not(:placeholder-shown) + label,
+input:focus + label {
+  transform: translate(0, 0) scale(1);
+  cursor: pointer;
+}
+
+</style>
+
+<body onload="createCaptcha()">
+    <!-- Section Cta Start -->
+    <section class="section cta">
+        <form class="form-register" id="form_register" autocomplete="off" action="#" method="post">
+
+            <div class="container">
+
+                <div class="row" style="height: 450px;">
+                    <div class="col-lg-7">
+                        <div class="cta-item  bg-white p-5 rounded">
+                            {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category,message in messages %}
+                                        <div class="{{category}}">
+                  
+                                            {{message}}
+                  
+                                        </div>
+                  
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                  
+                            <h3 style="text-align:center">Login</h3><br>
+
+                            <div class="row">
+
+
+                          
+
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                    <div class="field">
+                                        
+
+                                        <input type="email" name="email" id="email" class="form-control" maxlength="255" placeholder="&nbsp;">
+                                        <label for="email">Email</label>
+                                       
+                                    </div>
+                                     <span style="color:red; font-size:14px;">
+                                    <span id="emailerr"></span></span>
+                                     </div>
+                                </div>
+
+                                <div class="col-lg-6 ml-auto col-sm-6">
+                                    <div class="form-group">
+
+                                    <div class="field">
+                                        
+                                        <input type="password" class="form-control" id="password" name="password" maxlength="64"  autocomplete="new-password" placeholder="&nbsp;">
+                                        <label for="password">Password</label>
+                                        
+                                      </div>
+                                      <span toggle="#password" style="display:none" id="eyepass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                    </div>
+                                </div>
+
+
+
+                                
+
+
+
+                                <div class="col-lg-6 col-md-6 col-sm-6" >
+
+
+                                  <label id="labs">Select one of the Captcha options</label>
+
+                                 
+<span class="form-control" style="height: 92px;padding: 0;">
+                                  
+                                 <label class="col-md-12 col-sm-12 col-xs-12    "  style="padding-right: 0;margin-top: 13px;"> <input name="optionOfCaptcha" type="radio" checked="checked" id="capOption" tabindex="16"  value="IMG" ><span style="padding-left:3px; color: green;">Image
+										Captcha</span>  
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        
+                                         <input name="optionOfCaptcha" type="radio" id="capOption" tabindex="16" value="AUD" onclick="cs_change_music('s');" ><span style="padding-left:3px; color: green;">Audio
+										Captcha</span>
+								</label> 
+
+
+                                   <div id="captcha" style="text-align: center;" >
+                                    
+
+
+                                    </div> 
+                                    
+
+ <a class="btn refresh " id="refresh" style="cursor:pointer"> <i class="fa fa-undo mr-2"></i> </a>
+
+
+
+                             
+                                    
+                                   
+
+                                    
+
+
+                                   
+
+
+                                     <audio controlsList="nodownload"   controls id="audio" style="display:none;width: 100%;">
+                                <source src="" class="audsrc" type="audio/ogg">
+                               
+                                    <input type="hidden" id="audcap" value="" >
+
+</span>
+
+                                </div>
+                                
+                              
+  <br><br>
+
+
+<div class="col-lg-6 col-md-6 col-sm-6">
+
+                                  <label id="lab">Enter the text as shown in the image</label>
+                                <input type="text" style="height:92px;" autocomplete="offx" name="captcha" class="form-control login password-field" placeholder="" id="cpatchaTextBox"><br>
+                                    <span id="captcha_validation" style="color:red;font-size:14px"></span>
+
+                                </div>
+
+
+                                
+  <br><br>
+  <br><br>
+    <br>
+
+
+<div class="col-lg-12 col-md-12 col-sm-12" style="text-align:center">
+
+                                   <button class="btn btn-main "  name="submit" id="submit">Login</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp; 
+                            <input class="btn btn-main " name="submit" id="submit" type="reset" value="Reset">
+
+  <br>
+
+
+                            <br>
+                            <a href="{{url_for('forgot_password')}}" style="color:#000">Forgot Password ?</a>
+                                </div>
+
+                          
+                          
+
+
+                          
+
+
+
+  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+<!--  Section Cta End-->
+
+<style>.btn-main:focus {
+    background-color:#1e5081;
+}
+
+
+@media all and (max-width: 575px) and (min-width: 440px) {
+  .refresh  {
+    font-size: 20px;padding: 5px;margin-left: 290px;margin-top: -44px;
+  }
+
+}
+
+@media all and (max-width: 450px) and (min-width: 352px) {
+  .refresh  {
+    font-size: 20px;padding: 5px;margin-left: 240px;margin-top: -44px;
+  }
+
+}
+
+
+@media all and (max-width: 761px) and (min-width: 576px) {
+  .refresh  {
+    font-size: 20px;padding: 5px;margin-left: 159px;margin-top: -44px;
+  }
+
+}
+
+
+@media all and (max-width: 991px) and (min-width: 768px) {
+  .refresh  {
+    font-size: 20px;padding: 5px;margin-left: 209px;margin-top: -44px;
+  }
+
+}
+
+@media all and (max-width: 1197px) and (min-width: 992px) {
+  .refresh  {
+    font-size: 20px;padding: 5px;margin-left: 166px;margin-top: -44px;
+  }
+
+}
+@media all and  (min-width: 1197px) {
+  .refresh  {
+    font-size: 20px;padding: 5px;margin-left: 202px;margin-top: -44px;
+  }
+
+}
+
+
+
+
+</style>
+
+<!-- footer Start -->
+<div class="container">
+
+
+    {% include 'footer.html' %}
+</div>
+
+</div>
+
+<!-- 
+    Essential Scripts
+    =====================================-->
+
+
+
+<script type="text/javascript">
+  
+   function cs_change_music(music)
+   {
+ 
+       var url = '/ajax_load_audiocaptcha';
+        $.ajax({
+        type:"GET",
+        url:url,
+        data:{
+             'email':1
+         },
+        success: function (data) {
+
+           
+            $("#audcap").val(data);
+            
+            
+            document.getElementById("audio").setAttribute('src', '../../static/audio/'+data+'.wav');
+     document.getElementById("audio").load();
+            
+           
+        }
+     });
+
+
+       
+     
+   }
+   </script>
+
+<script>
+
+
+$("input[name='optionOfCaptcha']").change(function(){
+
+    var radioValue = $("input[name='optionOfCaptcha']:checked").val();
+    
+            if(radioValue == 'AUD'){
+                $("#audio").show();
+                $("#captcha").hide();
+                $("#ss").html(' <source src="../../static/audio/{{random_num}}.wav" type="audio/ogg">');
+                $("#dd").hide();
+                $("#refresh").hide();
+                $("#lab").html('Enter the text as from audio');
+               
+            }
+            else if(radioValue == 'IMG'){
+                $("#audio").hide();
+                $("#captcha").show();
+                $("#dd").show();
+                $("#refresh").show();
+                $("#lab").html('Enter the text as shown in the image');
+               
+            }
+
+    
+});
+	
+
+
+    var code;
+
+    function createCaptcha() {
+        //clear the contents of captcha div first 
+        document.getElementById('captcha').innerHTML = "";
+        //var charsArray ="12";
+        //var lengthOtp = 2;
+        var charsArray = "23456789abcdefghknpqrstuvxyzABCDEFGHKNPQRSTUVXYZ";
+        var lengthOtp = 6;
+        var captcha = [];
+        for (var i = 0; i < lengthOtp; i++) {
+            //below code will not allow Repetition of Characters
+            var index = Math.floor(Math.random() * charsArray.length + 1); //get the next character from the array
+            if (captcha.indexOf(charsArray[index]) == -1)
+                captcha.push(charsArray[index]);
+            else i--;
+        }
+        var canv = document.createElement("canvas");
+        canv.id = "captcha";
+        canv.width = 150;
+        canv.height = 50;
+        var ctx = canv.getContext("2d");
+        
+        ctx.font = "bold 30px serif";
+        
+        ctx.beginPath(); 
+  // Staring point (10,45)
+//   ctx.arc(40, 5, 40, 0, 0.9 * Math.PI);
+  ctx.moveTo(-5, 15);
+ctx.bezierCurveTo(30, 20, 80, 50, 120, 10);
+  // Make the line visible
+  ctx.strokeStyle = "red";
+  ctx.lineWidth = 3;
+  ctx.stroke();
+  ctx.strokeStyle = "red";
+
+       
+        var gradient = ctx.createLinearGradient(0, 0, canv.width, 0);
+        gradient.addColorStop("0", "black");
+        gradient.addColorStop("0.5", "black");
+        gradient.addColorStop("1.0", "black");
+        // Fill with gradient
+        ctx.fillStyle = gradient;
+        
+        
+        //ctx.fillStyle = 'hsl(' + 360 * Math.random() + ', 50%, 50%)';
+        ctx.fillText(captcha.join(""), 0, 30);
+        ctx.fillText('Pattern color',250,140);
+    
+        
+        //storing captcha so that can validate you can save it somewhere else according to your specific requirements
+        code = captcha.join("");
+        document.getElementById("captcha").appendChild(canv); // adds the canvas to the body element
+
+
+    }
+
+
+
+ $('#refresh').on('click', function() {
+
+createCaptcha();
+
+     });
+
+    $(document).ready(function() {
+
+
+         $("#password").bind("keyup change", function(e) {
+            var pass = $(this).val();
+            if (pass==''){
+                $("#eyepass").hide();
+            }
+            else
+            {
+                $("#eyepass").show();
+            }
+        });
+
+
+        $("#cpatchaTextBox").bind("keyup change", function(e) {
+            var captcha = $(this).val();
+            if (captcha==''){
+                $("#captcha_validation").html('');
+            }
+        });
+        $("#email").bind("keyup change", function(e) {
+            
+        var email_error = $("#email").attr("class");
+        var email=$(this).val();
+        if(email == '')
+        {
+             $("#emailerr").html(" ");
+              $("#submit").show();
+        }
+        else if((email != '') && (email_error == "form-control has-error" || email_error == "form-control")){
+            $("#emailerr").html(" ");
+              $("#submit").show();
+        }
+
+        else
+        {
+        var url = '/ajax_load_email';
+        $.ajax({
+        type:"GET",
+        url:url,
+        data:{
+             'email':email
+         },
+        success: function (data) {
+            
+            if(data == 0)
+            {
+             $("#emailerr").html("Email does not exist. Please Register");
+              $("#submit").hide();
+            }
+            else
+            {
+                $("#emailerr").html(" ")
+                $("#submit").show();
+            }
+        
+        }
+     });
+
+        }
+
+
+  });
+
+        $("#email").on("keyup",function(e)
+        {
+            this.value = this.value.toLowerCase();
+        });
+
+        
+
+
+        $("#email").on("keypress", function(e) {
+            var startpos = e.currentTarget.selectionStart;
+            if (e.which == 32 && startpos == 0)
+                e.preventDefault();
+        });
+
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+            return this.optional(element) || /^[A-Za-z  ]*$/.test(value);
+        }, "Please Enter Alphabets Only");
+        jQuery.validator.addMethod("capsonly", function(value, element) {
+            return this.optional(element) || /^[A-Z]*$/.test(value);
+        }, "Please Enter Capital Letters");
+        
+       
+            $("#form_register").validate({
+                
+                rules: {
+                    email: {
+                        required: true,
+                        maxlength: 255
+                    },
+                    password: {
+                        required: true
+                    },
+                    captcha: {
+                        required: true
+                    }
+                },
+                messages: {
+                    email: {
+                        required: 'Please Enter Your Email'
+                    },
+                    password: {
+                        required: 'Please Enter Password'
+                    },
+                    captcha: {
+                        required: 'Please Enter Captcha'
+                    }
+                },
+                errorPlacement: function(error, element) {
+                    
+                         error.insertAfter( element.parent("div"));
+                   
+                }
+
+            });
+            $('#submit').on('click', function() {
+
+                    var audioid= $("#audcap" ).val();
+
+               
+
+               var pass = $("#password").val();
+            if (pass==''){
+                $("#eyepass").hide();
+            }
+            else
+            {
+                $("#eyepass").show();
+            }
+
+
+                
+               
+            if (document.getElementById("cpatchaTextBox").value == '') {
+                
+                $("#captcha_validation").html('')
+                $("#form_register").validate({
+                    rules: {
+                        email: {
+                            required: true,
+                            maxlength: 255
+                        },
+                        password: {
+                            required: true
+                        },
+                        captcha: {
+                            required: true
+
+                        }
+                    },
+                    messages: {
+                        email: {
+                            required: 'Please Enter Your Email'
+                        },
+                        password: {
+                            required: 'Please Enter Password'
+                        },
+                        captcha: {
+                           
+                            required: 'Please Enter Captcha'
+                        }
+                    },
+                    errorPlacement: function(error, element) {
+                        
+                              error.insertAfter( element.parent("div"));
+                       
+                    }
+
+                });
+            } else if (document.getElementById("cpatchaTextBox").value == code) {
+               
+                $("#captcha_validation").html('')
+                // alert("Valid Captcha");
+                return true;
+            } 
+            
+            else if (document.getElementById("cpatchaTextBox").value == audioid) {
+                
+                $("#captcha_validation").html('')
+                // alert("Valid Captcha");
+                return true;
+            } 
+            
+            else {
+                // alert("Invalid Captcha. try Again");
+               
+                $("#captcha_validation").html('Invalid Captcha. Try Again')
+                createCaptcha();
+                return false;
+            }
+
+        });
+
+
+    });
+
+    $(".toggle-password").click(function() {
+$(this).toggleClass("fa-eye fa-eye-slash");
+var input = $($(this).attr("toggle"));
+
+if (input.attr("type") == "password") {
+  input.attr("type", "text");
+} else {
+  input.attr("type", "password");
+}
+});
+</script>
+
+</html>

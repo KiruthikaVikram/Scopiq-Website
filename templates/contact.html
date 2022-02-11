@@ -1,0 +1,292 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+<link rel="stylesheet" href="static/css1/style.css">
+
+{% include 'header.html' %}
+
+<!-- Header Close -->
+
+<style>
+.form-control:placeholder-shown:not(:focus) + * {
+    opacity: 1;
+    transform: translateY(30px);
+    margin-left: 10px;
+}
+
+
+.field {
+  display: flex;
+  flex-flow: column-reverse;
+}
+
+label, input {
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+
+
+
+input:focus {
+  outline: 0;
+  border-bottom: 1px solid #666;
+}
+
+
+
+input:placeholder-shown + label {
+  cursor: text;
+  max-width: 66.66%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform-origin: left bottom;
+  transform: translate(0, 2.125rem) scale(1.5);
+}
+/**
+* By default, the placeholder should be transparent. Also, it should 
+* inherit the transition.
+*/
+::-webkit-input-placeholder {
+  opacity: 0;
+  transition: inherit;
+}
+/**
+* Show the placeholder when the input is focused.
+*/
+input:focus::-webkit-input-placeholder {
+  opacity: 1;
+}
+/**
+* When the element is focused, remove the label transform.
+* Also, do this when the placeholder is _not_ shown, i.e. when 
+* there's something in the input at all.
+*/
+input:not(:placeholder-shown) + label,
+input:focus + label {
+  transform: translate(0, 0) scale(1);
+  cursor: pointer;
+}
+
+</style>
+
+<!-- Section Cta Start -->
+<section class="section cta">
+
+
+    <form class="form-register" autocomplete="off" id="form_register" action="#" method="post">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="cta-item  bg-white p-5 rounded">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if message=="Mail sent" %}
+                                        <div class="success">
+
+                                            {{message}}
+
+
+                                        </div>
+                                    {% else %}
+
+
+                                        <div class="error">
+                                            {{message}}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        <h3 style="text-align:center">CONTACT</h3><br>
+
+                       
+
+
+                        <div class="row">
+
+
+
+<div class="col-lg-6 col-md-6 col-sm-6">
+<div class="form-group">
+                                         <div class="field">
+    <input type="text" name="first_name" maxlength="64"  id="first_name" class="form-control" placeholder="&nbsp;">
+    <label for="first_name">First Name</label>
+     </div>
+  </div>
+
+                                    </div>
+
+
+
+                          
+
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                   <div class="field">
+                                    <input type="text" class="form-control" id="last_name" name="last_name" maxlength="64" placeholder="&nbsp;">
+                                     <label for="last_name">Last Name</label>
+                                </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                <div class="field">
+                                    
+                                    <input type="email" name="email" id="email" class="form-control" maxlength="255" placeholder="&nbsp;">
+                                    <label for="email" >Email</label>
+                                    </div>
+                                </div>
+                            </div>    
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="field">
+                                        
+                                            <input type="text" class="form-control" id="phonenumber" name="phonenumber" minlength="10" maxlength="15" placeholder="&nbsp;">
+                                            <label for="phonenumber">Phone Number</label>
+                                        </div>
+                                    </div>
+    
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <div class="field">
+                                                
+                                                <textarea name="comments" class="form-control" id="comments" rows="4" cols="50" style="width: 100%;"placeholder="&nbsp;"></textarea>
+                                                <label for="comments">Comments</label>
+                                             </div>
+                                        </div>
+        
+                                    </div>
+
+
+                                     
+
+
+                        </div>
+
+
+
+
+
+                        <button class="btn btn-main " name="submit" type="submit">Submit</button>
+                         <input class="btn btn-main " name="submit" id="submit" type="reset" value="Reset">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+<!--  Section Cta End-->
+
+
+
+<!-- footer Start -->
+{% include 'footer.html' %}
+
+<!-- 
+    Essential Scripts
+    =====================================-->
+
+<!-- Main jQuery -->
+<script src="static/plugins1/jquery/jquery.js"></script>
+<script src="static/js1/contact.js"></script>
+<!-- Bootstrap 4.3.1 -->
+<script src="static/plugins1/bootstrap/js/popper.js"></script>
+<script src="static/plugins1/bootstrap/js/bootstrap.min.js"></script>
+<!--  Magnific Popup-->
+<script src="static/plugins1/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+<!-- Slick Slider -->
+<script src="static/plugins1/slick-carousel/slick/slick.min.js"></script>
+<!-- Counterup -->
+<script src="static/plugins1/counterup/jquery.waypoints.min.js"></script>
+<script src="static/plugins1/counterup/jquery.counterup.min.js"></script>
+
+<!-- Google Map -->
+<script src="static/plugins1/google-map/map.js"></script>
+
+<script src="static/js1/script.js"></script>
+<script src="{{url_for('static', filename='js/vali/jquery.validate.js')}}"></script>
+
+</body>
+
+<script>
+    $(document).ready(function() {
+        $("#email").on("keypress", function(e) {
+
+            var startpos = e.currentTarget.selectionStart;
+            if (e.which == 32 && startpos == 0)
+                e.preventDefault();
+        });
+
+        $("#first_name").on("keypress", function(e) {
+
+            var startpos = e.currentTarget.selectionStart;
+            if (e.which == 32 && startpos == 0)
+                e.preventDefault();
+        });
+        $("#last_name").on("keypress", function(e) {
+
+            var startpos = e.currentTarget.selectionStart;
+            if (e.which == 32 && startpos == 0)
+                e.preventDefault();
+        });
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+            return this.optional(element) || /^[A-Za-z  ]*$/.test(value);
+        }, "Please Enter Alphabets Only");
+        jQuery.validator.addMethod("capsonly", function(value, element) {
+            return this.optional(element) || /^[A-Z]*$/.test(value);
+        }, "Please Enter Capital Letters");
+        jQuery.validator.addMethod("numbersonly", function(value, element) {
+            return this.optional(element) || /^[0-9]*$/.test(value);
+        }, "Please Enter Numbers");
+        $("#form_register").validate({
+            
+            rules: {
+                email: {
+                    required: true,
+                    maxlength: 255
+                },
+                first_name: {
+                    maxlength: 64,
+                    lettersonly: true
+                },
+                last_name: {
+                    maxlength: 64,
+                    lettersonly: true
+                },
+                phonenumber: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 15,
+                    numbersonly: true
+                },
+            },
+            messages: {
+                email: {
+                    required: 'Please Enter Email'
+                },
+                
+                phonenumber: {
+                    required: 'Please Enter Phone Number'
+                },
+               
+            },
+            errorPlacement: function(error, element) {
+               
+                  error.insertAfter( element.parent("div"));
+
+               
+            }
+
+        });
+    });
+</script>
+
+</html>

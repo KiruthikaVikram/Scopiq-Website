@@ -1,0 +1,181 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css">
+
+
+{% include 'header.html' %}
+
+<style>
+.error
+{
+color:red;
+
+ }
+ 
+.has-error
+ {
+color:red;
+
+ }
+ .success{
+     color:green
+ }
+       
+
+/* .country_code{
+   text-transform:uppercase;
+} */
+</style>
+<body>
+	<div class="page-content"  >
+		<div class="wizard-v3-content">
+			<div class="wizard-form">
+ 
+							
+
+		        <form class="form-register" id="form_register" action="#" method="post">
+
+
+		        	<div id="form-total" >
+		        		<!-- SECTION 1 -->
+			            <h2>
+			            	
+			            </h2>
+			            <section>
+			               <div class="inner">
+
+
+								<div class="form-row">
+
+                                       Your Payment Was Successful.
+                                         
+
+
+										  </div>
+										  <br>
+										  <span style="margin-left: 35px;">
+										  <a href="{{url_for('my_account')}}" class="sub"  >My Account </a></span>
+								
+
+		
+
+
+
+	<style type="text/css">
+	label {
+	display: block;
+	border: solid 1px gray;
+	line-height: 40px;
+	height: 92px;
+	width: 126px;
+	border-radius: 9px;
+	-webkit-font-smoothing: antialiased;
+	margin-top: 10px;
+	font-family: Arial,Helvetica,sans-serif;
+	color: gray;
+	text-align: center;
+	}
+	
+	/* input[type=checkbox] {
+	display: none;
+	} */
+	
+	input:checked + label {
+	border: solid 1px #90EE90;
+	background-color: #4fab40;
+	color: #fff;
+	}
+	
+	input:checked + label:before {
+	
+	}
+	
+	
+	/* new stuff */
+	.check {
+	visibility: hidden;
+	}
+	img { vertical-align: middle; text-align: left; margin-top: 10px }
+	input:checked + label .check {
+	visibility: visible;
+	}
+	
+	input.checkbox:checked + label:before {
+	content: "";
+	}
+	.fontsiz { font-size: 12px; }
+	
+	.inner .form-row .form-holder {
+	width: 30%;
+	padding: 0 10px;
+	margin-bottom: 17px;
+	position: relative;
+	}
+	
+	</style>
+	
+
+					</div>
+
+				</section>
+			
+			</div>
+			 
+
+
+
+		        </form>
+			</div>
+		</div>
+    </div>
+    <style>
+
+
+
+
+			.sub {padding: 0;
+				color: #fff;	
+				text-decoration: blink;
+
+border: none;
+border-radius: 3px;
+-o-border-radius: 3px;
+-ms-border-radius: 3px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+display: inline-flex;
+height: 45px;
+width: 140px;
+justify-content: center;
+-o-justify-content: center;
+-ms-justify-content: center;
+-moz-justify-content: center;
+-webkit-justify-content: center;
+-o-align-items: center;
+-ms-align-items: center;
+-moz-align-items: center;
+-webkit-align-items: center;
+align-items: center;
+background: #24c1e8;
+font-family: 'Roboto', sans-serif;
+font-size: 16px;
+font-weight: 400;
+cursor: pointer;}
+			.label { transform: translateY(-23px) scale(1);
+-o-transform: translateY(-23px) scale(1);
+-ms-transform: translateY(-23px) scale(1);
+-moz-transform: translateY(-23px) scale(1);
+-webkit-transform: translateY(-23px) scale(1);
+color: #24c1e8;}
+		</style>
+
+
+
+{% include 'footer.html' %}
+
+	
+
+
+
+</body>
+</html>

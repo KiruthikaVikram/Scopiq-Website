@@ -1,0 +1,378 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+<link rel="stylesheet" href="static/css1/style.css">
+
+{% include 'headernew.html' %}
+
+<!-- Header Close -->
+
+
+
+<!-- Section Cta Start -->
+<section class="section">
+
+<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-12 text-center">
+				<div class="section-title">
+        <br>
+        <h3>Company Details</h3>
+				 {% include 'steps.html' %}    
+
+				</div>
+			</div>
+		</div> <br>
+
+    <form class="form-register" id="form_register" action="#" method="post">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+
+                 <div class="new_card_infobox">
+                        <div class="new_card_info1">
+							<p class="card_title"> Company Details </p>
+						</div>
+					</div>
+                    <div class="cta-item  bg-white p-5 rounded">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if message=="Mail sent" %}
+                                        <div class="success">
+
+                                            {{message}}
+
+
+                                        </div>
+                                    {% else %}
+
+
+                                        <div class="error">
+                                            {{message}}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+                       
+                       
+
+                        <div class="row">
+
+
+
+
+                            <div class="col-lg-6 ml-auto col-sm-6">
+                                <div class="form-group">
+                                    <label>Email Domain <span style="color: red;">*</span></label>
+                                    <input type="text" class="form-control"  name="email" id="email" maxlength="255" value="{{email_domain}}">
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Company Name <span style="color: red;">*</span></label>
+                                   <select class="form-control" name="sample_company" id="sample_company">
+                                <option value=""> Select Company Name</option>
+                                {% for sample_cmpy_lists in sample_cmpy_list %}
+                                <option value="{{sample_cmpy_lists[0]}}" {% if comp_name==sample_cmpy_lists[0] %}selected{% endif %}>{{sample_cmpy_lists[0]}}</option>
+                                {% endfor %}
+                                <option value="new" >New</option>
+                            </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-lg-12 col-md-6 col-sm-6" id="company"  style="display:none">
+                                <div class="form-group">
+                                    <label>Enter Company Name <span style="color: red;">*</span></label>
+                                    <input type="text" name="company_name" id="company_name" class="form-control" >
+        
+                                </div>
+
+                                <span style="color:red; font-size:14px;">
+                                    <span id="comperr"></span></span>
+                            </div> 
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Company Short Code <span style="color: red;">*</span></label>
+                                     <input type="text" class="form-control"  name="company_code" id="company_code"  maxlength="6" value="{{company_code}}">
+        
+                                </div>
+                            </div> 
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Location Name <span style="color: red;">*</span></label>
+                                     <input type="text" class="form-control"  name="site_name" id="site_name"  maxlength="100" value="{{usr_site_name}}">
+        
+                                </div>
+                            </div> 
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Country Name <span style="color: red;">*</span></label>
+                                         <select class="form-control form_select" name="country" id="country" >
+                                <option value=""> Select Country Name</option>
+                                    {% for country in countries_list %}
+                                        <option {% if country.country_id == com_country %}selected="selected"{% endif %} value="{{country.country_id}}">{{ country.country_name}}
+                                        </option>
+                                    {% endfor  %}
+                            </select>
+    
+                                    </div>
+    
+                                </div>
+
+
+
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>State Name <span style="color: red;">*</span></label>
+                                         <select class="form-control form_select" name="state" id="state"  >
+                                <option value=""> Select State Name</option>
+                                {% for state in states_list %}
+                                    <option  {% if state.state_id == com_state %}selected="selected"{% endif %} value="{{state.state_id}}">{{ state.state_name}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>City Name <span style="color: red;">*</span></label>
+                                         <select class="form-control form_select" name="city" id="city">
+                                <option value=""> Select City Name</option>
+                                {% for city in cities_list %}
+                                <option  {% if city.city_id == com_city %}selected="selected"{% endif %} value="{{city.city_id}}">{{city.city_name}} </option>
+								{% endfor %}
+                            </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Address <span style="color: red;">*</span></label>
+                                     <input type="text" class="form-control"  name="address" id="address" value="{{addr}}">
+        
+                                </div>
+                            </div> 
+
+                                
+                                  <input type="submit" id="submit" class="add_to_cart"  name="submit" value="Submit"/>
+                                
+                        </div>
+
+
+                     
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form><br><br>
+</section>
+<!--  Section Cta End-->
+
+
+
+<!-- footer Start -->
+<footer class="footer section">
+	<div class="container">
+		
+		
+        {% include 'footer.html' %}
+        
+        
+
+
+
+<script>
+
+		
+        $(document).ready(function() {
+
+            jQuery.validator.addMethod("lettersonly", function(value, element) {
+            return this.optional(element) || /^[A-Za-z  ]*$/.test(value);
+            }, "Please Enter Alphabets Only");
+            jQuery.validator.addMethod("capsonly", function(value, element) {
+            return this.optional(element) || /^[A-Z]*$/.test(value);
+            }, "Please Enter Capital Letters");
+
+    jQuery.validator.addMethod("alphanumeric", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z0-9]+$/.test(value);
+           }, "Please Enter Alpha Numeric");
+
+
+                $("#form_register").validate({
+                    rules: {
+                        company_name: { required: true,maxlength:100},
+                        company_code: { 
+                            required: true,
+                            maxlength:6,
+                        alphanumeric: true,
+                        },
+                        address: { required: true},
+                        
+                        email: { required: true,maxlength:255},
+                                 sample_company:{required:true},
+                                 country:{required:true},
+                                 state:{required:true},
+                                 city:{required:true},
+                                 site_name:{required:true},
+                                 currency_type:{required:true}
+                        
+                    },
+                    messages: {
+                        company_name: { required: 'Please Enter Company Name' },
+                        company_code: { required: 'Please Enter Company Short Code' },
+                        address: { required: 'Please Enter Address' },
+                        email: { required: 'Please Enter Email Domain' },
+                                 sample_company:{required:'Please Select Company Name'},
+                                 country:{required:'Please Select Country Name'},
+                                 state:{required:'Please Select State Name'},
+                                 city:{required:'Please Select City Name'},
+                                 site_name:{required:'Please Enter Site Name'},
+                                 currency_type:{required:'Please Select Currency Name'}
+                    },
+                errorPlacement: function(error, element) {
+                        if (element.hasClass('select2')) {
+                        error.insertAfter(element.next('.select2'));
+                        } else {
+                        error.insertAfter(element);
+                        }
+                    }
+    
+                });
+
+
+
+                
+
+
+                      $("#sample_company").change(function(e)
+     {
+      var val=this.value;
+         if( val=="new"){
+             $("#company").show();
+             $("#company_name").focus();
+         }
+         else{
+            $("#company").hide();
+         }
+
+     });
+     $("#country").change(function (e) {
+        var country=$(this).val();
+        
+        var company_name='{{session['company_name']}}';
+        
+        if (company_name != '' ){
+            var comp_country='{{com_country}}';
+           if (country!=comp_country){
+              alert('changing the country will delete all your entries')
+           }
+        }
+        var url = '/ajax_load_state';
+        $.ajax({
+        type:"GET",
+        url:url,
+        data:{
+             'country':country
+         },
+        success: function (data) {
+        $("#state").html(data)
+        $("#city").val('')
+        }
+     });
+  });
+
+  $("#state").change(function (e) {
+      var state=$(this).val();
+      var url = "/ajax_load_city";
+      $.ajax({
+      url:url,
+      data:{'state':state
+       },
+      success: function (data) {
+        $("#city").html(data)
+        //alert(data)
+      }
+    });
+  });
+
+  $("#sample_company").bind("change", function(e) {
+    $("#company_name").val('');
+    $("#submit").show();
+  });
+
+  $("#company_name").bind("keyup change", function(e) {
+    $("#submit").show();
+                    var comp_error = $("#company_name").attr("class");
+                    var comp_name=$(this).val();
+                    if(comp_name == '')
+                    {
+                        $("#comperr").html(" ");
+                        $("#submit").show();
+                    }
+                    else if((comp_name != '') && (comp_error == "form-control has-error" || comp_error == "form-control")){
+                        $("#comperr").html(" ");
+                        $("#submit").show();
+                    }
+            
+                    else
+                    {
+                    var url = '/ajax_load_company';
+                    $.ajax({
+                    type:"GET",
+                    url:url,
+                    data:{
+                        'comp_name':comp_name
+                    },
+                    success: function (data) {
+                        
+                        if(data != 0)
+                        {
+                        $("#comperr").html("Company already exists. Please select or enter a new company");
+                        $("#submit").hide();
+                        }
+                        else
+                        {
+                            $("#comperr").html(" ")
+                            $("#submit").show();
+                        }
+                    
+                    }
+                });
+            
+                    }
+            
+    
+      });
+
+            
+        });
+
+
+
+
+
+
+</script>
+
+  </body>
+  </html>

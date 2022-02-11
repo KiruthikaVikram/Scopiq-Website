@@ -1,0 +1,219 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+<link rel="stylesheet" href="static/css1/style.css">
+
+{% include 'header.html' %}
+
+
+
+<style>
+
+.field-icon {
+  float: left;
+  margin-left: 226px;
+  margin-top: -30px;
+  position: relative;
+  z-index: 2;
+}
+
+
+.form-control:placeholder-shown:not(:focus) + * {
+    opacity: 1;
+    transform: translateY(30px);
+    margin-left: 10px;
+}
+
+
+.field {
+  display: flex;
+  flex-flow: column-reverse;
+}
+
+label, input {
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+
+
+
+input:focus {
+  outline: 0;
+  border-bottom: 1px solid #666;
+}
+
+
+
+input:placeholder-shown + label {
+  cursor: text;
+  max-width: 66.66%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform-origin: left bottom;
+  transform: translate(0, 2.125rem) scale(1.5);
+}
+/**
+* By default, the placeholder should be transparent. Also, it should 
+* inherit the transition.
+*/
+::-webkit-input-placeholder {
+  opacity: 0;
+  transition: inherit;
+}
+/**
+* Show the placeholder when the input is focused.
+*/
+input:focus::-webkit-input-placeholder {
+  opacity: 1;
+}
+/**
+* When the element is focused, remove the label transform.
+* Also, do this when the placeholder is _not_ shown, i.e. when 
+* there's something in the input at all.
+*/
+input:not(:placeholder-shown) + label,
+input:focus + label {
+  transform: translate(0, 0) scale(1);
+  cursor: pointer;
+}
+
+</style>
+
+
+<body>
+        <style>
+                .error
+                {
+                color:red;
+                
+                 }
+                 
+                .has-error
+                 {
+                color:red;
+                font-size:14px;
+                
+                 }
+                 .success{
+                     color:green
+                 }
+                       
+                
+                /* .country_code{
+                   text-transform:uppercase;
+                } */
+                </style>
+
+<!-- Header Start --> 
+
+
+
+<!-- Header Close --> 
+
+
+
+ <!-- Section Cta Start --> 
+<section class="section cta">
+        <form class="form-register" id="form_register" action="#" method="post">
+
+	<div class="container">
+		<div class="row" style="height: 380px;">
+			<div class="col-lg-6">
+				<div class="cta-item  bg-white p-5 rounded">
+
+       
+          {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+              {% for category,message in messages %}
+                      <div class="{{category}}">
+
+                          {{message}}
+
+                      </div>
+
+              {% endfor %}
+          {% endif %}
+      {% endwith %}
+
+
+                    <h3 style="text-align:center">OTP Verification</h3><br>
+
+                                    
+
+                                <div class="col-lg-12  col-sm-6">
+                                    <div class="form-group">
+
+                                    <div class="field">
+                                        
+
+                                        <input type="text" class="form-control" id="otp" name="otp" maxlength="64" placeholder="&nbsp;" value="">
+                                         <label for="otp">Enter OTP</label>
+                                       
+
+                                      </div>
+
+                                      
+
+                                    
+                                    </div>
+                                </div>
+
+                                  
+                                    
+                                    <button class="btn btn-main-green" name="submit" type="submit" id="btnsave" value="Submit">Submit</button>
+                                    <button class="btn btn-main cancel " name="submit" id="resend_otp" type="submit">Resend OTP</button>
+
+					
+				</div>
+			</div>
+		</div>
+    </div>
+</form><br><br><br><br>
+</section>
+<!--  Section Cta End-->
+
+
+
+<!-- footer Start -->
+
+
+  </body>
+
+  {% include 'footer.html' %}
+  
+  <script>
+        $(document).ready(function() {
+
+jQuery.validator.addMethod("lettersonly", function(value, element) {
+return this.optional(element) || /^[A-Za-z  ]*$/.test(value);
+}, "Please Enter Alphabets Only");
+jQuery.validator.addMethod("capsonly", function(value, element) {
+return this.optional(element) || /^[A-Z]*$/.test(value);
+}, "Please Enter Capital Letters");
+
+$("#btnsave").click(function () {
+    $("#form_register").validate({
+        rules: {
+            otp: { required: true},
+            
+        },
+        messages: {
+            otp: { required: 'Please Enter Your OTP' },
+            
+        },
+    errorPlacement: function(error, element) {
+            if (element.hasClass('select2')) {
+            error.insertAfter(element.next('.select2'));
+            } else {
+            error.insertAfter(element);
+            }
+        }
+
+    });
+});
+
+});
+
+</script>
+
+  </html>
+   

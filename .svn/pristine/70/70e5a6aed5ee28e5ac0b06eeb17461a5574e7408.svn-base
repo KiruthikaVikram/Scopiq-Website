@@ -1,0 +1,421 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+<link rel="stylesheet" href="static/css1/style.css">
+
+{% include 'header.html' %}
+
+<!-- Header Close -->
+
+<style>
+.field-icon {
+  float: left;
+  margin-left: 226px;
+  margin-top: -30px;
+  position: relative;
+  z-index: 2;
+}
+</style>
+
+
+
+<style>
+.form-control:placeholder-shown:not(:focus) + * {
+    opacity: 1;
+    transform: translateY(30px);
+    margin-left: 10px;
+}
+
+
+.field {
+  display: flex;
+  flex-flow: column-reverse;
+}
+
+label, input {
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+
+
+
+input:focus {
+  outline: 0;
+  border-bottom: 1px solid #666;
+}
+
+
+
+input:placeholder-shown + label {
+  cursor: text;
+  max-width: 66.66%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform-origin: left bottom;
+  transform: translate(0, 2.125rem) scale(1.5);
+}
+/**
+* By default, the placeholder should be transparent. Also, it should 
+* inherit the transition.
+*/
+::-webkit-input-placeholder {
+  opacity: 0;
+  transition: inherit;
+}
+/**
+* Show the placeholder when the input is focused.
+*/
+input:focus::-webkit-input-placeholder {
+  opacity: 1;
+}
+/**
+* When the element is focused, remove the label transform.
+* Also, do this when the placeholder is _not_ shown, i.e. when 
+* there's something in the input at all.
+*/
+input:not(:placeholder-shown) + label,
+input:focus + label {
+  transform: translate(0, 0) scale(1);
+  cursor: pointer;
+}
+
+</style>
+
+
+<!-- Section Cta Start -->
+<section class="section cta">
+    <form class="form-register" autocomplete="off" id="form_register" action="#" method="post">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="cta-item  bg-white p-5 rounded">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if message=="OTP has been sent to your registered email" %}
+                                        <div class="success">
+
+                                            {{message}}
+
+
+                                        </div>
+                                    {% else %}
+
+
+                                        <div class="error">
+                                            {{message}}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        <h3 style="text-align:center">Register</h3><br>
+
+                        <div class="form-group">
+                        <div class="field">
+                           
+                            <input type="email" name="email" id="email" class="form-control" maxlength="255" placeholder="&nbsp;" value="{{email}}">
+                             <label for="email">Email</label>
+
+                        </div>
+                          </div>
+
+
+                        <div class="row">
+
+
+
+
+                            <div class="col-lg-6 ml-auto col-sm-6">
+                                <div class="form-group">
+                                <div class="field">
+                                    
+                                    <input type="text" class="form-control" id="first_name" name="first_name" maxlength="64" placeholder="&nbsp;" value="{{name}}">
+                                    <label for="first_name">First Name</label>
+                                </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                <div class="field">
+                                    
+                                    <input type="text" class="form-control" id="last_name" name="last_name" maxlength="64" placeholder="&nbsp;" value="{{last_name}}">
+                                    <label for="last_name">Last Name</label>
+
+                                </div>
+                                 </div>
+                            </div>
+
+                            <div class="col-lg-6 ml-auto col-sm-6">
+                                <div class="form-group">
+                                <div class="field">
+                                    
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="&nbsp;">
+                                    <label for="password">Password</label>
+                                    
+                                    
+                                 </div>
+                                 <span toggle="#password" style="display:none" id="eyepass" class="fa fa-fw fa-eye field-icon toggle-password" ></span>
+
+                                 
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                 <div class="field">
+                                    
+                                    <input type="password" name="confirm_password" id="confirm_password" autocomplete="new-password" class="form-control" placeholder="&nbsp;">
+                                    
+
+                                    <label for="confirm_password">Confirm Password</label>
+
+
+                                </div>
+                                <span toggle="#confirm_password" style="display:none" id="eyepass1" class="fa fa-fw fa-eye field-icon toggle-password" ></span>
+
+                                 </div>
+
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <input type="checkbox" name="check" id="check" value="1" >
+                                     I Accept the <a href="#"><span data-toggle="modal" data-target="#myModal" style="color:#4169E1"> Terms and Conditions</span> </a>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+                        <!-- <a href="{{url_for('login')}}" class="btn btn-main-green ">Already Registered ?</a> -->
+
+                        <button class="btn btn-main " disabled id="submit" name="submit" type="submit">Submit</button>
+                         <input class="btn btn-main " name="submit" id="reset" type="reset" value="Reset">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form><br><br><br><br><br>
+
+</section>
+<!--  Section Cta End-->
+
+
+
+
+
+
+
+<!-- footer Start -->
+{% include 'footer.html' %}
+
+<!-- 
+    Essential Scripts
+    =====================================-->
+
+
+
+
+</body>
+
+<div class="container">
+    <!-- Trigger the modal with a button -->
+    <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+  
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content" style="height:500px; overflow-x:scroll">
+          <div class="modal-header">
+            <h4 class="modal-title">Terms and Conditions</h4>
+          </div>
+          <div class="modal-body">
+            <p>The following Terms & definitions apply to this Agreement:
+<br><br>
+                    <b>“Initial Subscription Period”</b> means the period from the Start Date to the Initial Expiry as specified in the applicable ordering document; where the Start Date for the Software has for any reason to be adjusted, 
+                    Supplier may at its discretion either a) adjust the Initial Subscription Period to run from the revised Start Date or b) reduce it and invoice on a pro-rata basis for the reduced period. <br><br>
+
+                    <b>“Trial Period”</b> means a period during which Customer may trial the Software without charge (unless otherwise agreed), the length of which will be notified to Customer.<br><br>
+
+                    <b>“Trial Terms” -</b> Save for the provisions in respect of Charges, the terms of this Agreement shall apply to
+                    Customer during any Trial Period. This Agreement will terminate at the end of the Trial Period and Customer’s
+                    licence and right to use the Software will cease at the end of the Trial Period unless a further Trial Period is
+                    agreed or where Customer subscribes to the Software from the expiry date of any such Trial Period.<br><br>
+
+                    <b>“Renewal Period” </b> means each successive 12 month period (or such other period as the parties may agree)following the expiry of the initial subscription period.<br><br>
+
+                    <i>The Software will be available to you for use upon your receipt of one or more license keys. Upon acceptance of this Agreement, you may obtain one or more license keys by paying the requisite license fees, using the                  procedure set forth on the respective Scopiq web site. The license fees paid by you are paid in consideration of the license granted under this Agreement.</i><br><br>
+
+                    <i><b>“Pricing “ </b>The pricing structure may be changed at any time. Price changes do not affect existing licenses. The new rates will be applicable to the existing licenses when the license is renewed.</i><br><br>   
+
+                    <i>All Valid Credit / Debit/ Cash Card/ and other payment instruments are processed using a Credit Card payment gateway or appropriate payment system infrastructure and the same will also be governed by the terms and conditions agreed to between the Buyer and the respective Issuing Bank and payment instrument issuing</i>
+company.
+
+
+
+                    </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-main" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+
+
+<script>
+
+$(function () {
+        $("#check").click(function () {
+            if ($(this).is(":checked")) {
+                $("#submit").removeAttr("disabled");
+                $("#txtPassportNumber").focus();
+            } else {
+                $("#submit").attr("disabled", "disabled");
+            }
+        });
+
+
+        $("#reset").click(function () {
+            
+                $("#submit").attr("disabled", "disabled");
+            
+        });
+
+
+    });
+
+
+    $("#password").bind("keyup change", function(e) {
+            var pass = $(this).val();
+            if (pass==''){
+                $("#eyepass").hide();
+            }
+            else
+            {
+                $("#eyepass").show();
+            }
+        });
+
+        $("#confirm_password").bind("keyup change", function(e) {
+            var pass = $(this).val();
+            if (pass==''){
+                $("#eyepass1").hide();
+            }
+            else
+            {
+                $("#eyepass1").show();
+            }
+        });
+
+
+
+    $(document).ready(function() {
+
+
+			   $("#email").on("keyup",function(e)
+			   {
+				 this.value = this.value.toLowerCase();
+			   });
+
+        $("#email").on("keypress", function(e) {
+
+            var startpos = e.currentTarget.selectionStart;
+            if (e.which == 32 && startpos == 0)
+                e.preventDefault();
+        });
+
+        $("#first_name").on("keypress", function(e) {
+
+            var startpos = e.currentTarget.selectionStart;
+            if (e.which == 32 && startpos == 0)
+                e.preventDefault();
+        });
+        $("#last_name").on("keypress", function(e) {
+
+            var startpos = e.currentTarget.selectionStart;
+            if (e.which == 32 && startpos == 0)
+                e.preventDefault();
+        });
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+            return this.optional(element) || /^[A-Za-z  ]*$/.test(value);
+        }, "Please Enter Alphabets Only");
+        jQuery.validator.addMethod("capsonly", function(value, element) {
+            return this.optional(element) || /^[A-Z]*$/.test(value);
+        }, "Please Enter Capital Letters");
+        $("#form_register").validate({
+            rules: {
+                email: {
+                    required: true,
+                    maxlength: 255
+                },
+                first_name: {
+                    required: true,
+                    maxlength: 64,
+                    lettersonly: true
+                },
+                last_name: {
+                    required: true,
+                    maxlength: 64,
+                    lettersonly: true
+                },
+                password: {
+                    required: true
+                },
+                confirm_password: {
+                    required: true,
+                    equalTo: "#password"
+                },
+            },
+            messages: {
+                email: {
+                    required: 'Please Enter Your Email'
+                },
+                first_name: {
+                    required: 'Please Enter Your First Name'
+                },
+                last_name: {
+                    required: 'Please Enter Your Last Name'
+                },
+                password: {
+                    required: 'Please Enter Your Password'
+                },
+                confirm_password: {
+                    
+                    required:  'Please Confirm Your Password',
+                    equalTo: 'Enter Confirm Password Same as Password'
+                }
+            },
+            errorPlacement: function(error, element) {
+                error.insertAfter( element.parent("div"));
+            }
+
+        });
+    });
+
+    $(".toggle-password").click(function() {
+$(this).toggleClass("fa-eye fa-eye-slash");
+var input = $($(this).attr("toggle"));
+
+if (input.attr("type") == "password") {
+  input.attr("type", "text");
+} else {
+  input.attr("type", "password");
+}
+});
+
+</script>
+
+</html>

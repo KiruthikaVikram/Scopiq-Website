@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="megakit,business,company,agency,multipurpose,modern,bootstrap4">
+  
+  <meta name="author" content="themefisher.com">
+
+  <title>ScopiQ</title>
+
+  <!-- bootstrap.min css -->
+ <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+
+  <link rel="stylesheet" href="static/plugins1/themify/css/themify-icons.css">
+  <link rel="stylesheet" href="static/plugins1/fontawesome/css/all.css">
+  <link rel="stylesheet" href="static/plugins1/magnific-popup/dist/magnific-popup.css">
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="static/plugins1/slick-carousel/slick/slick.css">
+  <link rel="stylesheet" href="static/plugins1/slick-carousel/slick/slick-theme.css">
+
+  <!-- Main Stylesheet -->
+
+  <link href="{{ url_for('static', filename='css/datatables/dataTables.bootstrap.css')}}" rel="stylesheet" type="text/css" />
+
+  <!-- Main Stylesheet -->
+
+  <link rel="stylesheet" type="text/css" href="static/css/roboto-font.css">
+  <link rel="stylesheet" type="text/css" href="static/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+  <!-- datepicker -->
+  <link rel="stylesheet" type="text/css" href="static/css/jquery-ui.min.css">
+  <!-- Main Style Css -->
+  <link rel="stylesheet" href="static/css/style.css"/>
+
+
+  
+</head>
+
+<body>
+
+    
+        <style>
+
+[data-tooltip] {
+       position: relative;
+       z-index: 2;
+       cursor: pointer;
+     }
+   
+     /* Hide the tooltip content by default */
+     [data-tooltip]:before,
+     [data-tooltip]:after {
+       visibility: hidden;
+       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+       filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+       opacity: 0;
+       pointer-events: none;
+     }
+   
+     [data-tooltip]:before {
+       position: absolute;
+       bottom: 150%;
+       left: -48%;
+       margin-bottom: -6px;
+       margin-left: -80px;
+       padding: 7px;
+       width: 120px;
+       -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+       border-radius: 10px;
+       background-color: #000;
+       background-color: hsla(0, 0%, 20%, 0.9);
+       color: #fff;
+       content: attr(data-tooltip);
+       text-align: center;
+       font-size: 13px;
+       line-height: 1.2
+   }
+    
+  
+   
+   /* Show tooltip content on hover */
+   [data-tooltip]:hover:before,
+   [data-tooltip]:hover:after {
+     visibility: visible;
+     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+     filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+     opacity: 1;
+   }
+   
+
+   [data-tooltip] {
+       position: relative;
+       z-index: 2;
+       cursor: pointer;
+     }
+   
+     /* Hide the tooltip content by default */
+     [data-tooltip]:before,
+     [data-tooltip]:after {
+       visibility: hidden;
+       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+       filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+       opacity: 0;
+       pointer-events: none;
+     }
+   
+     [data-tooltip]:before {
+       position: absolute;
+       bottom: 150%;
+       left: -48%;
+       margin-bottom: -6px;
+       margin-left: -80px;
+       padding: 7px;
+       width: 150px;
+       -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+       border-radius: 10px;
+       background-color: #000;
+       background-color: hsla(0, 0%, 20%, 0.9);
+       color: #fff;
+       content: attr(data-tooltip);
+       text-align: center;
+       font-size: 13px;
+       line-height: 1.2;
+   }
+   
+   [data-tooltip]:after {
+       position: absolute;
+       bottom: 88%;
+       left: 51%;
+       margin-left: -5px;
+       width: 0;
+       border-top: 5px solid #000;
+       border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+       border-right: 5px solid transparent;
+       border-left: 5px solid transparent;
+       content: " ";
+       font-size: 0;
+       line-height: 0;
+   }
+   
+   /* Show tooltip content on hover */
+   [data-tooltip]:hover:before,
+   [data-tooltip]:hover:after {
+     visibility: visible;
+     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+     filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+     opacity: 1;
+   }
+   
+                .error
+                {
+                color:red;
+                
+                 }
+                 
+                .has-error
+                 {
+                color:red;
+                font-size:14px;
+                
+                 }
+                 .success{
+                     color:green
+                 }
+                       
+                
+                
+                /* .country_code{
+                   text-transform:uppercase;
+                } */
+
+                body {
+    font-family: sans-serif;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #F5F8F9;
+}
+                </style>
+
+<!-- Header Start --> 
+
+<header class="navigation">
+  <div class="sticky1">
+	<!-- <div class="header-top ">
+		<div class="container">
+			<div class="row justify-content-between align-items-center">
+				<div class="col-lg-3 col-md-3">
+					<div class="header-top-socials text-center text-lg-left text-md-left">
+
+						<a href="" target="_blank"><i class="ti-facebook"></i></a>
+						<a href="" target="_blank"><i class="ti-twitter"></i></a>
+            <a href="" target="_blank"><i class="ti-github"></i></a>
+            
+
+					</div>
+        </div>
+        <div class="col-lg-3 col-md-3">
+            <div class="header-top-socials text-center text-lg-left text-md-left">
+  
+             
+               <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+  
+              <span id="google_translate_element" ></span>
+            </div>
+          </div>
+				<div class="col-lg-6 col-md-6 text-left text-lg-right text-md-right">
+					<div class="header-top-info">
+              
+            
+<script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            {pageLanguage: 'en'},
+            'google_translate_element'
+        );
+    }
+</script>
+
+
+{% if session['status']==1 %}
+<a href="#" ><i class="fa fa-envelope mr-2"></i><span>{{session['email']}}</span></a>
+
+            <a href="{{url_for('logout')}}" ><i class="fa fa-sign-out-alt" aria-hidden="true"></i><span > Logout</span></a>
+
+{% endif %}            
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<nav class="navbar navbar-expand-lg  " id="navbar">
+		<div class="container">
+		  <!-- <a class="navbar-brand" href="index.html"> -->
+      <img src="static/images/logo.png" style="width:100px;">
+		  
+		  </a>
+
+		  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="fa fa-bars" style="color:#000"></span>
+		  </button>
+	  
+		  <div class="collapse navbar-collapse text-center" id="navbarsExample09">
+			<ul class="navbar-nav ml-auto">
+			  <li class="nav-item active">
+				<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+			  </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
+            </li>
+      
+        </li>
+        
+      
+         <li class="nav-item"><a class="nav-link" href="{{url_for('contact')}}">Contact</a></li>
+         
+{% if session['status']==1 %}
+{% if session['billing_count']==0 %}
+    {% if count_values.0.reg_user_type=="F" %}
+    <li class="nav-item active">
+    <a class="nav-link" href="/company_details">Company Details <span class="sr-only">(current)</span></a>
+    </li>
+
+    {% endif %}
+    {% endif %}
+{% if session['currency']!='' %}
+{% if session['billing_count']==0 %}
+    {% if count_values.0.reg_user_type=="P" %}
+        <li class="nav-item active">
+        <a class="nav-link" href="/pricing">Products <span class="sr-only">(current)</span></a>
+        </li>
+
+  
+    {% endif %}
+    {% endif %}
+    {% if session['billing_count']!=0 %}
+    <li class="nav-item"><a class="nav-link" href="{{url_for('my_account')}}">My Account</a></li>
+    {% endif %}
+{% else %}
+
+<li class="nav-item active">
+  <a class="nav-link" href="/company_details">Products <span class="sr-only">(current)</span></a>
+  </li>
+        {% endif %}
+        <p style="margin-left:s;">
+               <li class="nav-item dropdown show">
+					<a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">&nbsp; <i class="fa fa-cog mr-2"></i>  </a>
+					<ul class="dropdown-menu show" aria-labelledby="dropdown05">
+						<li><a class="dropdown-item" href="{{url_for('logout')}}"> <i class="fa fa-lock mr-2"></i>  Logout</a></li>
+            <li><a class="dropdown-item" href="{{url_for('change_password')}}"> <i class="fa fa-lock mr-2"></i>  Change Password123</a></li>
+            <!-- {% if session['billing_count']!=0 %}
+            <li><a class="dropdown-item" target="_blank" href="http://13.232.237.125:{{count_values.0.port_no}}/loginredirect?email={{session['email']}}"> <i class="fa fa-lock mr-2" ></i> Site Admin </a></li>
+            {% endif %} -->
+
+            {% if session['billing_count']!=0 %}
+            <li><a class="dropdown-item" target="_blank" href="http://13.232.237.125:5000"> <i class="fa fa-lock mr-2" ></i> Site Admin </a></li>
+            {% endif %}
+
+						
+					</ul>
+			  </li>
+
+        </p>
+
+
+
+{% else %}
+         
+<li class="nav-item active">
+    <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+    </li>
+    
+<li class="nav-item active">
+  <a  href="/register"> <button type="button" class="btn btn-info " style="font-size: 14px;font-weight: 600;border-radius: 8px;">Register <span class="sr-only">(current)</span></button></a>
+    <!-- <a class="nav-link" href="/register">Register <span class="sr-only">(current)</span></a> -->
+    </li>
+    <li class="nav-item active">
+
+ 
+        <button type="button" class="btn btn-info " style="font-size: 14px;font-weight: 600;border-radius: 8px;" data-toggle="modal" data-target="#myModal1">Free Trial</button>
+    </li>
+   {% endif %}
+
+
+   
+        
+			</ul>
+
+			
+        &nbsp;
+        
+        {% if session['server_count']==1 %}
+
+
+<!-- 
+          <button style="position: fixed;
+          bottom: 535px;
+          right: 0px;
+          z-index: 1;background-color:red;border-radius: 0px; padding:8px" data-toggle="modal" data-target="#myModal1" class="btn btn-solid-border btn-round-full" id="download">Download</button> -->
+        {% endif %}
+		  </div>
+		</div>
+  </nav>
+</div>
+
+
+<div class="container">
+    <!-- Trigger the modal with a button -->
+    
+  
+    <!-- Modal -->
+<div class="modal fade" id="myModal1" >
+    <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content" style="width: 90%;">
+          <div class="modal-header">
+            <h4 class="modal-title">  Free Trial</h4>
+
+            <button type="button" class="btn btn-main pull-right" data-dismiss="modal" style="margin-left: 182px;padding: 2px 4px; font-size: 9px;">X</button>
+
+          </div>
+          <div class="modal-body" style="text-align: center;">
+
+            <div class="pricing-table">
+              <div class="ptable-item">
+                <div class="ptable-single">
+                  <div class="ptable-header">
+                    <div class="ptable-title">
+                      <h2>Standard</h2>
+                    </div>
+                    <div class="ptable-price">
+                      <h2><small></small>0<span> For 3 Months</span></h2>
+                    </div>
+                  </div>
+                  <div class="ptable-body">
+                    <div class="ptable-description">
+                      <ul>
+                        <!-- <li>Document Management</li> -->
+                        <li>5 General Users</li>
+                        <li>5 Limited Users</li>
+                        <li>5 Admin Users</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="ptable-footer">
+                    <div class="ptable-action">
+                      <a href="{{url_for('register',add_to_cart="free_trial")}}">Sign Up</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+        
+          </div>
+          
+        </div>
+        
+    </div>
+</div>
+    
+</div>
+
+
+</header>
+
+<!-- Header Close --> 
+
+
+<style>
+
+#navbar {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 3;
+}
+
+
+#navbar .nav-link {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #1e5081;
+    font-size: 14px;
+    letter-spacing: .5px;
+    transition: all .25s ease;
+}
+
+
+.dropdown-item {
+    padding: .8rem 1.5rem;
+    text-transform: initial;
+    font-size: 14px;
+}
+
+.dropdown-menu {
+    visibility: hidden;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    transition: all .2s ease-in, visibility 0s linear .2s, -webkit-transform .2s linear;
+    transition: all .2s ease-in, visibility 0s linear .2s, transform .2s linear;
+    transition: all .2s ease-in, visibility 0s linear .2s, transform .2s linear, -webkit-transform .2s linear;
+    -webkit-transition: all .2s ease-in, visibility 0s linear .2s, -webkit-transform .2s linear;
+    -o-transition: all .2s ease-in, visibility 0s linear .2s, -o-transform .2s linear;
+    -ms-transition: all .2s ease-in, visibility 0s linear .2s, -ms-transform .2s linear;
+    width: 219px;
+    margin-top: 9px;
+    padding: 0px;
+    border-radius: 0px;
+    display: block;
+}
+.add_to_cart1 {
+    border-radius: 4px;
+    background-color: #472dc2;
+    color: #fff;
+    border: 1px solid #472dc2;
+    margin-bottom: 4px;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 2px;
+    px: ;
+    */: ;
+    text-align: center;
+    /* width: 42%; */
+    height: 17px;
+    outline: none;
+}
+</style>
+
+
+<!-- footer Start -->
+	
+   
+    </div>
+
+    <!-- 
+    Essential Scripts
+    =====================================-->
+
+    
+    <!-- Main jQuery -->
+    <script src="static/plugins1/jquery/jquery.js"></script>
+    <script src="static/js1/contact.js"></script>
+    <!-- Bootstrap 4.3.1 -->
+    <script src="static/plugins1/bootstrap/js/popper.js"></script>
+    <script src="static/plugins1/bootstrap/js/bootstrap.min.js"></script>
+   <!--  Magnific Popup-->
+    <script src="static/plugins1/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+    <!-- Slick Slider -->
+    <script src="static/plugins1/slick-carousel/slick/slick.min.js"></script>
+    <!-- Counterup -->
+    <script src="static/plugins1/counterup/jquery.waypoints.min.js"></script>
+    <script src="static/plugins1/counterup/jquery.counterup.min.js"></script>
+
+    <!-- Google Map -->
+    
+    <script src="static/js1/script.js"></script>
+
+   
+  </body>
+</html>
+<style>.navbar-brand {
+    color: #fff;
+    font-size: 39px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.fixed {
+position:fixed;
+top:0;
+left:0;
+right:0;
+width:100%;
+z-index:99;
+background:white;
+}
+</style>
+
+
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+}
+
+h1.demo-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: #792990;
+  letter-spacing: 2px;
+}
+
+h1.demo-title a {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.pricing-table {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #ffffff;
+}
+
+.pricing-table .ptable-item {
+  width: 100%;
+  padding: 0 15px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 992px) {
+  .pricing-table .ptable-item {
+    width: 33.33%;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-table .ptable-item {
+    width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .pricing-table .ptable-item {
+    width: 100%;
+  }
+}
+
+.pricing-table .ptable-single {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.pricing-table .ptable-header,
+.pricing-table .ptable-body,
+.pricing-table .ptable-footer {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.pricing-table .ptable-status ,
+.pricing-table .ptable-title,
+.pricing-table .ptable-price,
+.pricing-table .ptable-description,
+.pricing-table .ptable-action {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.pricing-table .ptable-single {
+  background: #f6f8fa;
+}
+
+.pricing-table .ptable-single:hover {
+  box-shadow: 0 0 10px #999999;
+}
+
+.pricing-table .ptable-header {
+  margin: 0 30px;
+  padding: 30px 0 45px 0;
+  width: auto;
+  background: #792990;
+}
+
+.pricing-table .ptable-header::before,
+.pricing-table .ptable-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 100px solid #f6f8fa;
+}
+
+.pricing-table .ptable-header::before {
+  right: 50%;
+  border-right: 250px solid transparent;
+}
+
+.pricing-table .ptable-header::after {
+  left: 50%;
+  border-left: 250px solid transparent;
+}
+
+.pricing-table .ptable-item.featured-item .ptable-header {
+  background: #FF6F61;
+}
+
+.pricing-table .ptable-status {
+  margin-top: -30px;
+}
+
+.pricing-table .ptable-status span {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+  padding: 5px 0;
+  text-align: center;
+  color: #FF6F61;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  background: #792990;
+}
+
+.pricing-table .ptable-status span::before,
+.pricing-table .ptable-status span::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid #FF6F61;
+}
+
+.pricing-table .ptable-status span::before {
+  right: 50%;
+  border-right: 25px solid transparent;
+}
+
+.pricing-table .ptable-status span::after {
+  left: 50%;
+  border-left: 25px solid transparent;
+}
+
+.pricing-table .ptable-title h2 {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.pricing-table .ptable-price h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 45px;
+  font-weight: 700;
+  margin-left: 15px;
+}
+
+.pricing-table .ptable-price h2 small {
+  position: absolute;
+  font-size: 18px;
+  font-weight: 300;
+  margin-top: 16px;
+  margin-left: -15px;
+}
+
+.pricing-table .ptable-price h2 span {
+  margin-left: 3px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.pricing-table .ptable-body {
+  padding: 20px 0;
+}
+
+.pricing-table .ptable-description ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pricing-table .ptable-description ul li {
+  color: #792990;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  padding: 7px;
+  border-bottom: 1px solid #dedede;
+}
+
+.pricing-table .ptable-description ul li:last-child {
+  border: none;
+}
+
+.pricing-table .ptable-footer {
+  padding-bottom: 30px;
+}
+
+.pricing-table .ptable-action a {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-decoration: none;
+  background: #792990;
+}
+
+.pricing-table .ptable-action a:hover {
+  color: #792990;
+  background: #FF6F61;
+}
+
+.pricing-table .ptable-item.featured-item .ptable-action a {
+  color: #792990;
+  background: #FF6F61;
+}
+
+.pricing-table .ptable-item.featured-item .ptable-action a:hover {
+  color: #FF6F61;
+  background: #792990;
+}
+
+</style>
+
+
+
+
+<script>
+    $("#download").click(function () {
+            // alert("hi")
+            var url="download"
+            $.ajax({
+              url:url,
+              data:{
+              },
+              success: function (data) {
+                //  alert(data);
+                
+                //alert(data)
+              }
+            });
+               
+    });
+
+    $(window).scroll(function(){
+var sticky = $('.sticky'),
+scroll = $(window).scrollTop();
+
+if (scroll >= 100) sticky.addClass('fixed');
+else sticky.removeClass('fixed');
+});
+</script>
+
+

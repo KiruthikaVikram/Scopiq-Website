@@ -1,0 +1,168 @@
+
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css"/>
+
+{% include 'header.html' %}
+
+<style>
+	.activate {
+	background-color: #f75757;
+	}
+	</style>
+
+<!-- Header Close --> 
+
+<div class="main-wrapper ">
+
+<section class="section blog-wrap bg-gray">
+    <div class="container">
+        <div class="row">
+            
+
+            <div class="col-lg-3">
+                <div class="sidebar-wrap">
+
+
+
+	<div class="sidebar-widget latest-post card border-0 p-4 mb-3 " style="background: #212529;
+	color: #fff; border-radius: 25px;">
+				<a class="btn btn-solid-border btn-round-full {% if request.endpoint == 'my_account' %}activate {% endif %} " href="{{url_for('my_account')}}" style="margin: 8px;" >My Account</a>
+			
+	
+		
+				<a class="btn btn-solid-border btn-round-full {% if request.endpoint == 'renewal' %}activate {% endif %}" href="{{url_for('renewal')}}" style="margin: 8px;" >Renewal</a>
+
+			
+		
+				<a class="btn btn-solid-border btn-round-full {% if request.endpoint == 'view_referral' or request.endpoint == 'referral' %}activate {% endif %}" href="{{url_for('view_referral')}}" style="margin: 8px;">Referral</a>
+
+			
+		
+				<a class="btn btn-solid-border btn-round-full {% if request.endpoint == 'view_server_settings' or request.endpoint == 'server_settings' %}activate {% endif %}" href="{{url_for('view_server_settings')}}" style="margin: 8px;">Server Settings</a>
+		
+       
+
+        
+
+        
+	</div>
+
+	
+</div>
+						</div>  
+						
+						
+
+						<div class="col-lg-9">
+								{% with messages = get_flashed_messages() %}
+								{% if messages %}
+									  {% for message in messages %}
+											 {% if message=="Server Settings Added" %}
+											 <div class="success">
+													
+													{{message}}
+			
+													
+											 </div>
+											 {% else %}
+								
+								
+											 <div class="error">
+														  {{message}}
+													</div>
+											 {% endif %}
+									  {% endfor %}
+								{% endif %}
+						 {% endwith %}                               
+
+
+							{% if server_count==0 %}
+								<a class="btn btn-main"  href="{{url_for('server_settings')}}" style="margin: 8px; margin-left: -14px;background-color: #1a420dd1;">ADD</a>
+                     {% endif %}
+                <div class="row">
+	
+
+										<div class="box-body table-responsive">
+												<table id="example1" class="table table-bordered table-striped">
+													 <thead>
+															<tr>
+																 <th>S.No</th>
+																 <th>Cloud Setup</th>
+																 <th>Type</th>
+																 <th>Url</th>
+																 <th>Username</th>
+																 <th>Password</th>
+																 <th>Port</th>
+															</tr>
+													 </thead>
+													 <tbody>
+														{% for serversettings in server_settings %}
+															<tr>
+																 <td>{{ loop.index }}</td>
+																 <td>{% if serversettings[0] ==1 %}
+																		 Private
+																		{% else %} 
+																		 Public
+																		{% endif %}
+																 </td>
+																 <td>{% if serversettings[0] ==2 and serversettings[1]!=""  %}
+																		self
+																		{% elif serversettings[0] ==2 and serversettings[1]=="" %}
+																		  Scopiq
+																		  {% else %}
+																		  -
+																		  {% endif %}
+																 </td>
+																 <td>{% if serversettings[1] == "" %}
+                                                      -
+																	{% else %}
+	                                                    {{serversettings[1]}}
+																	{% endif %}
+																</td>
+																 <td>{% if serversettings[2] == "" %}
+                                                      -
+																	{% else %}
+	                                                    {{serversettings[2]}}
+																	{% endif %}
+																</td>
+																 <td>{% if serversettings[3] == "" %}
+                                                      -
+																	{% else %}
+	                                                    {{serversettings[3]}}
+																	{% endif %}
+																</td>
+																 <td>{% if serversettings[4] == 0 %}
+                                                      -
+																	{% else %}
+	                                                    {{serversettings[4]}}
+																	{% endif %}
+																 </td>
+															</tr>
+                                          {% endfor %} 
+													 </tbody>
+												</table>
+										 </div>
+</div>
+						</div>
+
+
+
+        </div>
+
+    
+    </div>
+</section>
+
+</div>
+<!-- footer Start -->
+
+   
+{% include 'footer.html' %}
+
+
+
+
+
+  </body>
+  </html>

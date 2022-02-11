@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+  
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="megakit,business,company,agency,multipurpose,modern,bootstrap4">
+  
+  <meta name="author" content="themefisher.com">
+
+  <title>ScopiQ</title>
+
+  <!-- bootstrap.min css -->
+ <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+
+  <link rel="stylesheet" href="static/plugins1/themify/css/themify-icons.css">
+  <link rel="stylesheet" href="static/plugins1/fontawesome/css/all.css">
+  <link rel="stylesheet" href="static/plugins1/magnific-popup/dist/magnific-popup.css">
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="static/plugins1/slick-carousel/slick/slick.css">
+  <link rel="stylesheet" href="static/plugins1/slick-carousel/slick/slick-theme.css">
+
+  <!-- Main Stylesheet -->
+
+  <link href="{{ url_for('static', filename='css/datatables/dataTables.bootstrap.css')}}" rel="stylesheet" type="text/css" />
+
+  <!-- Main Stylesheet -->
+
+  <link rel="stylesheet" type="text/css" href="static/css/roboto-font.css">
+  <link rel="stylesheet" type="text/css" href="static/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+  <!-- datepicker -->
+  <link rel="stylesheet" type="text/css" href="static/css/jquery-ui.min.css">
+  <!-- Main Style Css -->
+  <link rel="stylesheet" href="static/css/style.css"/>
+
+
+  
+</head>
+
+<body>
+
+    
+        <style>
+[data-tooltip] {
+       position: relative;
+       z-index: 2;
+       cursor: pointer;
+     }
+   
+     /* Hide the tooltip content by default */
+     [data-tooltip]:before,
+     [data-tooltip]:after {
+       visibility: hidden;
+       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+       filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+       opacity: 0;
+       pointer-events: none;
+     }
+   
+    
+  
+   
+   /* Show tooltip content on hover */
+   [data-tooltip]:hover:before,
+   [data-tooltip]:hover:after {
+     visibility: visible;
+     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+     filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+     opacity: 1;
+   }
+   
+
+   [data-tooltip] {
+       position: relative;
+       z-index: 2;
+       cursor: pointer;
+     }
+   
+     /* Hide the tooltip content by default */
+     [data-tooltip]:before,
+     [data-tooltip]:after {
+       visibility: hidden;
+       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+       filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+       opacity: 0;
+       pointer-events: none;
+     }
+   
+     [data-tooltip]:before {
+       position: absolute;
+       bottom: 150%;
+       left: -48%;
+       margin-bottom: -6px;
+       margin-left: -80px;
+       padding: 7px;
+       width: 150px;
+       text-shadow: none;
+       -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+       border-radius: 10px;
+       background-color: #000;
+       background-color: hsla(0, 0%, 20%, 0.9);
+       color: #fff;
+       content: attr(data-tooltip);
+       text-align: center;
+       font-size: 13px;
+       line-height: 1.2;
+   }
+   
+   [data-tooltip]:after {
+       position: absolute;
+       bottom: 88%;
+       left: 51%;
+       margin-left: -5px;
+       width: 0;
+       border-top: 5px solid #000;
+       border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+       border-right: 5px solid transparent;
+       border-left: 5px solid transparent;
+       content: " ";
+       font-size: 0;
+       line-height: 0;
+   }
+   
+   /* Show tooltip content on hover */
+   [data-tooltip]:hover:before,
+   [data-tooltip]:hover:after {
+     visibility: visible;
+     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+     filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+     opacity: 1;
+   }
+               .error{
+			color: #D8000C;
+			background-color: #FFBABA;
+			background-image: url('https://i.imgur.com/GnyDvKN.png');
+      border: 1px solid;
+			margin: 10px 0px;
+			padding: 15px 10px 15px 50px;
+			background-repeat: no-repeat;
+			background-position: 10px center;
+		}
+
+    body {
+    font-family: sans-serif;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #F5F8F9;
+}
+
+                 
+                .has-error
+                 {
+                color:red;
+                font-size:14px;
+                
+                 }
+                 .success {
+			color: #4F8A10;
+			background-color: #DFF2BF;
+			background-image: url('https://i.imgur.com/Q9BGTuy.png');
+      border: 1px solid;
+			margin: 10px 0px;
+			padding: 15px 10px 15px 50px;
+			background-repeat: no-repeat;
+			background-position: 10px center;
+		}
+                    
+    
+    .btn {
+display: inline-block;
+font-size: 14px;
+font-size: 0.8125rem;
+font-weight: 400;
+padding: 1rem 2.5rem;
+text-transform: initial;
+border-radius: 0;
+transition: all 0.2s ease;
+}
+                
+                
+                /* .country_code{
+                   text-transform:uppercase;
+                } */
+                </style>
+
+<!-- Header Start --> 
+
+<header class="navigation">
+  <div class="sticky1">
+	<!-- <div class="header-top ">
+		<div class="container">
+			<div class="row justify-content-between align-items-center">
+				<div class="col-lg-3 col-md-3">
+					<div class="header-top-socials text-center text-lg-left text-md-left">
+
+						<a href="" target="_blank"><i class="ti-facebook"></i></a>
+						<a href="" target="_blank"><i class="ti-twitter"></i></a>
+            <a href="" target="_blank"><i class="ti-github"></i></a>
+            
+
+					</div>
+        </div>
+        <div class="col-lg-3 col-md-3">
+            <div class="header-top-socials text-center text-lg-left text-md-left">
+  
+             
+               <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+  
+              <span id="google_translate_element" ></span>
+            </div>
+          </div>
+				<div class="col-lg-6 col-md-6 text-left text-lg-right text-md-right">
+					<div class="header-top-info">
+              
+            
+<script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            {pageLanguage: 'en'},
+            'google_translate_element'
+        );
+    }
+</script>
+
+
+{% if session['status']==1 %}
+<a href="#" ><i class="fa fa-envelope mr-2"></i><span>{{session['email']}}</span></a>
+
+            <a href="{{url_for('logout')}}" ><i class="fa fa-sign-out-alt" aria-hidden="true"></i><span > Logout</span></a>
+
+{% endif %}            
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<nav class="navbar navbar-expand-lg  " id="navbar">
+		<div class="container"> 
+		  <!-- <a class="navbar-brand" href="/"> -->
+     
+		   <img src="static/images/logo.png" style="width:100px;">
+		  </a>
+
+		  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="fa fa-bars" style="color:#000"></span>
+		  </button>
+	  
+		  <div class="collapse navbar-collapse text-center" id="navbarsExample09">
+
+     
+
+			<ul class="navbar-nav ml-auto" >
+			  <li class="nav-item active">
+				<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+			  </li>
+       
+       <li class="nav-item active">
+            <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
+            </li>
+      
+			  </li>
+         <li class="nav-item"><a class="nav-link" href="{{url_for('contact')}}">Contact</a></li>
+
+         
+{% if session['status']==1 %}
+{% if session['billing_count']==0 %}
+    {% if count_values.0.reg_user_type=="F" %}
+            <li class="nav-item active">
+            <a class="nav-link" href="/company_details">Company Details <span class="sr-only">(current)</span></a>
+            </li>
+        
+        {% endif %}
+        {% endif %}
+{% if session['currency']!='' %}
+{% if session['billing_count']==0 %}
+    {% if count_values.0.reg_user_type=="P" %}
+        <li class="nav-item active">
+        <a class="nav-link" href="/pricing">Products <span class="sr-only">(current)</span></a>
+        </li>
+    
+    {% endif %}
+        {% endif %}
+        {% if session['billing_count']!=0 %}
+        <li class="nav-item"><a class="nav-link" href="{{url_for('my_account')}}">My Account</a></li>
+        {% endif %}
+ {% else %}
+ <li class="nav-item active">
+  <a class="nav-link" href="/company_details">Products <span class="sr-only">(current)</span></a>
+  </li>
+ {% endif %}
+       
+<p style="text-align:right"> 
+        
+
+       
+
+
+         
+
+
+{% if session['billing_count']!=0 %}
+       
+       {% if count_values.0.total_count !=0 %}
+      
+        <li class="nav-item"><a class="nav-link" href="{{url_for('upgrade_estimation')}}"> <i class="fa fa-cart-arrow-down " style="font-size: 20px;"></i> <sup><button name="Add to Cart" id="select_plan" style="" class="add_to_cart1">{{count_values.0.total_count}}</button></sup></a></li>
+       
+         {% else %}
+        <li class="nav-item"><a class="nav-link" href="#" onClick="alert('Your Cart is Empty!')"> <i class="fa fa-cart-arrow-down" style="font-size: 20px;"></i> <span style="margin-left: 0px;"> <sup><button name="Add to Cart" id="select_plan" style="" class="add_to_cart1">{{count_values.0.total_count}}</button></sup>  </span> </a></li>
+
+        
+
+       {% endif %}
+
+        {% endif %}
+
+
+         <li class="nav-item dropdown show">
+					<a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">&nbsp; <i class="fa fa-cog mr-2" style="font-size: 20px;"></i>  </a>
+					<ul class="dropdown-menu show" aria-labelledby="dropdown05">
+						<li><a class="dropdown-item" href="{{url_for('logout')}}"> <i class="fa fa-lock mr-2"></i>  Logout</a></li>
+            <li><a class="dropdown-item" href="{{url_for('change_password')}}"> <i class="fa fa-lock mr-2"></i>  Change Password</a></li>
+            <!-- {% if session['billing_count']!=0 %}
+            <li><a class="dropdown-item" target="_blank" href="http://13.232.237.125:{{count_values.0.port_no}}/loginredirect?email={{session['email']}}"> <i class="fa fa-lock mr-2"  ></i>  Site Admin </a></li>
+            {% endif %} -->
+
+            {% if session['billing_count']!=0 %}
+            <li><a class="dropdown-item" target="_blank" href="http://13.232.237.125:5000"> <i class="fa fa-lock mr-2" ></i> Site Admin </a></li>
+            {% endif %}
+
+						
+					</ul>
+			  </li>
+
+
+</p>
+
+
+{% else %}
+         
+<li class="nav-item active">
+    <a class="nav-link" href="/register">Register <span class="sr-only">(current)</span></a>
+    </li>
+
+    <li class="nav-item active">
+        <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+        </li>
+
+   
+   {% endif %}
+			</ul>
+
+			
+        &nbsp;
+
+		  </div>
+		</div>
+  </nav>
+</div>
+</header>
+
+
+
+<!-- Header Close --> 
+
+
+
+
+
+
+<!-- footer Start -->
+	
+   
+    </div>
+<style>
+
+
+sup {
+    top: -1.5em !important;
+}
+
+#navbar {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border-bottom: 2px solid #0865cc;
+}
+
+
+#navbar .nav-link {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #1e5081;
+    font-size: 14px;
+    letter-spacing: .5px;
+    transition: all .25s ease;
+}
+
+
+.dropdown-item {
+    padding: .8rem 1.5rem;
+    text-transform: initial;
+    font-size: 14px;
+}
+
+.dropdown-menu {
+    visibility: hidden;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    transition: all .2s ease-in, visibility 0s linear .2s, -webkit-transform .2s linear;
+    transition: all .2s ease-in, visibility 0s linear .2s, transform .2s linear;
+    transition: all .2s ease-in, visibility 0s linear .2s, transform .2s linear, -webkit-transform .2s linear;
+    -webkit-transition: all .2s ease-in, visibility 0s linear .2s, -webkit-transform .2s linear;
+    -o-transition: all .2s ease-in, visibility 0s linear .2s, -o-transform .2s linear;
+    -ms-transition: all .2s ease-in, visibility 0s linear .2s, -ms-transform .2s linear;
+    width: 219px;
+    margin-top: 9px;
+    padding: 0px;
+    border-radius: 0px;
+    display: block;
+}
+.add_to_cart1 {
+    border-radius: 14px;
+    background-color: #472dc2;
+    color: #fff;
+    border: 1px solid #472dc2;
+    margin-bottom: 4px;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    margin-top: 2px;
+    px: ;
+    */: ;
+    text-align: center;
+    /* width: 42%; */
+    height: 17px;
+    outline: none;
+}
+</style>
+
+    <!-- 
+    Essential Scripts
+    =====================================-->
+
+    
+    <!-- Main jQuery -->
+    <script src="static/plugins1/jquery/jquery.js"></script>
+    <script src="static/js1/contact.js"></script>
+    <!-- Bootstrap 4.3.1 -->
+    <script src="static/plugins1/bootstrap/js/popper.js"></script>
+    <script src="static/plugins1/bootstrap/js/bootstrap.min.js"></script>
+   <!--  Magnific Popup-->
+    <script src="static/plugins1/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+    <!-- Slick Slider -->
+    <script src="static/plugins1/slick-carousel/slick/slick.min.js"></script>
+    <!-- Counterup -->
+    <script src="static/plugins1/counterup/jquery.waypoints.min.js"></script>
+    <script src="static/plugins1/counterup/jquery.counterup.min.js"></script>
+
+    <!-- Google Map -->
+    
+    <script src="static/js1/script.js"></script>
+
+   
+  </body>
+</html>
+<style>.navbar-brand {
+    color: #fff;
+    font-size: 39px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.fixed {
+position:fixed;
+top:0;
+left:0;
+right:0;
+width:100%;
+z-index:99;
+background:white;
+}
+
+.notification {
+  color: white;
+  text-decoration: none;
+  padding: 15px 26px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}
+
+
+</style>
+<script>
+    $("#download").click(function () {
+            // alert("hi")
+            var url="download"
+            $.ajax({
+              url:url,
+              data:{
+              },
+              success: function (data) {
+                //  alert(data);
+                
+                //alert(data)
+              }
+            });
+               
+    });
+
+    $(window).scroll(function(){
+var sticky = $('.sticky'),
+scroll = $(window).scrollTop();
+
+if (scroll >= 100) sticky.addClass('fixed');
+else sticky.removeClass('fixed');
+});
+</script>
+
+<script>
+        
+        $('.form_field_input, .form_select').each(function () {
+                    if (!$(this).val()) {
+                        $(this).parent('.form_field_outer').removeClass('form_field_outer_activated');
+                    } else {
+                        $(this).parent('.form_field_outer').addClass('form_field_outer_activated');
+                        $(this).parent('.form_field_outer').addClass('input_blue_border');
+                    }
+                });
+                $('.form_field_input, .form_select').on('focus', function () {
+                    $(this).parent('.form_field_outer').addClass('form_field_outer_activated');
+                    $(this).parent('.form_field_outer').addClass('input_blue_border');
+                })
+                $('.form_field_input, .form_select').on('focusout', function () {
+                    $(this).parent('.form_field_outer').removeClass('form_field_outer_activated');
+                    $(this).parent('.form_field_outer').removeClass('input_blue_border');
+                })
+                $('.form_field_input, .form_select').on('click', function () {
+                    $(this).parent('.form_field_outer').addClass('form_field_outer_activated');
+                })
+                $('.form_field_input, .form_select').on('keypress', function () {
+                    $(this).parent('.form_field_outer').addClass('form_field_outer_activated');
+                })
+                $('.form_field_input, .form_select').on('blur', function () {
+                    if (!$(this).val()) {
+                        $(this).parent('.form_field_outer').removeClass('form_field_outer_activated');
+                    } else {
+                        $(this).parent('.form_field_outer').addClass('form_field_outer_activated');
+                        $(this).parent('.form_field_outer').addClass('input_blue_border');
+                    }
+                });
+                
+                </script>
+
+                                    
+<style>
+
+	
+    .billing_address_part .address-form .add_adress_new_pp {
+        padding-left: 0px;
+        padding-right: 10px;
+        margin-bottom: 0px;
+    }
+    
+    .form_field_outer {
+        position: relative;
+        height: 56px;
+        padding: 18px 16px 0;
+        -webkit-transition: border 0.2s;
+        transition: border 0.2s;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        background: #fff;
+        color: #202026;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+    }
+    
+    .billing_address_part .address-form .add_adress_new_pp .form_field_outer {
+        margin-bottom: 20px;
+    }
+    
+    .form_field_outer .form_field_input {
+        display: block;
+        width: 100%;
+        height: 36px;
+        text-align:left;
+        padding: 5px 0;
+        border: 0 !important;
+        outline: none;
+        background: transparent;
+        box-shadow: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    
+    .form_field_outer .form_field_label {
+        position: absolute;
+        top: 19px;
+        left: 16px;
+        -webkit-transition: top 0.2s, font-size 0.2s;
+        transition: top 0.2s, font-size 0.2s;
+        opacity: 0.5;
+        line-height: 18px;
+        pointer-events: none;
+    }
+    
+    
+    .form_field_outer .form_field_select_label {
+        position: absolute;
+        top: 4px;
+        left: 16px;
+        -webkit-transition: top 0.2s, font-size 0.2s;
+        transition: top 0.2s, font-size 0.2s;
+        opacity: 0.5;
+        line-height: 18px;
+        pointer-events: none;
+    }
+    
+    
+    .billing_address_part .address-form .add_adress_new_pp .form_field_outer {
+        margin-bottom: 20px;
+    }
+    .form_field_outer {
+        position: relative;
+        height: 56px;
+        padding: 18px 16px 0;
+        -webkit-transition: border 0.2s;
+        transition: border 0.2s;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        background: #fff;
+        color: #202026;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+    }
+    
+    .form_field_outer_activated .form_field_label {
+        position: absolute;
+        top: 6px;
+    }
+    
+    .input_blue_border {
+      border: 1px solid #472dc2;
+      background-color: #fff;
+    }
+    
+    .form_field_outer .form_field_select {
+        display: block;
+        width: 100%;
+        height: 36px;
+        padding: 5px 0;
+        border: 0;
+        outline: none;
+        background: transparent;
+        box-shadow: none;
+        /* -webkit-appearance: none; */
+        /* -moz-appearance: none; */
+    }
+    
+    </style>
+
+<style>.container {
+    width: 100%;
+  }
+  
+  .progressbar {
+    width: 105%;
+    counter-reset: step;
+    margin: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 0;
+  }
+  
+
+ 
+  .progressbar a {
+    list-style-type: none;
+    float: left;
+    width: 160px;
+    position: relative;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    color: #546A79;
+    /* Steps*/
+  }
+  
+   
+
+
+
+  .progressbar a:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    /* border: 4px solid #fff; */
+    display: block;
+    text-align: center;
+    margin: 0 auto 8px auto;
+    border-radius: 50%;
+    background-color: #E3E3E3;
+    /* Circles*/
+  }
+  
+  .progressbar a:after {
+    content: '';
+    position: absolute;
+    width: 73%;
+    height: 4px;
+    background-color: #E3E3E3;
+    /*lines */
+    top: 20px;
+    left: -37%;
+    /* z-index: -1; */
+  }
+
+  @media only screen and (max-width: 760px) {
+  .progressbar a {
+    width: 62px;
+    font-size: 12px;
+  }
+
+  .progressbar a:after {
+    content: '';
+    position: absolute;
+    width: 42%;
+    height: 4px;
+    background-color: #E3E3E3;
+    top: 20px;
+    left: -21%;
+    /* z-index: -1; */
+}
+
+}
+
+
+@media only screen and (max-width: 991px) and (min-width: 762px) {
+  .progressbar a {
+    width: 98px;
+    font-size: 12px;
+  }
+
+  .progressbar a:after {
+    content: '';
+    position: absolute;
+    width: 59%;
+    height: 4px;
+    background-color: #E3E3E3;
+    top: 20px;
+    left: -31%;
+    /* z-index: -1; */
+}
+
+}
+
+
+
+@media only screen and (max-width: 1199px) and (min-width: 992px) {
+  .progressbar a {
+    width: 133px;
+    font-size: 12px;
+  }
+
+  .progressbar a:after {
+    content: '';
+    position: absolute;
+    width: 59%;
+    height: 4px;
+    background-color: #E3E3E3;
+    top: 20px;
+    left: -31%;
+    /* z-index: -1; */
+}
+
+}
+
+  
+  .progressbar a:first-child:after {
+    content: none;
+  }
+  
+  .progressbar a.active {
+    color: #546A79;
+  }
+
+  .progressbar a.actived:before {
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 50%;
+    border-color: #0073CF;
+    color: white;
+    background-color: #0073CF;
+    margin: 0 auto 5px auto;
+  }
+  
+  .progressbar a.active:before {
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 50%;
+    border-color: green;
+    color: white;
+    background-color: #3CB371;
+    margin: 0 auto 5px auto;
+  }
+  
+  .progressbar a.active+ a:after {
+    background-color: #3CB371;
+  }
+  
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  li{list-style-type: none;}
+  </style>
+
+
+
+  <link href="static/css/home_page.css" rel="stylesheet" />
+<link href="static/css/combined_font_bootstrap_swiper.css" rel="stylesheet" />
+<style>.testimonial-item {
+		padding: 15px 30px;
+  }
+
+
+  input[type="checkbox"]:before {
+    line-height: 15px;
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-top: 0px;
+    margin-left: 0px;
+    border-radius: 2px;
+    background: #ccc;
+    box-shadow: 0px 0px 0px 1px rgba(36, 39, 44, 0.1);
+}
+
+
+  input[type="checkbox"]:checked:after {
+    width: 15px;
+    height: 15px;
+    content: "\2713";
+    color: #fff;
+    background: #472dc2;
+    padding: 3px 5px;
+    position: relative;
+    top: -12px;
+    right: 0px;
+    font-size: 8px;
+    border-radius: 2px;
+}
+  
+  .testimonial-item i {
+    font-size: 40px;
+    position: absolute;
+    left: 30px;
+    top: 12px;
+    z-index: 1;
+}
+
+.section {
+    padding: 8px 0;
+}
+
+.new_card_box .new_card_info {
+    float: left;
+    width: 100%;
+    color:#fff;
+    font-weight: bold
+}
+
+.new_card_box {
+    width: 290px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(36, 39, 44, 0.15);
+    border: 1px solid rgba(36, 39, 44, 0.08);
+    padding: 0px;
+    margin-bottom: 10px;
+    background: #fff;
+}
+.new_card_pricebox { padding: 10px; }
+.new_card_features { padding: 10px; }
+.card_title { padding: 10px;
+    text-align: center; }
+    .new_card_info { background-image: linear-gradient(to bottom, #ffd500, #ffaa00); color:#fff;
+    font-weight: bold}
+.new_card_info1 { background-image: linear-gradient(to bottom, #139ee8, #0865cc); color:#fff;
+    font-weight: bold}
+    .new_card_info2 { background-image: linear-gradient(to bottom, #ffd500, #ffaa00); color:#fff;
+    font-weight: bold}
+    .new_card_info3 { background-image: linear-gradient(to bottom, #c813e8, #9708cc); color:#fff;
+    font-weight: bold}
+    .new_card_info4 { background-image: linear-gradient(to bottom,#2fd5b6, #15ab7f); color:#fff;
+    font-weight: bold}
+    .new_card_info7 { background-image: linear-gradient(to bottom,#fff, #fff); color:#000;
+    font-weight: bold}
+
+.new_card_box .new_card_infobox {
+    float: left;
+    width: 100%;
+    height: 42px;
+}
+
+
+span {cursor:pointer; }
+		.number{
+			margin:100px;
+		}
+		.minus, .plus{
+			width:20px;
+			
+			background:#f2f2f2;
+			border-radius:4px;
+		
+			border:1px solid #ddd;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+		}
+
+    .form-control {
+    display: block;
+    width: 100%;
+    height: 43px;
+    padding: .375rem .75rem;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    text-align: left;
+}
+
+
+.add_to_cart {
+    border-radius: 4px;
+    background-color: #472dc2;
+    color: #fff;
+    border: 1px solid #472dc2;
+    margin-bottom: 4px;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 4px;
+    text-align:center;
+    width: 10%;
+    height: 40px;
+    outline: none;
+}
+
+		input{
+			/* height:34px; */
+      /* width: 100px; */
+      text-align: left;
+      font-size: 26px;
+			border:1px solid #ddd;
+			border-radius:4px;
+      display: inline-block;
+      vertical-align: middle;
+        }
+
+         .calculated-price {
+    border-radius: 4px;
+    background-color: #f0f1f2;
+    text-align: left;
+    margin-top: 10px;
+    padding: 16px;
+    overflow: hidden;
+}
+
+ .calculated-price h5 {
+    font-family: Roboto, sans-serif;
+    font-size: 24px;
+    margin-bottom: 0;
+    font-weight: 500;
+    color: #24272c;
+}
+
+
+input[type="email"], input[type="password"], input[type="text"], input[type="tel"] {
+    box-shadow: none;
+    
+    outline: none;
+    font-size: 14px;
+}
+
+.users_count {     font-size: 15px;}
+
+.blink_me {
+  animation: blinker 2s linear infinite;
+  color:blue
+}
+
+.blink_mes {
+  animation: blinker 1s linear infinite;
+  color:blue
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+
+.new_card_btns { text-align:center}
+
+.calculated-prices {
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: left;
+  
+    padding: 16px;
+    overflow: hidden;
+}
+
+span {
+    cursor: default;
+}
+
+
+
+.menuclass:hover {
+    outline: 0;
+    background-image: linear-gradient(to bottom, #9ccb3d, #9ccb3d) !important;
+		color:#fff !important;
+		 
+  transition: 0.25s;
+}
+
+.menuclasss {
+    outline: 0;
+    background-image: linear-gradient(to bottom, #9ccb3d, #9ccb3d) !important;
+		color:#fff;
+		 
+  transition: 0.25s;
+}
+
+.menuclasss:hover {
+    outline: 0;
+    background-image: linear-gradient(to bottom, #9ccb3d, #9ccb3d) !important;
+		color:#fff;
+		 
+  transition: 0.25s;
+}
+
+
+::selection {
+  background-color: #4EC6DE;
+}
+
+
+</style>
+

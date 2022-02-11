@@ -1,0 +1,744 @@
+<!doctype html>
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ScopiQ Invoice</title>
+    
+    <style>
+
+    	.page {
+        width: -moz-fit-content;
+  width: fit-content;
+        width: 21cm;
+        min-height: 27.7cm;
+       padding: 8px 45px;
+        margin: 1cm auto;
+		border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        
+    }
+
+    .subpage {
+        padding: 0cm;
+        
+        height: 270mm;
+        outline: 0cm #fff solid;
+        position: relative;
+    }
+
+     @page {
+        size: A4;
+        margin: 0;
+    }
+
+
+    @media print {
+        .page {
+            margin: 0;
+            border: initial;
+            border-radius: initial;
+            width: initial;
+            min-height: initial;
+            box-shadow: initial;
+            background: initial;
+            page-break-after: always;
+        }
+
+        .pages {
+            margin: 0;
+            border: initial;
+            border-radius: initial;
+            width: initial;
+            min-height: initial;
+            box-shadow: initial;
+            background: initial;
+            page-break-after: always;
+        }
+        .pages_print {
+            margin: 0;
+            border: initial;
+            border-radius: initial;
+            width: initial;
+            min-height: initial;
+            box-shadow: initial;
+            background: initial;
+            page-break-after: always;
+        }
+    }
+
+
+
+
+    .invoice-box {
+        max-width: 800px;
+        margin: auto;
+        /*padding: 30px;*/
+        /*border: 1px solid #eee;*/
+        /*box-shadow: 0 0 10px rgba(0, 0, 0, .15);*/
+        font-size: 16px;
+        line-height: 24px;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color:#000;
+    }
+    
+    .invoice-box table {
+        width: 100%;
+        line-height: inherit;
+        text-align: left;
+    }
+    
+    .invoice-box table td {
+        padding: 5px;
+        /*vertical-align: top;*/
+    }
+    
+    .invoice-box table tr td:nth-child(2) {
+        /*text-align: right;*/
+    }
+    
+    .invoice-box table tr.top table td {
+        padding-bottom: 0px;
+    }
+    
+    .invoice-box table tr.top table td.title {
+        font-size: 45px;
+        line-height: 45px;
+        color: #333;
+    }
+    
+    .invoice-box table tr.information table td {
+        padding-bottom: 10px;
+    }
+    
+    .invoice-box table tr.heading td {
+        background: #eee;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+    }
+    
+    .invoice-box table tr.details td {
+        padding-bottom: 20px;
+    }
+    
+    .invoice-box table tr.item td{
+        border-bottom: 1px solid #eee;
+    }
+    
+    .invoice-box table tr.item.last td {
+        border-bottom: none;
+    }
+    
+    .invoice-box table tr.total td:nth-child(2) {
+        border-top: 2px solid #eee;
+        font-weight: bold;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+        
+        .invoice-box table tr.information table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    }
+    
+    /** RTL **/
+    .rtl {
+        direction: rtl;
+        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+    
+    .rtl table {
+        text-align: right;
+    }
+    
+    .rtl table tr td:nth-child(2) {
+        text-align: left;
+    }
+   .floatLeft {
+    width: 48%;
+    float: left;
+    /* padding: 3px; */
+    padding-left: 10px;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+/*.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}*/
+
+.titles {
+    background-color: #40ACC6;
+    color: #ffffff;
+    text-align: left;
+}
+.subtitle {
+    background-color: #ccc;
+    color: #000;
+    text-align: left;
+}
+
+
+.styled-table th,
+.styled-table td {
+    padding: 8px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    padding: 0px 15px;
+}
+
+.styled-table tbody td {
+   
+    padding: 4px 15px;
+}
+
+/*.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+*/
+.styled-table tbody  {
+    border-bottom: 2px solid #40ACC6;
+}
+
+    </style>
+</head>
+<script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.1.min.js"> </script>
+<script language="javascript" type="text/javascript">
+     
+    function printDiv(divID) {
+        //Get the HTML of div
+        var divElements = document.getElementById(divID).innerHTML;
+        //Get the HTML of whole page
+        var oldPage = document.body.innerHTML;
+
+        //Reset the page's HTML with div's HTML only
+        document.body.innerHTML =
+            "<html><head><title></title></head><body>" +
+            divElements + "</body>";
+
+        //Print Page
+        window.print();
+
+        //Restore orignal HTML
+        document.body.innerHTML = oldPage;
+
+
+    }
+</script>
+<input type="button" value="Print Page" id="but" onclick="javascript:printDiv('printablediv')" /> 
+<script>
+    function myFunction() {
+        window.print();
+    }
+
+</script>
+<div id="printablediv">
+<body>
+	 <div class="page" id="pagee_1" style="max-height: 28cm;">
+        <div class="subpages" id="page_1">
+    <div class="invoice-box">
+    	
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="http://13.232.237.125:5001/static/images/logo.png" style="height: 70px; max-width:300px;">
+                            </td>
+                            
+                            <td style="text-align: right;">
+                                Invoice #: {{ bill_no }}<br>
+                                
+                            </td>
+                        </tr>
+
+                    </table>
+                     <hr>
+                </td>
+            </tr>
+           
+            <tr class="information">
+                <td colspan="2">
+                    <div class="floatLeft">
+                    <table id="A0" >
+	<tbody>
+		<tr>
+			<td style="width:40%;border: 2px solid #40ACC6; height:70px; border-radius: 20px; text-align:left;font-size: 13px;padding-left: 20px;">
+			<b><u>Billed From </u></b><br>
+
+			<span><b> ScopiQ </b></span><br>
+			<span><b>Address</b> : 90, Melur, Melur, Madurai, Tamil Nadu 625106 </span><br>
+			<span><b>Email</b> : immanuel.j@perpetua.co.in</span><br>
+			<span><b>Contact</b> : 9080066277</span>
+			</td>
+
+			
+			
+			
+		</tr>
+	</tbody>
+</table>
+<table><tr>
+			<td style="width:40%;border: 2px solid #40ACC6; height:50px; border-radius: 20px; text-align:center;font-size: 13px;">
+			<b>Purchase Order Number : {{ purchase_no }} </b>
+
+			
+			</td>
+
+			
+			
+			
+		</tr></table>
+</div>
+
+<div class="floatLeft">
+<table id="A0" >
+	<tbody>
+		<tr>
+			
+
+			<td style="width:40%;border: 2px solid #40ACC6;; height:70px; border-radius: 20px; text-align:left;font-size: 13px;padding-left: 20px;">
+			<b><u>Billed To </u></b><br>
+
+			<span><strong>Invoice #</strong>        : {{ bill_no }}</span><br>
+			<span><strong>Invoice Date</strong>     : {{ payment_date.strftime('%d-%b-%Y') }}</span><br>
+			<!-- <span><strong>Account Number</strong>   : 12345678</span><br> -->
+			<span><strong>Currency Type</strong>    :  {{ currency_type }}</span><br><br>
+			<span><b>{{ company_name }}</b></span><br>
+			<span><b>Address</b> : {{ address }} </span><br>
+			<span><b>Email</b> : {{ email_id }} </span><br>
+			<!-- <span><b>Contact</b> : 9080066277 </span> -->
+			</td>
+			
+			
+		</tr>
+	</tbody>
+</table>
+</div>
+                </td>
+            </tr>
+            
+           
+        </table>
+
+
+        <table class="styled-table">
+
+    <thead>
+    	 
+    	 <tr class="titles">
+            <th colspan="10" style="text-align: center;">Charge Description</th>
+           
+        </tr>
+
+        <tr class="subtitle">
+            <th style="width: 30%">Product</th>
+            <th >Service Period</th>
+            <th>Total</th>
+            <th>Tax</th>
+            <th>Sub Total</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        
+
+        {% for i in range(3) %}
+
+        {% if i == 0 %}
+        <tr class="subtitles">
+            
+            <td> 1. Package: {{ package_name }} </td>
+            <td> {{ package_service_period }} </td>
+            <td> {{ currency_symbol }} {{ package_amount }} </td>
+            <td> {{ currency_symbol }} {{ package_gst_amt }} </td>
+            <td> {{ currency_symbol }} {{ package_total_amt }} </td>
+        </tr>
+        {% elif i == 1 %}
+        <tr class="subtitles">
+            
+                <td> 2. User Count: {{ user_count }}* <br>
+
+                    <div style="font-size:11px;">(Admin-{{admin_user_count}},General-{{general_user_count}},Limited-{{limited_user_count}})</div>
+                </td>
+                <td> {{ user_service_period }} </td>
+                <td> {{ currency_symbol }} {{ user_amount }} </td>
+                <td> {{ currency_symbol }} {{ user_gst_amt }} </td>
+                <td> {{ currency_symbol }} {{ user_total_amt }} </td>
+        </tr>
+
+        {% else %}
+                <tr class="subtitles">
+
+                    <td>3. Cloud: {{ cld_name }} </td>
+                    <td> {{ cloud_service_period }} </td>
+                    <td> {{ currency_symbol }} {{ cloud_amount }} </td>
+                    <td> {{ currency_symbol }} {{ cloud_gst_amt }} </td>
+                    <td> {{ currency_symbol }} {{ cloud_total_amt }} </td>
+                </tr>
+
+        {% endif %}
+
+    {% endfor %}
+    	
+    
+    	
+    
+
+   
+    <tr class="subtitles"> 
+        <th rowspan="2" colspan="2" style="text-align: center;"> <b>* Discount - {{ discount_price }} </b> <br>Save Upto 10% with Annual Plan(12 Months)</th> 
+        <th colspan="2">Total (Including Tax)</th> 
+        <td>{{ currency_symbol }} {{ total_amt }}</td> 
+        
+    </tr> 
+    	
+    	
+
+    </tbody>
+
+        </table>
+
+
+        <table class="styled-table">
+
+            <thead>
+                
+                <tr class="titles">
+                    <th colspan="10" style="text-align: center;">Tax Details</th>
+                
+                </tr>
+
+                <tr class="subtitle">
+                    <th style="width: 30%">Charge Name</th>
+                    <th >Tax Details</th>
+                    <th>Change Amount</th>
+                    <th>Tax Amount</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+
+
+                <tr class="subtitles">
+                    <td>GST</td>
+                    <td>{{ gst }}</td>
+                    <td> 0 </td>
+                    <td>{{ currency_symbol }} {{ tax_amount }}</td>
+                
+
+                </tr>
+                
+
+            </tbody>
+        </table>
+
+        <table class="styled-table">
+
+            <thead>
+                
+                <tr class="titles">
+                    <th colspan="10" style="text-align: center;">Transactions</th>
+                
+                </tr>
+
+                <tr class="subtitle">
+                    <th >Transaction Date</th>
+                    <th >Transaction Number</th>
+                    <th>Transaction Type</th>
+                    <th>Status</th>
+                    <th>Total Amount</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr class="subtitles">
+                    {% for pay_his_details in payment_history_details %}
+                    <td> {{ pay_his_details.payment_date.strftime('%d-%b-%Y') }} </td>
+                    <td> {{ pay_his_details.transaction_details }} </td>  
+                    <!-- <td> {{ pay_his_details.mode_of_payment }} </td> -->
+                    <td>Credit Card</td>
+                    {% if pay_his_details.status == 1 %}
+                    
+                    <td> Paid  </td>
+                    {% else %}
+                    <td> Fail  </td>
+    
+                    {% endif %}
+                    <td> {{ currency_symbol }} {{ pay_his_details.amount }} </td>
+                    {% endfor %}
+                    </tr>
+    
+
+            </tbody>
+        </table>
+
+
+        <div class="floadtLeft">
+                    
+        <table><tbody><tr>
+                    <td style="width:100%;border: 2px solid #40ACC6; height:50px; border-radius: 20px; text-align:center;font-size: 13px;">
+                    <b>If you have any questions concerning this invoice, please contact us. <br> THANKS FOR YOUR BUSINESS </b>
+
+                    
+                    </td>
+
+                    
+                    
+                    
+        </tr></tbody></table>
+        </div>
+
+    </div>
+</body>
+</html>
+
+<div id="content">
+        <style>
+
+                .page {
+                width: -moz-fit-content;
+          width: fit-content;
+                width: 21cm;
+                min-height: 27.7cm;
+               padding: 8px 45px;
+                margin: 1cm auto;
+                border: 1px #D3D3D3 solid;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                
+            }
+        
+            .subpage {
+                padding: 0cm;
+                
+                height: 270mm;
+                outline: 0cm #fff solid;
+                position: relative;
+            }
+        
+             @page {
+                size: A4;
+                margin: 0;
+            }
+        
+        
+            @media print {
+                .page {
+                    margin: 0;
+                    border: initial;
+                    border-radius: initial;
+                    width: initial;
+                    min-height: initial;
+                    box-shadow: initial;
+                    background: initial;
+                    page-break-after: always;
+                }
+        
+                .pages {
+                    margin: 0;
+                    border: initial;
+                    border-radius: initial;
+                    width: initial;
+                    min-height: initial;
+                    box-shadow: initial;
+                    background: initial;
+                    page-break-after: always;
+                }
+                .pages_print {
+                    margin: 0;
+                    border: initial;
+                    border-radius: initial;
+                    width: initial;
+                    min-height: initial;
+                    box-shadow: initial;
+                    background: initial;
+                    page-break-after: always;
+                }
+            }
+        
+        
+        
+        
+            .invoice-box {
+                max-width: 800px;
+                margin: auto;
+                /*padding: 30px;*/
+                /*border: 1px solid #eee;*/
+                /*box-shadow: 0 0 10px rgba(0, 0, 0, .15);*/
+                font-size: 16px;
+                line-height: 24px;
+                font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+                color:#000;
+            }
+            
+            .invoice-box table {
+                width: 100%;
+                line-height: inherit;
+                text-align: left;
+            }
+            
+            .invoice-box table td {
+                padding: 5px;
+                /*vertical-align: top;*/
+            }
+            
+            .invoice-box table tr td:nth-child(2) {
+                /*text-align: right;*/
+            }
+            
+            .invoice-box table tr.top table td {
+                padding-bottom: 0px;
+            }
+            
+            .invoice-box table tr.top table td.title {
+                font-size: 45px;
+                line-height: 45px;
+                color: #333;
+            }
+            
+            .invoice-box table tr.information table td {
+                padding-bottom: 10px;
+            }
+            
+            .invoice-box table tr.heading td {
+                background: #eee;
+                border-bottom: 1px solid #ddd;
+                font-weight: bold;
+            }
+            
+            .invoice-box table tr.details td {
+                padding-bottom: 20px;
+            }
+            
+            .invoice-box table tr.item td{
+                border-bottom: 1px solid #eee;
+            }
+            
+            .invoice-box table tr.item.last td {
+                border-bottom: none;
+            }
+            
+            .invoice-box table tr.total td:nth-child(2) {
+                border-top: 2px solid #eee;
+                font-weight: bold;
+            }
+            
+            @media only screen and (max-width: 600px) {
+                .invoice-box table tr.top table td {
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                }
+                
+                .invoice-box table tr.information table td {
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                }
+            }
+            
+            /** RTL **/
+            .rtl {
+                direction: rtl;
+                font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            }
+            
+            .rtl table {
+                text-align: right;
+            }
+            
+            .rtl table tr td:nth-child(2) {
+                text-align: left;
+            }
+           .floatLeft {
+            width: 48%;
+            float: left;
+            /* padding: 3px; */
+            padding-left: 10px;
+        }
+        
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        /*.styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }*/
+        
+        .titles {
+            background-color: #40ACC6;
+            color: #ffffff;
+            text-align: left;
+            font-size: 14px;
+        }
+        .subtitle {
+            background-color: #ccc;
+            color: #000;
+            text-align: left;
+            font-size: 12px;
+        }
+
+        .subtitles {
+            background-color: #fff;
+            color: #000;
+            text-align: left;
+            font-size: 11px;
+        }
+
+        
+        
+        .styled-table th,
+        .styled-table td {
+            padding: 8px 15px;
+        }
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+            padding: 0px 15px;
+        }
+        
+        .styled-table tbody td {
+           
+            padding: 4px 15px;
+        }
+        
+        /*.styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+        */
+        .styled-table tbody  {
+            border-bottom: 2px solid #40ACC6;
+        }
+        
+            </style>
+      
+

@@ -1,0 +1,1326 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css"/>
+
+
+
+
+{% include 'headernew.html' %}
+<style>.new_card_box .new_card_features ul li:last-child {
+    margin-bottom: 5px;
+} </style>
+<style>
+
+.new_card_box .new_card_pricebox {
+    float: left;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 0px;
+	border-bottom: 1px solid rgba(36, 39, 44, 0.06);
+}
+.new_card_box .new_card_infobox {
+    float: left;
+    width: 100%;
+    height: 52px;
+}
+a { color:black}
+/* span { margin-left:20px; } */
+
+</style>
+
+<style>
+.discount_slider {
+    border: none; 
+     box-shadow: 0 2px 4px 0 rgba(36, 39, 44, 0.15); 
+    margin-bottom: 0px;
+     overflow: hidden; 
+    width: 228px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.discount_percent_section_price {
+    display: inline-block;
+    font-size: 26px;
+    font-family: roboto, sans-serif;
+    font-weight: 500;
+    margin-top: 14px;
+    margin-bottom: 18px;
+	color:#472dc2;
+}
+
+.discount_percent_section_prices {
+    display: inline-block;
+    font-size: 20px;
+    font-family: roboto, sans-serif;
+    font-weight: 500;
+    margin-top: 22px;
+    margin-bottom: 10px;
+}
+
+
+.discount_section {
+    height: 114px;
+	padding: 1px;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #4EC6DE, #4EC6DE);
+}
+
+.discount_percent_sections {
+    background: #fff;
+    margin: 4px;
+    border-radius: 4px;
+}
+
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+
+#customers tr:nth-child(even){background-color: #fff;}
+
+#customers tr:hover {background-color: #fff;}
+
+#customers th {
+ 
+  text-align: center;
+  font-size: 12px;
+  background-color: #fff;
+  color: #000;
+}
+
+ input {
+       
+        width: 77px;
+        text-align: center;
+        font-size: 26px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .new_card_box .new_card_features ul li { padding-left: 20px;   }
+</style>
+
+
+
+
+
+<!-- Header Close --> 
+
+
+
+<!-- Section About End -->
+ 
+
+<!--  Section Services End -->
+<!-- Section Testimonial Start -->
+
+
+
+<section class="section">
+
+
+	{% include 'menu.html' %}
+
+
+        <form class="form-register" id="form_register" action="#" method="post">
+
+ 
+        <div class="container">
+
+
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category,message in messages %}
+                        <div class="{{category}}">
+  
+                            {{message}}
+  
+                        </div>
+  
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+  
+
+{% if admin_user_selec_list== None or admin_user_selec_list== [] %}
+
+                  {% set admin_users_count = 0 %}
+                  {% set admin_user_amount = 0 %}
+                  {% set admin_user_billing_frequency = '' %}
+
+              {% else %}    
+
+                {% set admin_users_count = admin_user_selec_list.no_of_users %}
+                {% set admin_user_amount = admin_user_selec_list.amount %}
+                {% set admin_user_billing_frequency = admin_user_selec_list.billing_frequency %}
+
+              {% endif %}
+
+              {% if general_user_selec_list== None or general_user_selec_list==  []  %}
+
+                  {% set general_users_count = 0 %}
+                  {% set general_user_amount = 0 %}
+                  {% set general_user_billing_frequency = '' %}
+
+              {% else %}    
+
+                {% set general_users_count = general_user_selec_list.no_of_users %}
+                {% set general_user_amount = general_user_selec_list.amount %}
+                {% set general_user_billing_frequency = general_user_selec_list.billing_frequency %}
+
+              {% endif %}
+
+
+              {% if limited_user_selec_list==None or limited_user_selec_list==[] %}
+
+                  {% set limited_users_count = 0 %}
+                  {% set limited_user_amount = 0 %}
+                  {% set limited_user_billing_frequency = '' %}
+
+              {% else %}    
+
+                {% set limited_users_count = limited_user_selec_list.no_of_users %}
+                {% set limited_user_amount = limited_user_selec_list.amount %}
+                {% set limited_user_billing_frequency = limited_user_selec_list.billing_frequency %}
+
+              {% endif %}
+
+
+            <div class="row" style="min-height: 700px;">
+                <div class="col-lg-12">
+
+								
+								<div class="new_card_infobox">
+							
+								<div class="new_card_info" style="background-image: linear-gradient(to bottom, #139ee8, #0865cc);">
+									<p class="card_title" style="margin-bottom: 0;"> Change Users </p>
+										
+                                </div>
+					    </div>
+                    <div class="cta-item  bg-white p-5 rounded">
+                        
+                            
+                        
+
+                       
+
+
+                        <div class="row">
+
+
+                     
+
+
+                       <div class="col-lg-3">
+                     
+
+<div class="swiper-slide new_card_box" style="width: 250px; height: 644px;margin-right: 20px;">
+                <div class="new_card_infobox">
+                    
+                        <div class="new_card_info" style="background-image: linear-gradient(to bottom, #139ee8, #0865cc);">
+                            <p class="card_title"> {{user_type_name[0][0]}}  </p>
+                                
+                        </div>
+                </div>
+                <div class="new_card_pricebox">
+                    <p>Plan Price</p>
+                        <p> 
+                                <div class="numbers">
+                                        Users 
+                                    <span style="margin-left:5px">
+                                        <button name="minus" class="minus">-</button>
+
+                                        <input type="number" pattern="\d*" max="" name="admin_count" class="users_count" id="admin_count" user_type="1" min="0" value="{{admin_users_count}}"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"/>
+
+                                        <button name="plus" class="plus" style="margin-left: 0px;">+</button>
+                                    </span>
+                                </div>     
+                        </p>
+                </div>
+
+                <div class="calculated-price">
+               
+{% for user_exist_details in user_existng_details %}
+ {% if user_exist_details[0] == 1 %}
+ Added Users : <span style= "margin-left: 40px;" class="add_admin_count" > {{(admin_users_count|int)-(user_exist_details[1]|int)}}</span> 
+  {% endif %}
+ {% endfor %}
+<br>
+                        Calculated Price : <span style= "margin-left: 20px;font-family:sans-serif" class="admin_user_amount" >{{session['currency_symbol']}} {% if  (user_select_count ) != 0 %} {{ admin_user_amount }} {% else %} 0 {% endif %}   </span> 
+
+
+                </div>
+
+                <div class="calculated-prices">
+                    {% for user_exist_details in user_existng_details %}
+                        {% if user_exist_details[0] == 1 %}
+                            
+                            Existing User : <span style= "margin-left: 20px;"  >{{user_exist_details[1]}}</span> <br>
+                            <input type="hidden" value="{{user_exist_details[1]}}" id="existing_admin_user" name="existing_admin_user">
+                            Existing Price : <span style= "margin-left: 20px;" >{{user_exist_details[2]}}</span>
+                             <input type="hidden" value="{{user_exist_details[2]}}" name="existing_admin_totamnt" id="existtotamnt">
+                        
+
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <span style="overflow-y:scroll">
+                <div class="new_card_features">
+                    <p><b>Price Features</b></p>
+                    
+                    <span class="admin_users_list"></span>
+                    
+                        <ul id="admin_usrs_highlight">
+                            {% for admin_users in admin_user |sort(attribute='user_pricing_id') %}
+                            <li>
+                                {% if admin_users.lower_value.startswith('>') %}
+                                    {{admin_users.lower_value.replace('>','> ')}}  users	
+                                {% else %}
+                                    {{admin_users.lower_value}} to {{admin_users.higher_value}} users	
+                                {% endif %}
+                                {% if loop.index > 3 %}
+                                <span style="float: right;margin-right: 14px;font-family:sans-serif">-&nbsp;&nbsp;	{{session['currency_symbol']}}{{admin_users.amount}} / Month </span>
+                                {% else %}
+                                <span style="float: right;margin-right: 8px;font-family:sans-serif">-&nbsp;&nbsp;	{{session['currency_symbol']}}{{admin_users.amount}} / Month </span>
+                                {% endif  %}
+                            
+                            </li>
+
+                            {% endfor %}
+
+                        </ul>
+                        
+                </div>
+                <div class="new_card_features" style="overflow-y:scroll">
+                    <p><b>Key Features</b></p>
+                        <ul>
+                                <li>  Document Builder</li>
+                                <li>  Setup Design Control </li>
+                                <li>   Document Management </li>
+                                <li>   Document Sharing </li>
+                                <li>   Permission-based security </li>
+                                <li>   Role Assignments to users </li>
+                                <li>   Document Rearrange &amp; Modification </li>
+                                <li>   Print Management </li>
+                                <li>   Archiving &amp; Retention </li>
+                                <li>   Access rights </li>
+                                <li>   Easy to use drag & drop forms  </li>
+                                <li>   Dashboard Communication control </li>
+                                <li>   Hierarchy &amp; Access Control </li>
+                                <li>   Enables Searching </li>
+                                <li>   Reporting &amp; Analytics’ </li>
+                                <li>   One Year Support and updates </li>
+
+                            <hr> 
+                        </ul>
+                        
+                </div>
+
+           </span>                                                                              
+            </div>
+                       </div>
+
+                      
+
+
+                       
+
+                        <div class="col-lg-3">
+                     
+                      <div class="swiper-slide new_card_box" style="width: 250px; height: 644px;margin-right: 20px;">
+                    <div class="new_card_infobox">
+                        
+                            <div class="new_card_info">
+                                <p class="card_title"> {{user_type_name[1][0]}}  </p>
+                                    <p class="card_review">
+                                        <span class="star-ratings-sprite">
+                                            <span style="width:94%" class="star-ratings-sprite-rating">
+                                            </span>
+                                        </span>
+                                        
+                                    </p> 
+                            </div>
+                    </div>
+                    <div class="new_card_pricebox">
+                        <p>Plan Price</p>
+                            <p> 
+                                    <div class="numbers">
+                                            Users 
+                                        <span style="margin-left:5px"> 
+                                            <button name="minus" class="minus" >-</button>
+
+                                            <input type="number" user_type="2"   class="users_count" name="general_count" id="general_count" min="0" max="" value="{{ general_users_count }}" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
+                                           
+                                            <button name="plus" class="plus" style="margin-left: 0px;">+</button>
+                                        </span>
+                                    </div>     
+                            </p>
+                    </div>
+
+                        <div class="calculated-price" >
+
+{% for user_exist_details in user_existng_details %}
+ {% if user_exist_details[0] == 2 %}
+ Added Users : <span style= "margin-left: 40px;" class="add_general_count" > 
+ {{(general_users_count|int)-(user_exist_details[1]|int)}}</span> 
+  {% endif %}
+ {% endfor %}
+<br>
+
+                            Calculated Price : <span style= " margin-left: 20px;font-family:sans-serif" class="general_user_amount" >{{session['currency_symbol']}} {% if  (user_select_count ) != 0 %} {{ general_user_amount }} {% else %} 0 {% endif %}   </span>
+
+
+                            
+
+
+                        </div>
+
+
+                            <div class="calculated-prices">
+                                {% for user_exist_details in user_existng_details %}
+                                    {% if user_exist_details[0] == 2 %}
+                                
+                                        Existing User : <span style= "margin-left: 20px;"  >{{user_exist_details[1]}}</span> <br>
+                                        <input type="hidden" min="0" value="{{user_exist_details[1]}}" name="existing_general_user" id="existing_general_user">
+                                        Existing Price : <span style= "margin-left: 20px;" >{{user_exist_details[2]}}</span>
+                                        <input type="hidden" value="{{user_exist_details[2]}}" name="existing_general_totamnt" id="existtotamnt2">
+
+
+                                    {% endif %}
+                                    
+                                {% endfor %}
+                         </div>
+
+
+                   
+
+                    <span style="overflow-y:scroll">
+
+
+                    <div class="new_card_features">
+                        <p><b>Price Features</b></p>
+                        <span class="general_users_list"></span>
+                            <ul id="general_usrs_highlight">
+                                    {% for general_users in general_user |sort(attribute='user_pricing_id') %}
+                                    <li>
+                                        {% if general_users.lower_value.startswith('>') %}
+                                            {{general_users.lower_value.replace('>','> ')}}  users	
+                                        {% else %}
+                                            {{general_users.lower_value}} to {{general_users.higher_value}} users	
+                                        {% endif %}
+                                        
+                                        <span style="float: right;margin-right: 8px;font-family:sans-serif">-&nbsp;&nbsp;	{{session['currency_symbol']}}{{general_users.amount}} / Month </span>
+                                        
+                                    
+                                    </li>
+
+                                    {% endfor %}
+                                
+                            </ul>
+                            
+                    </div>
+
+                    <div class="new_card_features" style="overflow-y:scroll">
+                        <p><b>Key Features</b></p>
+                            <ul>
+                                <li>  Purchased Modules View Access</li>
+                                <li>  Document Modification Request </li>
+                                <li>  Limited Print control </li>
+                                <li>  Limited Access rights </li>
+                                <li>  Dashboard Communication View </li>
+                                <li>  Hierarchy Document View  </li>
+                                <li>  Enables Search </li>
+    
+                                <hr> 
+                            </ul>
+                            
+                    </div>
+                    </span>                                                                                                                         
+            
+                   
+            </div>
+                      
+
+
+                       </div>
+
+
+
+                       <div class="col-lg-3">
+                     
+                      <div class="swiper-slide new_card_box" style="width: 250px; height: 644px;margin-right: 20px;">
+                    <div class="new_card_infobox">
+                        
+                            <div class="new_card_info" style="background-image: linear-gradient(to bottom, #c813e8, #9708cc);">
+                                <p class="card_title"> {{user_type_name[2][0]}}  </p>
+                                    <p class="card_review">
+                                        <span class="star-ratings-sprite">
+                                            <span style="width:94%" class="star-ratings-sprite-rating">
+                                            </span>
+                                        </span>
+                                        
+                                    </p> 
+                            </div>
+                    </div>
+                    <div class="new_card_pricebox">
+                        <p>Plan Price</p>
+                            <p> 
+                                    <div class="numbers">
+                                            Users
+                                        <span style="margin-left:5px">
+                                            <button name="minus" class="minus" >-</button> 
+
+                                            <input type="number" max="" user_type="3"   class="users_count" name="limited_count" id="limited_count"  min="0" value="{{limited_users_count}}" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"/>
+                                            
+                                            <button name="plus" class="plus" style="margin-left: 0px;">+</button>
+                                        </span>
+                                    </div>     
+                            </p>
+                    </div>
+
+                    <div class="calculated-price">
+
+             {% for user_exist_details in user_existng_details %}
+ {% if user_exist_details[0] == 3 %}
+ Added Users : <span style= "margin-left: 40px;" class="add_limit_count" > 
+ {{(limited_users_count|int)-(user_exist_details[1]|int)}}</span> 
+  {% endif %}
+ {% endfor %} 
+<br>     
+
+                            Calculated Price : <span style= "margin-left: 20px;font-family:sans-serif" class="limited_user_amount" >{{session['currency_symbol']}} {% if  (user_select_count ) != 0 %} {{ limited_user_amount }} {% else %} 0 {% endif %}   </span>
+
+
+
+                            
+
+                    </div>
+
+                    <div class="calculated-prices">
+                        {% for user_exist_details in user_existng_details %}
+                            {% if user_exist_details[0] == 3 %}
+                                
+                                Existing User : <span style= "margin-left: 20px;"  >{{user_exist_details[1]}}</span> <br> 
+                                <input type="hidden" value="{{user_exist_details[1]}}" id="existing_limited_user" name="existing_limited_user">
+                                Existing Price : <span style= "margin-left: 20px;" >{{user_exist_details[2]}}</span>
+                            <input type="hidden" value="{{user_exist_details[2]}}" name="exist_limited_totamnt" id="existtotamnt3">
+
+
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+
+
+                    <span style="overflow-y:scroll">
+                    <div class="new_card_features">
+                        <p><b>Price Features</b></p>
+                        <span class="limited_users_list"></span>
+                            <ul id="limited_usrs_highlight">
+                                    {% for limited_users in limited_user |sort(attribute='user_pricing_id') %}
+                                    <li>
+                                        {% if limited_users.lower_value.startswith('>') %}
+                                            {{limited_users.lower_value.replace('>','> ')}}  users	
+                                        {% else %}
+                                            {{limited_users.lower_value}} to {{limited_users.higher_value}} users	
+                                        {% endif %}
+
+                                        
+                                        <span style="float: right;margin-right: 8px;font-family:sans-serif">-&nbsp;&nbsp;	{{session['currency_symbol']}}{{limited_users.amount}} / Month </span>
+                                        
+                                    
+                                    </li>
+
+                                    {% endfor %}
+                                                                            
+                            </ul>
+                            
+                    </div>
+                    <div class="new_card_features" style="overflow-y:scroll">
+                        <p><b>Key Features</b></p>
+                            <ul>
+                                <li>  DMS & KMS Module View Access</li>
+                                <li>  Request for Document Modification </li>
+                                <li>  Dashboard Communication View </li>
+                                <li>  Enables Searching </li>
+                                                    
+                                <hr> 
+                            </ul>
+                            
+                    </div>
+                    </span>                                                                                                                         
+            
+            </div>
+                      
+
+
+                       </div>
+
+
+
+
+                       <div class="col-lg-3">
+                     
+                      <div class="swiper-slide new_card_box"style="width: 100%;height: 644px; margin-right: 20px;">
+                    
+                <div class="new_card_infobox">
+                    
+                        <div class="new_card_info" style="background-image: linear-gradient(to bottom,#2fd5b6, #15ab7f);">
+                            <p class="card_title"> Order Summary  </p>
+                                <p class="card_review">
+                                    <span class="star-ratings-sprite">
+                                        <span style="width:94%" class="star-ratings-sprite-rating">
+                                        </span>
+                                    </span>
+                                    
+                                </p> 
+                        </div>
+                </div>
+            
+
+            
+
+                <div class="new_card_features" style="height: 401px;">
+                        <ul>
+                            <li> {{user_type_name[0][0]}} 	<span style="margin-left:10px;font-family:sans-serif">-&nbsp;&nbsp;	<span  class="admin_user_amount" > {{session['currency_symbol']}} {% if  (user_select_count ) != 0 %} {{ admin_user_amount }} {% else %} 0 {% endif %}   </span>   </span></li>
+
+                            <li> {{user_type_name[1][0]}}	<span style="margin-left:10px;font-family:sans-serif">-&nbsp;&nbsp;	<span  class="general_user_amount"> {{session['currency_symbol']}} {% if  (user_select_count ) != 0 %} {{ general_user_amount }} {% else %} 0 {% endif %} </span> </span></li>
+
+                            <li>{{user_type_name[2][0]}}	<span style="margin-left:10px;font-family:sans-serif">- &nbsp;<span  class="limited_user_amount"> {{session['currency_symbol']}} {% if  (user_select_count ) != 0 %} {{ limited_user_amount }} {% else %} 0 {% endif %} </span> </span></li>
+
+                            <li>
+                                <input type="radio" id="monthly" name="billing_frequency" value="M" style="width: 15px;" {% if  (limited_user_billing_frequency or admin_user_billing_frequency or general_user_billing_frequency) == 'M' %}checked{% endif %}>
+                                <label>Monthly</label>&nbsp;&nbsp;&nbsp; 
+                                <input type="radio" id="annual" name="billing_frequency" value="A" style="width: 15px;"{% if ( limited_user_billing_frequency  or admin_user_billing_frequency  or general_user_billing_frequency ) == 'A' %}checked{% endif %}>
+                                <label>Annual</label>
+                                
+                            </li>
+
+                            <hr>
+                            {% if alert_time_period == 1 %}
+                                <input type="hidden" value="{{ admin_user_amount_alert }}" name="adminus" id="adminus">
+                                <input type="hidden" value="{{ general_user_amount_alert }} " name="genus" id="genus">
+                                <input type="hidden" value="{{ limited_user_amount_alert }}" name="limus" id="limus">
+
+                                <input type="hidden" value="{{total_amnt}}" name="totamnt" id="totamnt">
+                                <input type="hidden" value="" name="discount_hidden" id="discount_hidden">
+                                <input type="hidden" value="" name="annualized_hidden" id="annualized_hidden">
+
+                            {% else %}
+
+                                {% if admin_user_selec_list!=(None or []) or general_user_selec_list!=(None or []) or limited_user_selec_list!=(None or [])  %}
+                                    <input type="hidden" value="{% if  (user_select_count ) != 0 %} {{ admin_user_amount }} {% else %} 0 {% endif %}" name="adminus" id="adminus">
+                                    <input type="hidden" value="{% if  (user_select_count ) != 0 %} {{ general_user_amount }} {% else %} 0 {% endif %}" name="genus" id="genus">
+                                    <input type="hidden" value="{% if  (user_select_count ) != 0 %} {{ limited_user_amount }} {% else %} 0 {% endif %}" name="limus" id="limus">
+
+                                    {% set total_amnt=(admin_user_amount)|int+(general_user_amount)|int+(limited_user_amount)|int %}
+
+                                    <input type="hidden" value="{{total_amnt}}" name="totamnt" id="totamnt">
+                                    <input type="hidden" value="" name="discount_hidden" id="discount_hidden">
+                                <input type="hidden" value="" name="annualized_hidden" id="annualized_hidden">
+                                {% else %}
+                                    <input type="hidden" value="0" name="adminus" id="adminus">
+                                    <input type="hidden" value="0" name="genus" id="genus">
+                                    <input type="hidden" value="0" name="limus" id="limus">
+
+                                    <input type="hidden" value="" name="totamnt" id="totamnt">
+                                    <input type="hidden" value="" name="discount_hidden" id="discount_hidden">
+                                    <input type="hidden" value="" name="annualized_hidden" id="annualized_hidden">
+                                {% endif %}
+
+
+                            {% endif %}
+                            {% if alert_time_period == 1 %}
+                                {% set total_amnt = admin_user_amount_alert | float + general_user_amount_alert | float + limited_user_amount_alert| float %}
+                                <li>Total Amount	<span style="margin-left:10px;font-family:sans-serif">- &nbsp;<span  class="total_amount"> {{session['currency_symbol']}}{{total_amnt}} </span> / Month </span></li>  
+                            
+                            {% else %}
+                                <li>Total Amount	<span style="margin-left:10px;font-family:sans-serif">- &nbsp;<span  class="total_amount"> {{session['currency_symbol']}} {% if admin_user_selec_list!=(None or []) or general_user_selec_list!=(None or []) or limited_user_selec_list!=(None or []) %}{% if  (user_select_count ) != 0 %} {{total_amnt}} {% else %} 0 {% endif %}{%else%}0{%endif%}</span> / Month </span></li>  
+                            {% endif %}
+
+
+                            <li class="display_annual" style="display:none;font-family:sans-serif"> Annual Amount	<span style="margin-left:4px;">- &nbsp;<span  id="total_annual_amount"></span></span> </li>  
+
+                             
+
+
+                            <hr>  
+                            {% if alert_time_period == 0 %}
+                                {% if ( user_billing_frequency   ) == 'M' %}
+
+                                    <li class="display_annual" style="display:none;font-family:sans-serif"> Existing Amount	<span style="margin-left:10px;">- &nbsp;<span  class="total_amount_existing">  </span> / Month </span></li>
+
+
+
+                                    <li class="display_annual" style="display:none;font-family:sans-serif"> Annual Existing Amount	<span style="margin-left:10px;">- &nbsp;<span  class="total_amount_existing_annual">  </span>  </span></li>
+
+
+
+                                    <li class="display_annual" style="display:none;font-family:sans-serif"> Payable Amount	<span style="margin-left:10px;">- &nbsp;<span  class="total_amount_pay">  </span>  </span></li>
+                                    <input type="hidden" value="" name="payable_amount" id="payable_amount" >
+                                {% endif %}
+
+                                {% if ( user_billing_frequency   ) == 'A' %}
+                                    <li class="annual_remaining" style="display:none;font-family:sans-serif"> Payable Amount	<span style="margin-left:10px;">- &nbsp;<span  class="total_amount_pay">  </span>  </span></li>
+                                    <li class="display_annual_alert" style="display:none;font-family:sans-serif"> (Remaining Months - {{remaining_months_alert}})</li>
+
+                                {% endif %}
+
+
+                            {% else %}
+                                {% if ( user_billing_frequency   ) == 'M' %}
+
+                                <input type="hidden" value="" name="payable_amount" id="payable_amount" >
+
+                                {% endif %}
+
+                                <li class="display_annual_alert" style="display:none;font-family:sans-serif"> Payable Amount	<span style="margin-left:10px;">- &nbsp;<span  class="total_pay_alert_annual">  </span>  </span></li>
+                                <li class="display_annual_alert" style="display:none;font-family:sans-serif"> (Remaining Months - {{remaining_months_alert}})</li>
+
+                            {% endif %}
+                            
+
+                                {% if reg_user_type == "F" %}
+                                    <li class="display_annual" style="display:none">You Save	<span style="margin-left:72px;">- &nbsp;<span  id="discount_amount"></span></span> </li>  
+
+                                    <li class="display_annual" style="display:none">Annualized Amount	<span style="margin-left:33px;">- &nbsp;<span  id="annualized_amount"></span></span></li> 
+                                    <input type="hidden" value="" name="annualized_hidden_freetrial" id="annualized_hidden_freetrial">
+                                {% endif %}
+                           
+
+                        </ul>
+                        
+                </div>
+
+                </span>       
+                <input type="hidden" id="max_val" value="">                                                                                      
+        
+                <span id="select_user_error" style="color:red"></span>            
+                <div class="new_card_btns">
+                    
+                       
+                    <button name="Add to Cart" id="selectplan"  style="display:none" class="add_to_cart">Select Plan</button>
+                 </div>
+            </div> 
+                      
+
+
+                       </div>
+
+ 
+
+      
+	  	
+
+                        </div> 
+
+            
+        
+
+
+                                
+                                  
+                                
+                        </div>
+
+
+                      
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+
+
+
+<!-- Section Testimonial End -->
+
+
+
+<style>
+
+
+
+    .new_card_box .new_card_btns button.add_to_carts {
+        border-radius: 4px;
+        background-color: green;
+        color: #fff;
+        border: 1px solid green;
+        margin-bottom: 4px;
+        font-family: Roboto, sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+.menuclass:hover {
+    outline: 0;
+    background-image: linear-gradient(to bottom, #9ccb3d, #9ccb3d);
+		color:#000;
+		 
+  transition: 0.25s;
+}
+
+
+::selection {
+  background-color: #4EC6DE;
+}
+
+
+
+
+
+@media only screen and (max-width: 990px) {
+  
+.add_to_cart {
+    border-radius: 4px;
+    background-color: #472dc2;
+    color: #fff;
+    border: 1px solid #472dc2;
+    margin-bottom: 4px;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 4px;
+    text-align: center;
+    width: 50%;
+    height: 40px;
+    outline: none;
+}
+
+
+
+}
+
+@media only screen and (min-width: 990px) {
+
+
+
+}
+
+
+
+
+
+
+</style>
+<!-- footer Start -->
+<footer class="footer section">
+	<div class="container">
+		
+		
+		{% include 'footer.html' %}
+
+<!-- <style>
+
+.new_card_box .new_card_features{ height:200px; overflow-y:scroll; border-top: 0px solid  }</style> -->
+
+
+   <script>
+    //    function alert_message() {
+    //     var added_admin_user=$('.add_admin_count').html();
+    //     // alert(added_admin_user)
+    //     var added_general_count=$('.add_general_count').html();
+    //     // alert(added_general_count)
+    //     var added_limited_user=$('.add_limit_count').html();
+    //     // alert(added_limited_user)
+    //     if(added_admin_user<0 || added_general_count<0 || added_limited_user<0)
+    //     {
+    //         alert("Downgrade in alert period")
+    //         event.preventDefault();
+    //         return false;
+    //     }
+    //    }
+
+
+            $(document).ready(function() {
+ var sess="{{session['currency_symbol']}}";
+
+
+
+                $('#selectplan').click(function(){
+                        var admin_user_count=$('#admin_count').val();
+                        var general_user_count=$('#general_count').val();
+                        var limited_user_count=$('#limited_count').val();
+                        
+                         
+
+                        // if(admin_user_count==0 &&  general_user_count==0 &&  limited_user_count==0 ){
+                        //   $('#select_user_error').html('Select Atleast One User')
+                        //   return false
+                        // }
+                        if(admin_user_count==0 )
+                        {
+                            $('#select_user_error').html('Select Atleast One Admin User')
+                          return false
+                        }
+                        else{
+                            this.submit();
+                        }
+            
+                        
+                });	
+               
+                    $('.minus').click(function () {
+                        var $input = $(this).parent().find('input');
+                        var count = parseInt($input.val()) - 1;
+                        count = count < 0 ? 0 : count;
+                        $input.val(count);
+                        $input.change();
+                        return false;
+                    });
+                    $('.plus').click(function () {
+                        var $input = $(this).parent().find('input');
+                        // $input.val(parseInt($input.val()) + 1);
+                        var maximum=$('#max_val').val();
+                        if(maximum==""){
+                            $input.val(parseInt($input.val()) + 1);
+                            
+                        }
+                        else{
+                            var count = parseInt($input.val()) + 1;
+                            count = count > maximum ? maximum : count;
+                            $input.val(count);
+                        }
+                        $input.change();
+                        return false;
+                    });
+            
+            
+                    // $('.users_count').keyup(function(){
+                        $(".users_count").bind("keyup change", function(e) {
+                            $('.annual_remaining').hide();
+                            $('.display_annual_alert').hide();
+                            var alert_time_period = [{{alert_time_period}}];
+                            var user_billing_frequency = ['{{user_billing_frequency}}'];
+                           
+                             $('.add_to_cart').show();
+                        var users_count=this.value;
+                        // alert(users_count)
+
+                        // alert(users_count)
+                        if(users_count == '')
+                        {
+                            users_count=0
+                        }
+
+
+
+                        var usertype=$(this).attr("user_type");
+
+                        var url='{{url_for('ajax_load_user_amount')}}';
+                        $.ajax({
+                        type:"GET",
+                        url:url,
+                        data:{
+                             'users_count':users_count,
+                             'usertype':usertype
+                         },
+                        success: function (data) {
+                            
+
+                            new_amount=data.split('@')[0]
+
+                            // alert(new_amount)
+                            maximum_value=data.split('@')[1]
+                            $('#max_val').val(maximum_value);
+                            dat=users_count*new_amount;
+                            
+                            if (usertype==1){
+                                var existamt=$('#existtotamnt').val();
+                                var user1final=dat-existamt;
+                                if (user1final < 0) {
+                                    var user1final=0;
+                                }
+
+                                var existing_admin_user=$('#existing_admin_user').val();
+                                var addedadmin=parseFloat(users_count)-parseFloat(existing_admin_user);  
+                                var alert_time_period = [{{alert_time_period}}];
+                                if (alert_time_period == 0)
+                                {
+                                    var calcval=addedadmin*new_amount;
+                                    if (calcval < 0) {
+                                        calcval=0;
+                                    }
+                                    $(".admin_user_amount").html(sess+' '+calcval)
+                                }
+                                else{
+                                    var calcval=users_count*new_amount;
+                                    if(existing_admin_user == users_count){
+                                        $(".admin_user_amount").html(sess+' '+0)
+                                    }
+                                    else{
+                                        $(".admin_user_amount").html(sess+' '+calcval)
+                                    }
+                                  
+                                   
+                                }
+                                // alert(calcval)
+                                $(".add_admin_count").html(addedadmin)
+
+                               
+                                $("#adminus").val(calcval)
+
+                                //$(".admin_user_amount").html(sess+' '+user1final)
+                                //$("#adminus").val(user1final)
+
+                                $("#admin_count").attr("max", maximum_value);
+
+                                 
+                               if (usertype==1){
+                            
+                            var urls='{{url_for('ajax_admin_slab')}}';
+
+                                $.ajax({
+                                type:"GET",
+                                url:urls,
+                                data:{
+                                    'users_count1':users_count,
+                                    
+                                },
+
+                                success: function (data) {
+
+                                    //  alert(data)
+                                    $(".admin_users_list").html(data)
+                                    $("#admin_usrs_highlight").hide()
+                                    }
+                                });
+
+
+                            }
+                                
+                            }
+                            else if (usertype==2){
+
+                                var existamt2=$('#existtotamnt2').val();
+                                var user2final=dat-existamt2;
+                                 if (user2final < 0) {
+                                    var user2final=0;
+                                }
+                                
+                                var existing_general_user=$('#existing_general_user').val();
+                                var addedadmin=parseFloat(users_count)-parseFloat(existing_general_user);  
+                                $(".add_general_count").html(addedadmin)
+                                var alert_time_period = [{{alert_time_period}}];
+
+                                if (alert_time_period == 0)
+                                {
+                                    var calcval=addedadmin*new_amount;
+                                    if (calcval < 0) {
+                                        calcval=0;
+                                    }
+                                    $(".general_user_amount").html(sess+' '+calcval)
+                                }
+                                else{
+                                    var calcval=users_count*new_amount;
+                                    if(existing_general_user == users_count){
+                                        $(".general_user_amount").html(sess+' '+0)
+                                    }
+                                    else{
+                                        $(".general_user_amount").html(sess+' '+calcval)
+                                    }
+                                    // if(existing_general_user == users_count){
+                                    //     var calcval = 0
+                                    // }
+                                    // else{
+                                    //     var calcval=users_count*new_amount;
+                                    // }
+                                }
+                                // alert(calcval)
+                                // $(".general_user_amount").html(sess+' '+calcval)
+                                $("#genus").val(calcval)
+                                $("#general_count").attr("max", maximum_value);
+
+                                if (usertype==2){
+                                var urls1='/ajax_general_slab';
+                                $.ajax({
+                                type:"GET",
+                                url:urls1,
+                                data:{
+                                    'users_count2':users_count,
+                                    
+                                },
+
+                                success: function (data) {
+
+                                    //  alert(data)
+                                    $(".general_users_list").html(data)
+                                    $("#general_usrs_highlight").hide()
+                                    }
+                                });
+
+
+                            }
+                               
+                            }
+                            else if (usertype==3){
+
+                                var existamt3=$('#existtotamnt3').val();
+                                var user3final=dat-existamt3;
+
+                                if (user3final < 0) {
+                                    var user3final=0;
+                                }
+
+                                 var existing_limit_user=$('#existing_limited_user').val();
+                                var addedadmin=parseFloat(users_count)-parseFloat(existing_limit_user);  
+                                $(".add_limit_count").html(addedadmin)
+                                var alert_time_period = [{{alert_time_period}}];
+
+                                if (alert_time_period == 0)
+                                {
+                                    var calcval=addedadmin*new_amount;
+                                    if (calcval < 0) {
+                                        calcval=0;
+                                    }
+                                    $(".limited_user_amount").html(sess+' '+calcval)
+                                }
+                                else{
+                                    var calcval=users_count*new_amount;
+                                    if(existing_limit_user == users_count){
+                                        $(".limited_user_amount").html(sess+' '+0)
+                                    }
+                                    else{
+                                        $(".limited_user_amount").html(sess+' '+calcval)
+                                    }
+                                    // if(existing_limit_user == users_count){
+                                    //     var calcval = 0
+                                    // }
+                                    // else{
+                                    //     var calcval=users_count*new_amount;
+                                    // }
+                                }
+                                // alert(calcval)
+                                // $(".limited_user_amount").html(' '+sess+' '+calcval)
+                                $("#limus").val(calcval)
+                                $("#limited_count").attr("max", maximum_value);
+
+                                if (usertype==3){
+
+                                var urls2='/ajax_limited_slab';
+                                $.ajax({
+                                type:"GET",
+                                url:urls2,
+                                data:{
+                                    'users_count3':users_count,
+                                    
+                                },
+
+                                success: function (data) {
+
+                                    //  alert(data)
+                                    $(".limited_users_list").html(data)
+                                    $("#limited_usrs_highlight").hide()
+                                    }
+                                });
+
+                            }
+                                
+                            }
+            
+                            var adminus = $("#adminus").val();
+                            var genus = $("#genus").val();
+                            var limus = $("#limus").val();
+                            var totalamounts=parseFloat(adminus)+parseFloat(genus)+parseFloat(limus);
+                            
+                                
+
+                            $(".total_amount").html(sess+' '+totalamounts)
+                            
+                            $("#totamnt").val(totalamounts)
+                            var total_annual_amnt=totalamounts*12;
+                            $('#total_annual_amount').html(sess+' '+total_annual_amnt);
+                            var discount_amount=total_annual_amnt*(10/100);
+                            $('#discount_amount').html(sess+' '+discount_amount);
+                            $('#discount_hidden').val(discount_amount)
+                            var annualized_amount=(totalamounts*12);
+                            
+                            $('#annualized_hidden').val(annualized_amount)
+                            var annualized_hidden_freetrial=(totalamounts*12)-(discount_amount);
+                            $('#annualized_amount').html(sess+' '+annualized_hidden_freetrial);
+                            $('#annualized_hidden_freetrial').val(annualized_hidden_freetrial)
+
+                            var alert_time_period = [{{alert_time_period}}];
+                        
+                            if (alert_time_period == 1){
+                                var current_billing_frequency = $('input[name=billing_frequency]:checked').val()
+                                var remaining_months_alert = [{{remaining_months_alert}}];
+
+                                var annualized_rem_amount_alert=parseFloat(total_annual_amnt) *  (parseFloat(remaining_months_alert)/12)
+
+                                if(current_billing_frequency == "A"){
+
+                                    $('.display_annual_alert').show()
+                                    $('.total_pay_alert_annual').html(sess+' '+annualized_rem_amount_alert);
+                                }
+                                else{
+                                    $('.display_annual_alert').hide()
+                                }
+
+                            }
+
+
+
+
+                            var existamt=$('#existtotamnt').val();
+                        var existamt1=$('#existtotamnt2').val();
+                        var existamt2=$('#existtotamnt3').val();
+
+                        var totalamountsexist=parseFloat(existamt)+parseFloat(existamt1)+parseFloat(existamt2);
+                        var annualized_amount_existing=(totalamountsexist*12);
+                        $('.total_amount_existing').html(sess+' '+totalamountsexist);
+                        $('.total_amount_existing_annual').html(sess+' '+annualized_amount_existing);
+
+                        // var total_amount_pay = parseFloat(total_annual_amnt)+parseFloat(annualized_amount_existing)
+                        var remaining_months_alert = [{{remaining_months_alert}}];
+                        
+                        var finalamount=(parseFloat(total_annual_amnt)+parseFloat(annualized_amount_existing))*  parseFloat(remaining_months_alert/12)
+                        $('.total_amount_pay').html(sess+' '+finalamount);
+
+                        $('#payable_amount').val(finalamount)
+  
+                        }
+
+                     });
+
+                    });
+
+                    $('#annual').click(function(){
+                        
+                        $('.add_to_cart').show();
+                        $('.display_annual').show();
+                        var adminus = $("#adminus").val();
+                        var genus = $("#genus").val();
+                        var limus = $("#limus").val();
+                        var totalamounts=parseFloat(adminus)+parseFloat(genus)+parseFloat(limus);
+                        var total_annual_amnt=totalamounts*12;
+                        $('#total_annual_amount').html(sess+' '+total_annual_amnt);
+                        var discount_amount=total_annual_amnt*(10/100);
+                        $('#discount_amount').html(sess+' '+discount_amount);
+                        $('#discount_hidden').val(discount_amount)
+                        var annualized_amount=(totalamounts*12);
+                        $('#annualized_hidden').val(annualized_amount)
+                        var annualized_hidden_freetrial=(totalamounts*12)-(discount_amount);
+                        $('#annualized_amount').html(sess+' '+annualized_hidden_freetrial);
+                        $('#annualized_hidden_freetrial').val(annualized_hidden_freetrial)
+
+                        var existamt=$('#existtotamnt').val();
+                        var existamt1=$('#existtotamnt2').val();
+                        var existamt2=$('#existtotamnt3').val();
+
+                        var totalamountsexist=parseFloat(existamt)+parseFloat(existamt1)+parseFloat(existamt2);
+                        var annualized_amount_existing=(totalamountsexist*12);
+                        $('.total_amount_existing').html(sess+' '+totalamountsexist);
+                        $('.total_amount_existing_annual').html(sess+' '+annualized_amount_existing);
+                        
+                        // var total_amount_pay = parseFloat(total_annual_amnt)+parseFloat(annualized_amount_existing)
+                        var remaining_months_alert = [{{remaining_months_alert}}];
+                        
+                        var finalamount=(parseFloat(total_annual_amnt)+parseFloat(annualized_amount_existing))*  parseFloat(remaining_months_alert/12)
+                        $('.total_amount_pay').html(sess+' '+finalamount);
+
+                        $('#payable_amount').val(finalamount)
+
+                        var alert_time_period = [{{alert_time_period}}];
+                       
+                        if (alert_time_period == 1){
+                            
+                            var remaining_months_alert = [{{remaining_months_alert}}];
+
+                            var annualized_rem_amount_alert=parseFloat(total_annual_amnt) *  (parseFloat(remaining_months_alert)/12)
+                            var current_billing_frequency = $('input[name=billing_frequency]:checked').val()
+
+                            if(current_billing_frequency == "A"){
+
+                                $('.display_annual_alert').show()
+                                $('.total_pay_alert_annual').html(sess+' '+annualized_rem_amount_alert);
+                            }
+                            else{
+                                $('.display_annual_alert').hide()
+                            }
+                        }
+                        else{
+                            var remaining_months_alert = [{{remaining_months_alert}}];
+
+                            var annualized_rem_amount_alert=parseFloat(total_annual_amnt) + parseFloat(annualized_amount_existing) *  (parseFloat(remaining_months_alert)/12)
+
+                            $('.annual_remaining').hide()
+                            $('.total_pay_alert_annual').html(sess+' '+annualized_rem_amount_alert);
+
+                        }
+
+
+
+
+                     });
+
+                    $('#monthly').click(function(){
+                    $('.display_annual').hide();
+                    $('.add_to_cart').show();
+                    $('.annual_remaining').hide()
+                    $('.display_annual_alert').hide()
+                });
+
+                    if(document.getElementById('monthly').checked) { 
+                    $('.display_annual').hide();
+                } 
+                if(document.getElementById('annual').checked) { 
+                    $('.display_annual').show();
+                    var adminus = $("#adminus").val();
+                    var genus = $("#genus").val();
+                    var limus = $("#limus").val();
+                    var totalamounts=parseFloat(adminus)+parseFloat(genus)+parseFloat(limus);
+                    $(".total_amount").html(sess+''+totalamounts)
+                    $("#totamnt").val(totalamounts)
+                    var total_annual_amnt=totalamounts*12;
+                    $('#total_annual_amount').html(sess+' '+total_annual_amnt);
+                    var discount_amount=total_annual_amnt*(10/100);
+                    $('#discount_amount').html(sess+' '+discount_amount);
+                    $('#discount_hidden').val(discount_amount)
+                    var annualized_amount=(totalamounts*12);
+                    $('#annualized_hidden').val(annualized_amount)
+                    var annualized_hidden_freetrial=(totalamounts*12)-(discount_amount);
+                    $('#annualized_amount').html(sess+' '+annualized_hidden_freetrial);
+                    $('#annualized_hidden_freetrial').val(annualized_hidden_freetrial)
+
+                     var existamt=$('#existtotamnt').val();
+                        var existamt1=$('#existtotamnt2').val();
+                        var existamt2=$('#existtotamnt3').val();
+
+                        var totalamountsexist=parseFloat(existamt)+parseFloat(existamt1)+parseFloat(existamt2);
+                        var annualized_amount_existing=(totalamountsexist*12);
+                        $('.total_amount_existing').html(sess+' '+totalamountsexist);
+                        $('.total_amount_existing_annual').html(sess+' '+annualized_amount_existing);
+                        
+                        // var total_amount_pay = parseFloat(total_annual_amnt)+parseFloat(annualized_amount_existing)
+                        var remaining_months_alert = [{{remaining_months_alert}}];
+                        
+                        var finalamount=(parseFloat(total_annual_amnt)+parseFloat(annualized_amount_existing))*  parseFloat(remaining_months_alert/12)
+                        $('.total_amount_pay').html(sess+' '+finalamount);
+
+                        $('#payable_amount').val(finalamount)
+
+                } 
+            
+            
+                    
+                });
+                </script>
+
+
+  </body>
+  </html>

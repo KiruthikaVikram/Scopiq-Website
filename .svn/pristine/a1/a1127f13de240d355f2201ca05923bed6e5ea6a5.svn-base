@@ -1,0 +1,656 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css"/>
+
+{% include 'headernew.html' %}
+
+<style>
+  body {
+font-family: sans-serif;
+font-size: 14px;
+line-height: 1.42857143;
+color: #333;
+background-color: #F5F8F9;
+}
+
+
+        #customers td, #customers th {
+          border: 1px solid #ddd;
+          padding: 8px;
+          text-align: center;
+          font-size: 12px;
+        }
+        
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+        
+        #customers tr:hover {background-color: #ddd;}
+        
+        #customers th {
+         
+          text-align: center;
+          font-size: 12px;
+          background-color: #5e89df;
+          color: white;
+        }
+
+        .new_card_box .new_card_features ul li:last-child {
+        margin-bottom: 5px;
+    }
+        </style>
+
+
+<!--  Section Services Start -->
+
+
+<section class="section service border-top">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-12 text-center">
+				<div class="section-title">
+        <br>
+        <h3>Estimation</h3>
+				 {% include 'steps.html' %}    
+
+				</div>
+			</div>
+		</div> <br>
+     <form class="address-form" id="form_register"method="post" >
+		<div class="row justify-content-center">
+		
+
+
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="swiper-container swiper-container-horizontal">
+                                   
+					<div class="swiper-wrapper">
+            <div class="swiper-slide new_card_box"  style="width: 280px; margin-right: 20px;height:316px">
+                    <div class="new_card_infobox">
+							
+                            <div class="new_card_info" style="background-image: linear-gradient(to bottom, #139ee8, #0865cc);">
+                                <p class="card_title"> Product Details  </p>
+                                    
+                            </div>
+                    </div>
+                    <span style="overflow-y:scroll">
+                            <div class="new_card_features">
+                                <p><b>Package Purchased</b> : {{selected_pkg_prod[1]}}</p>
+                                <p><b>Total Price</b> <span style="margin-left:54px">: {{session['currency_symbol']}} {{selected_pkg_prod[3]}} </span> </p>
+                                
+                                    <ul>
+                                      
+                                       
+                                        
+                                        <p><b>Products Purchased</b></p>
+                                        {% for product_lists in product_list %}
+                                          {% for each_prod_id in selected_pkg_prod[2] %}
+                                   
+                                             {% if product_lists.product_id == each_prod_id | int %}
+    
+                                                  <li> {{ product_lists.product_name }}</li>
+    
+                                              {% endif %}
+    
+                                          {% endfor %}
+                                        {% endfor %}
+                                       
+                                    
+                                    </ul>
+                                    
+                            </div>
+    
+                            
+                            </span>       
+         
+
+             
+            </div> 
+          </div>                     
+					
+        </div>
+			</div>
+
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="swiper-container swiper-container-horizontal">
+                                       
+                        <div class="swiper-wrapper">
+                <div class="swiper-slide new_card_box"  style="width: 260px; margin-right: 20px;height:316px">
+                       
+                        <div class="new_card_infobox">
+							
+								<div class="new_card_info3" >
+									<p class="card_title">  User Details </p>
+										
+                                </div>
+                        </div>
+
+                        <span style="overflow-y:scroll">
+                                <div class="new_card_features">
+        
+                                <table id="customers" style="width: 100%;">
+          <tr>
+            <th>Users</th>
+            <th>Count</th>
+            <th>Amount</th>
+          </tr>
+          <tr>
+            <td>{{user_type_name[0][0]}}</td>
+            <td>{{selected_users_amount[0]}}</td>
+            <td>{{session['currency_symbol']}} {{selected_users_amount[1]}} </td>
+          </tr>
+          <tr>
+            <td>{{user_type_name[1][0]}}</td>
+            <td> {{selected_users_amount[2]}}</td>
+            <td>{{session['currency_symbol']}} {{selected_users_amount[3]}}</td>
+          </tr>
+          <tr>
+            <td>{{user_type_name[2][0]}}</td>
+            <td>{{selected_users_amount[4]}}</td>
+            <td>{{session['currency_symbol']}} {{selected_users_amount[5]}}</td>
+          </tr>
+          {% if selected_users_amount[8] == 'M' %}
+            <tr>
+              <td colspan="2"> Total Amount Month</td>
+              
+              <td>{{session['currency_symbol']}} {{selected_users_amount[6]}} </td>
+            </tr>
+          {% else %}  
+            <tr>
+              <td colspan="2"> Total Amount (/Month)</td>
+              
+              <td>{{session['currency_symbol']}} {{selected_users_amount[9]}} </td>
+            </tr>  
+            <tr>
+              <td colspan="2"> Total Annual Amount </td>
+              
+              <td>{{session['currency_symbol']}} {{(selected_users_amount[9] | float)*12}} </td>
+            </tr>  
+
+            <tr>
+              <td colspan="2"> You Save (10%)</td>
+              
+              <td>{{session['currency_symbol']}} {{selected_users_amount[10]}} </td>
+            </tr>  
+            <tr>
+              <td colspan="2"> Annualized Amount </td>
+              
+              <td>{{session['currency_symbol']}} {{selected_users_amount[6]}} </td>
+            </tr>  
+
+          {% endif %}
+        
+          </table>
+                                   
+                                </div>
+        
+                                
+                                </span>                                                                                
+                        
+
+                 
+                </div> 
+              </div>                     
+                        
+            </div>
+            </div>
+
+           
+			<div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="swiper-container swiper-container-horizontal">
+                                       
+                        <div class="swiper-wrapper">
+                <div class="swiper-slide new_card_box"  style="width: 280px; margin-right: 20px;height:316px">
+                  
+                        <div class="new_card_infobox">
+							
+								<div class="new_card_info2" >
+									<p class="card_title"> Cloud Details  </p>
+										
+                                </div>
+                        </div>
+                        
+                            
+
+						<div class="new_card_features">
+                                <p><b>Cloud Package</b> : {{cloud_pack_amount[2]}}</p>
+                                <p><b>Cloud Amount</b> : {{session['currency_symbol']}} {{cloud_pack_amount[1]}}</p>
+                                 <p><b>Cloud Features</b> : </p>
+                                  <p> {{cloud_pack_amount[3]|safe}}  </p>
+                                                                
+                        </div>
+                 
+                </div> 
+              </div>                     
+                        
+            </div>
+            </div>   
+            
+            
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="swiper-container swiper-container-horizontal">
+                                       
+                        <div class="swiper-wrapper">
+                <div class="swiper-slide new_card_box"  style="width: 280px; margin-right: 20px;height:316px">
+
+                        <div class="new_card_infobox">
+                                    
+                                <div class="new_card_info3" style="background-image: linear-gradient(to bottom,#2fd5b6, #15ab7f);">
+                                    <p class="card_title"> Order Summary  </p>
+                                        <p class="card_review">
+                                            <span class="star-ratings-sprite">
+                                                <span style="width:94%" class="star-ratings-sprite-rating">
+                                                </span>
+                                            </span>
+                                            
+                                        </p> 
+                                </div>
+                        </div>
+                      
+
+                        <span style="overflow-y:scroll">
+                                <div class="new_card_features">
+                                   <br>
+                                        <ul>
+                                            <li> Products Price 	<span style="margin-left:30px;">-&nbsp;&nbsp;	<span  > {{session['currency_symbol']}} {{selected_pkg_prod[3]}} </span>  / Year </span></li>
+
+                                            <li> Users Price	<span style="margin-left:46px;">-&nbsp;&nbsp;	<span > {{session['currency_symbol']}} {{selected_users_amount[6]}}</span> {% if selected_users_amount[8]=='M' %}/ Month{% else %}/ Year {% endif %} </span></li>
+                                            
+                                            <li> Cloud Price	<span style="margin-left:46px;">- &nbsp;<span >{{session['currency_symbol']}} {{cloud_pack_amount[1]}}</span> / Year </span></li>
+
+                                            <hr>
+
+                                           {% set selec_amount=(selected_pkg_prod[3]|float)+ (selected_users_amount[6] | float) + (cloud_pack_amount[1]| float) %}
+                                            <b><li>Total <span style="margin-left:80px;">- &nbsp;<span  class="total_amount"> {{session['currency_symbol']}} {{selec_amount }}  </span>  </span></li>  </b>
+
+
+                                            {% if comp_country_name == 'India' %}
+
+                                            <b><li>GST({{session['gst']}})	<span style="margin-left:51px;">- &nbsp;<span  class="gst"> {% set gst_amount= (selec_amount ) * (((session['gst'].strip('%'))|float)/100)%} 
+                                                        {{session['currency_symbol']}}  {{gst_amount|round(2)}}
+                                                
+                                            </span>  </span></li></b>
+
+                                            {% else %}
+                                                    {% set gst_amount= 0 %} 
+                                            {% endif %}
+
+                                            <b><li>Total Amount	<span style="margin-left:32px;">- &nbsp;<span  class="tot_amnt"> {{session['currency_symbol']}} {{((gst_amount) + selec_amount) |round(2)}}  </span> </span></li>  </b>
+                                            
+                                            
+
+                                        </ul>
+                                        
+                                </div>
+
+                        </span> 
+
+                        <div class="new_card_btns">
+                          
+                            <button name="Add to Cart" class="add_to_cart">Proceed to Pay</button>		
+                         
+                        </div>
+                  
+    
+                 
+                </div> 
+              </div>                     
+                        
+            </div>
+            </div>
+            
+            {% if selected_users_amount[8] == 'M' %}
+              <div class="col-lg-8 col-md-6 col-sm-6">
+            {% else %}
+              <div class="col-lg-12 col-md-6 col-sm-6">
+            {% endif %}
+              <div class="swiper-container swiper-container-horizontal">
+                                 
+                  <div class="swiper-wrapper">
+          <div class="swiper-slide new_card_box"  style="width: 100%; margin-right: 20px;height:396px">
+            
+                  <div class="new_card_infobox">
+        
+          <div class="new_card_info2" >
+            <p class="card_title">Annual Subscription  </p>
+              
+                          </div>
+                  </div>
+                  
+                    
+                <div class="tabbed">
+                        
+                        
+                        
+
+                  <div class="swiper-container swiper-container-horizontal">
+                                      
+                      <div class="swiper-wrapper">
+                          <div class="col-lg-4 col-md-6 col-sm-6">
+                          <div class="swiper-slide new_card_box" style="height:300px; margin-right: 20px;">
+                                    
+                              
+                                <div class="new_card_infobox">
+        
+                                    <div class="new_card_info7">
+                                      <p class="card_title">Product Details  </p>
+                                        
+                                    </div>
+                                </div>
+                              
+                                <div class="new_card_features">
+                                  <br>
+                                  <ul>
+                                    <p><b>Package Purchased</b> : {{selected_pkg_prod[1]}}</p>
+                                    {% set gst_selected_amount= (selected_pkg_prod[3] ) * (((new_gst_per.strip('%'))|float)/100)%}
+                                    
+                                        <p><b>Total Price</b> <span style="margin-left:54px">: {{session['currency_symbol']}} {{selected_pkg_prod[3]+(gst_selected_amount) }} </span> </p>
+                                        
+                                        {% if comp_country_name == 'India' %}
+                                        <p><b>(* Including GST({{new_gst_per}}))</b></p>
+                                        {% endif %}
+
+                                    <hr>
+
+                                    <p><b>Next Payment Details :</b></p><br>
+                                        <b><li>Next Renewal Date is <span class="blink_me">{{(newdates.strftime("%d-%m-%Y"))}}</span> and Renewal Amount is <span  class="total_amount blink_me">  {{session['currency_symbol']}} {{selected_pkg_prod[3]+(gst_selected_amount) }}  </span></li>  </b>
+                                    
+
+                                </ul>
+                                        
+                                </div>
+
+                              
+                                                          
+                          
+                                
+                        
+        
+                                
+                              </div></div>
+
+                              {% if selected_users_amount[8] == 'A' %}
+                              <div class="col-lg-4 col-md-6 col-sm-6">
+                              <div class="swiper-slide new_card_box" style="height:300px; margin-right: 20px;">
+                                    
+                              
+                                <div class="new_card_infobox">
+        
+                                    <div class="new_card_info7">
+                                      <p class="card_title"> User Details </p>
+                                        
+                                    </div>
+                                </div>
+                                
+                                <div class="new_card_features">
+                                    <br>
+                                    <ul>
+                                    <p> <b>{{user_type_name[0][0]}} ({{selected_users_amount[0]}})</b> 	<span style="margin-left:40px;">-&nbsp;&nbsp;	
+                                          {% set only_gst= (((new_gst_per.strip('%'))|float)/100)%}
+
+                                    <span  > {{session['currency_symbol']}} {{selected_users_amount[1]|float+(selected_users_amount[1]|float*only_gst)}} </span>   </span></p>
+
+                                    <p><b> {{user_type_name[1][0]}} ({{selected_users_amount[2]}})</b>	<span style="margin-left:32px;">-&nbsp;&nbsp;	
+
+                                    <span > {{session['currency_symbol']}} {{selected_users_amount[3]|float+(selected_users_amount[3]|float*only_gst)}}</span>  </span></p>
+
+                                    <p> <b>{{user_type_name[2][0]}} ({{selected_users_amount[4]}})</b>	<span style="margin-left:34px;">- &nbsp; 
+                                      <span >{{session['currency_symbol']}} {{selected_users_amount[5]|float+(selected_users_amount[5]|float*only_gst)}}</span>  </span></p>
+                {% if comp_country_name == 'India' %}
+                                    <p><b>(* Including GST({{new_gst_per}}))</b> </p>
+{% endif %}
+                                    <hr>
+                                    <p><b>Next Payment Details :</b></p><br>
+
+                                    <b><li>Next Renewal Date is <span class="blink_me">{{(newdates.strftime("%d-%m-%Y"))}} </span> and Renewal Amount is <span  class="total_amount blink_me">  {{session['currency_symbol']}} {{selected_users_amount[6]|float+(selected_users_amount[6]|float*only_gst)}}  </span></li>  </b>
+                                    
+
+                                </ul>
+                                
+                                        
+                                </div>
+
+                              
+                                                          
+                          
+                                
+                        
+        
+                                
+                              </div></div>
+
+                              {% endif %}
+
+                              <div class="col-lg-4 col-md-6 col-sm-6">
+                              <div class="swiper-slide new_card_box" style=" height:300px; margin-right: 20px;">
+                                    
+                              
+                                  <div class="new_card_infobox">
+          
+                                      <div class="new_card_info7">
+                                        <p class="card_title"> Cloud Details </p>
+                                          
+                                      </div>
+                                  </div>
+                                  
+                                  <div class="new_card_features">
+                                      <br>
+                                      <ul>
+                                      <p><b>Cloud Purchased</b> : {{cloud_pack_amount[2]}}</p>
+                                      {% set gst_selected_cloud_amount= (cloud_pack_amount[1] |float) * (((new_gst_per.strip('%'))|float)/100)%}
+                                      
+                                          <p><b>Total Price</b> <span style="margin-left:54px">: {{session['currency_symbol']}} {{cloud_pack_amount[1] | float+(gst_selected_cloud_amount) }} </span> </p>
+                                          
+                                          {% if comp_country_name == 'India' %}
+                                          <p><b>(* Including GST({{new_gst_per}}))</b></p>
+                                          {% endif %}
+  
+                                      <hr>
+  
+                                      <p><b>Next Payment Details :</b></p><br>
+                                          <b><li>Next Renewal Date is <span class="blink_me">{{(newdates.strftime("%d-%m-%Y"))}}</span> and Renewal Amount is <span  class="total_amount blink_me">  {{session['currency_symbol']}} {{cloud_pack_amount[1] | float+(gst_selected_cloud_amount) }}  </span></li>  </b>
+                                      
+  
+                                  </ul>
+                                        
+                                  </div>
+  
+                                
+                                                            
+                            
+                                  
+                          
+          
+                                  
+                                </div></div>
+                                                  
+        
+            
+        
+        
+              
+            </div>
+
+
+            
+            
+
+              
+            </div>                     
+                      
+          </div>
+      <div class="new_card_features">
+                          <p><b>Cloud Package</b> : {{cloud_pack_amount[2]}}</p>
+                          <p><b>Cloud Amount</b> : {{session['currency_symbol']}} {{cloud_pack_amount[1]}}</p>
+                           <p><b>Cloud Features</b> : </p>
+                            <p> {{cloud_pack_amount[3]|safe}}  </p>
+                                                          
+                  </div>
+           
+          </div> 
+        </div>                     
+                  
+      </div>
+      </div> 
+
+      {% if selected_users_amount[8] == 'M' %}
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="swiper-container swiper-container-horizontal">
+                           
+            <div class="swiper-wrapper">
+    <div class="swiper-slide new_card_box"  style="width: 100%; margin-right: 20px;height:400px">
+      
+            <div class="new_card_infobox" style="height:50px;">
+  
+    <div class="new_card_info2" >
+      <p class="card_title"> Monthly Subscription  </p>
+        
+                    </div>
+            </div>
+            <div class="new_card_infobox" >
+            
+              <div class="new_card_info7">
+                <p class="card_title"> User Details </p>
+                  
+              </div>
+          </div>
+                
+
+<div class="new_card_features">
+  <ul>
+    <p> <b>{{user_type_name[0][0]}} ({{selected_users_amount[0]}})</b> 	<span style="margin-left:40px;">-&nbsp;&nbsp;	
+          {% set only_gst= (((session['gst'].strip('%'))|float)/100)%}
+
+    <span  > {{session['currency_symbol']}} {{selected_users_amount[1]|float+(selected_users_amount[1]|float*only_gst)}} </span>   </span></p>
+
+    <p><b> {{user_type_name[1][0]}} ({{selected_users_amount[2]}})</b>	<span style="margin-left:32px;">-&nbsp;&nbsp;	
+
+    <span > {{session['currency_symbol']}} {{selected_users_amount[3]|float+(selected_users_amount[3]|float*only_gst)}}</span>  </span></p>
+
+    <p> <b>{{user_type_name[2][0]}} ({{selected_users_amount[4]}})</b>	<span style="margin-left:34px;">- &nbsp; 
+      <span >{{session['currency_symbol']}} {{selected_users_amount[5]|float+(selected_users_amount[5]|float*only_gst)}}</span>  </span></p>
+
+
+      {% if comp_country_name == 'India' %}
+         <p><b>(* Including GST({{session['gst']}}))</b> </p>
+      {% endif %}
+      
+    <hr>
+    <p><b>Next Payment Details :</b></p><br>
+
+    <b><li style="margin-left: 4px;">Next Renewal Date is <span class="blink_me">{{(monthdates.strftime("%d-%m-%Y"))}} </span> and Renewal Amount is <span  class="total_amount blink_me">  {{session['currency_symbol']}} {{selected_users_amount[6]|float+(selected_users_amount[6]|float*only_gst)}}  </span></li>  </b>
+    
+
+</ul>
+                                                    
+            </div>
+     
+    </div> 
+  </div>                     
+            
+</div>
+</div> 
+           
+{% endif %}
+
+      
+              </div>                     
+                        
+            </div>
+            </div>
+
+          
+           
+   
+
+		</div>
+  </form>
+
+	</div>
+</section>
+
+
+<style>
+
+    input {
+        height: 11px;
+        width: 17px;
+        text-align: center;
+        font-size: 26px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    input[type=checkbox], input[type=radio] {
+        margin: -5px 0 0;
+        line-height: normal;
+    }
+    
+    .new_card_pricebox { text-align:center}
+    
+    .new_card_box .new_card_btns button.add_to_carts {
+        border-radius: 4px;
+        background-color: green;
+        color: #fff;
+        border: 1px solid green;
+        margin-bottom: 4px;
+        font-family: Roboto, sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+    
+    .new_card_box .new_card_features{ 
+        height:auto !important;border-top: 0px solid
+          }
+
+
+.tabbed {
+  width: 944px;
+  margin: 50px auto;
+  
+}
+
+.tabbed > input {
+  display: none;
+}
+
+.tabbed > label {
+  display: block;
+  float: left;
+  padding: 12px 20px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: background-color .3s;
+  border: 2px solid #4EC6DE;
+  
+}
+  
+.tabbed > label:hover,
+.tabbed > input:checked + label {
+  background: #4EC6DE;
+  color:#fff;
+}
+    
+</style>
+
+
+
+
+
+<!-- footer Start -->
+<footer class="footer section">
+	<div class="container">
+		
+		
+{% include 'footer.html' %}
+
+
+
+
+  </body>
+  </html>
+
+  
+<!--  Section Services End -->

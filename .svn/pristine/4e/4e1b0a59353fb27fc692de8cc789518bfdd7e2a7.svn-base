@@ -1,0 +1,688 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css"/>
+
+{% include 'headernew.html' %}
+
+<style>.new_card_box .new_card_features ul li:last-child {
+    margin-bottom: 5px;
+} </style>
+<style>
+.new_card_box {  width: 100%; }
+.new_card_box .new_card_pricebox {
+    float: left;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 0px;
+	border-bottom: 1px solid rgba(36, 39, 44, 0.06);
+}
+.new_card_box .new_card_infobox {
+    float: left;
+    width: 100%;
+    height: 52px;
+}
+a { color:black}
+span { margin-left:20px; }
+
+</style>
+
+<style>
+.discount_slider {
+    border: none; 
+     box-shadow: 0 2px 4px 0 rgba(36, 39, 44, 0.15); 
+    margin-bottom: 0px;
+     overflow: hidden; 
+    width: 228px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.discount_percent_section_price {
+    display: inline-block;
+    font-size: 26px;
+    font-family: roboto, sans-serif;
+    font-weight: 500;
+    margin-top: 14px;
+    margin-bottom: 18px;
+	color:#472dc2;
+}
+
+.discount_percent_section_prices {
+    display: inline-block;
+    font-size: 20px;
+    font-family: roboto, sans-serif;
+    font-weight: 500;
+    margin-top: 22px;
+    margin-bottom: 10px;
+}
+
+
+.discount_section {
+    height: 114px;
+	padding: 1px;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #4EC6DE, #4EC6DE);
+}
+
+.discount_percent_sections {
+    background: #fff;
+    margin: 4px;
+    border-radius: 4px;
+}
+
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+
+#customers tr:nth-child(even){background-color: #fff;}
+
+#customers tr:hover {background-color: #fff;}
+
+#customers th {
+ 
+  text-align: center;
+  font-size: 12px;
+  background-color: #fff;
+  color: #000;
+
+}
+</style>
+
+
+
+<!-- Header Close --> 
+
+
+
+<!-- Section About End -->
+ 
+
+<!--  Section Services End -->
+<!-- Section Testimonial Start -->
+
+
+
+<section class="section">
+
+
+	{% include 'menu.html' %}
+
+        <form class="form-register" id="form_register" action="#" method="post">
+
+ 
+        <div class="container">
+
+
+
+						 	{% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if message=="Updated Successfully" %}
+                                        <div class="success">
+
+                                            {{message}}
+
+
+                                        </div>
+                                    {% else %}
+
+
+                                        <div class="error">
+                                            {{message}}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+
+            <div class="row" style="min-height: 400px;">
+                <div class="col-lg-12">
+
+								
+								<div class="new_card_infobox">
+							
+								<div class="new_card_info" style="background-image: linear-gradient(to bottom, #139ee8, #0865cc);">
+									<p class="card_title" style="margin-bottom: 0;"> Payment History</p>
+										
+                                </div>
+					    </div>
+                    <div class="cta-item  bg-white p-5 rounded">
+                        
+                            
+                        
+
+                       
+
+
+                        <div class="row" style="overflow-y:scroll;">
+
+
+
+
+ <table class="zui-table" style="width:100%">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Mode of Payment</th>
+                <th>Amount</th>
+                <th>Transaction Details</th>
+                <th>Payment Date</th>
+                <th>Details</th>
+                <th>Invoice</th>
+            </tr>
+        </thead>
+        <tbody>
+                
+         {% for payment_history_reports in payment_history_report %}
+         {% set outer_loop = loop %}
+            <tr>
+                <td style="text-align:center;">{{loop.index}}</td>
+                <!-- <td>{{payment_history_reports.mode_of_payment}}</td> -->
+                <td>Credit Card</td>
+                <td>{{cur_sym}} {{payment_history_reports.amount}}</td>
+                <td>{{payment_history_reports.transaction_details}}</td>
+                <td style="text-align:center;">{{payment_history_reports.payment_date.strftime('%d-%m-%Y')}}</td>
+                <td> 
+
+                    <button type="button" class="btn btn-info " style="font-size: 12px;font-weight: 600;border-radius: 8px;line-height: 1.0;" data-toggle="modal" data-target="#myModal{{payment_history_reports.payment_history_id}}">Details</button></td>
+
+                <td> 
+                    <!-- <button type="button" class="btn btn-info " style="font-size: 12px;font-weight: 600;border-radius: 8px;line-height: 1.0;" data-toggle="modal" data-target="#myModalInvoice{{payment_history_reports.payment_history_id}}">Invoice</button> -->
+
+                    <a data-toggle="modal" data-target="#myModalInvoice{{payment_history_reports.payment_history_id}}" href="#" data-tooltip="View Invoice">
+                    &nbsp;<i class="fa fa-eye" style="color:#17a2b8">&nbsp;</i></a>
+
+
+                    <a href="/print_invoice?id={{payment_history_reports.payment_history_id}}" href="#" data-tooltip="Print Invoice" target="_blank">
+                        &nbsp;<i class="fa fa-print" style="color:#17a2b8">&nbsp;</i></a>
+
+                    <!-- <button type="button" class="btn btn-info " style="font-size: 12px;font-weight: 600;border-radius: 8px;line-height: 1.0;"><a  href="{{url_for('get_invoice',id=payment_history_reports.payment_history_id)}}" target="_blank">Download Invoice</a></button> -->
+
+                </td>
+            </tr>
+
+                <div class="container">
+                    <!-- Trigger the modal with a button -->
+                    
+                
+                    <!-- Modal -->
+                <div class="modal fade" id="myModal{{payment_history_reports.payment_history_id}}" >
+                    <div class="modal-dialog">
+                    
+                        <!-- Modal content-->
+                        <div class="modal-content" style="width: 90%;">
+                        <div class="modal-header">
+                            <h4 class="modal-title"> Purchased Details</h4>
+
+                            <button type="button" class="btn btn-main pull-right" data-dismiss="modal" style="margin-left: 182px;padding: 2px 4px; font-size: 9px;">X</button>
+
+                        </div>
+                        <div class="modal-body" style="text-align: center;">
+                                {% if payment_history_reports.pkg_pur_his_id != (0) or ('') or (None)%}
+
+                                <div class="col-lg-12">
+                   <div class="swiper-container swiper-container-horizontal">
+            <div class="swiper-wrapper">
+	  			<div class="swiper-slide new_card_box" style=" margin-right: 20px;">
+                       <div class="new_card_infobox">
+								<div class="new_card_info" style="background-image: linear-gradient(to bottom, #fff, #fff); color:#000">
+								<p class="card_title"> Product Details  </p>
+                                </div>
+					    </div>
+
+                        
+							<div class="new_card_features">
+								
+								
+								<ul>
+                        {% set pkg_prev_pur = {'pre_usr_hisid':''} %}  
+                        {% set current_pkg_prod = {'current_pkg':''} %}
+                        {% set last_pkg_prod = {'last_pkg':''} %}
+                            {% for payment_his_rep in payment_history_report %}
+                                            
+                                
+                                {% set inner_loop = loop %}
+                                {% if outer_loop.index-1 == inner_loop.index and (payment_his_rep.pkg_pur_his_id != (0) or ('') or (None))  %}
+
+                                        {% if pkg_prev_pur.update({'pre_pkg_hisid' :payment_his_rep.pkg_pur_his_id}) %} {% endif %}
+
+                                {% elif outer_loop.index-1 == inner_loop.index and (payment_his_rep.pkg_pur_his_id == (0) or ('') or (None))  %}
+
+                                    {% for pay_his_reps in payment_history_report %}
+                                        
+                                        {% set inner_loop1 = loop %}
+
+                                        {% if (inner_loop1.index <= inner_loop.index) and (outer_loop.index != 1) and (pay_his_reps.pkg_pur_his_id != (0) or ('') or (None)) %}
+
+                                            {% if pkg_prev_pur.update({'pre_pkg_hisid' :pay_his_reps.pkg_pur_his_id}) %} {% endif %}
+
+                                                {{ break }}
+                                        {% endif %}
+                                        
+                                    {% endfor %}
+                                    
+
+
+                               
+                                {% endif %}                 
+                                
+                            {% endfor %}
+                  
+                   {% for pkg_pur_his in pkg_pur_his %}
+                            {% if pkg_pur_his.pkg_history_id==payment_history_reports.pkg_pur_his_id and pkg_pur_his.pkg_id == 4 %}
+
+                                    {% if current_pkg_prod.update({'current_pkg' :pkg_pur_his.product_id.split(',') }) %} {% endif %}
+
+                            {% endif %}
+
+                            {% if pkg_pur_his.pkg_history_id==payment_history_reports.pkg_pur_his_id and pkg_pur_his.pkg_id != 4 %}
+
+                                {% if current_pkg_prod.update({'current_pkg' :pkg_pur_his.product_id.split(',') }) %} {% endif %}
+                                {% if last_pkg_prod.update({'last_pkg' : '[]'}) %} {% endif %}
+                                {{ break }}
+                               
+                            {% endif %}
+
+                            {% if pkg_pur_his.pkg_history_id==pkg_prev_pur.pre_pkg_hisid%}
+
+                                {% if last_pkg_prod.update({'last_pkg' :pkg_pur_his.product_id.split(',') }) %} {% endif %}
+                       
+                            {% endif %}
+                    {% endfor %}
+
+                    
+                    {% set rem_prod = current_pkg_prod.current_pkg | reject('in', last_pkg_prod.last_pkg) %}
+
+                    {% for prod_id in rem_prod %}
+                    {% for product_lists in product_list %}
+                        {% if product_lists.product_id==prod_id|int %}
+                            <li> &#9679; {{product_lists.product_name}}</li>
+                        
+                        {% endif %}
+                    {% endfor %}  
+                {% endfor %}  
+                      
+                      
+                  
+								</ul>
+							</div>
+                       
+				</div>
+		
+				
+		</div>
+	</div>
+										
+                </div>
+
+
+                                    
+                                {% endif %}
+
+                                {% if payment_history_reports.user_pur_his_id != ('') or (None) %}
+
+
+ <div class="col-lg-12">
+                   <div class="swiper-container swiper-container-horizontal">
+            <div class="swiper-wrapper">
+	  			<div class="swiper-slide new_card_box" style=" margin-right: 20px;">
+                       <div class="new_card_infobox">
+								<div class="new_card_info" style="background-image: linear-gradient(to bottom, #fff, #fff); color:#000">
+								<p class="card_title"> User Details  </p>
+                                </div>
+					    </div>
+
+                        
+							<div class="new_card_features">
+								
+								
+								<ul>
+                                        {% set usr_prev_pur = {'pre_usr_hisid':''} %}
+                                        {% set admin_pre_count = {'admin_last_usrcnt':0} %}
+                                        {% set gen_pre_count = {'gen_last_usrcnt':0} %}
+                                        {% set lim_pre_count = {'lim_last_usrcnt':0} %}
+                                     
+                                        {% for payment_his_rep in payment_history_report %}
+
+                                       
+                                                        
+                                            {% set inner_loop = loop %}
+                                            {% if outer_loop.index-1 == inner_loop.index and (payment_his_rep.user_pur_his_id != ('') or (None))  %}
+
+
+                                                    {% if usr_prev_pur.update({'pre_usr_hisid' :payment_his_rep.user_pur_his_id.split(',')}) %} {% endif %}
+                                                    {{break}}
+
+                                            {% elif outer_loop.index-1 == inner_loop.index and (payment_his_rep.user_pur_his_id == ('') or (None))  %}
+                                                {% for pay_his_reps in payment_history_report %}
+                                                    
+                                                    {% set inner_loop1 = loop %}
+
+                                                    {% if (inner_loop1.index <= inner_loop.index) and (outer_loop.index != 1) and (pay_his_reps.user_pur_his_id != ('') or (None)) %}
+
+                                                        {% if usr_prev_pur.update({'pre_usr_hisid' :pay_his_reps.user_pur_his_id.split(',')}) %} {% endif %}
+                                                        {{ break }}
+
+                                                    {% endif %}
+            
+                                                {% endfor %}
+
+                                            {% endif %}
+
+
+                                            {% for usr_id in usr_prev_pur.pre_usr_hisid %}
+
+                                                    {% for user_pur_his in user_pur_his  %}
+                                                    {% if usr_id | int == user_pur_his.user_history_id | int %}
+
+                                                        {% if user_pur_his.user_type_id == 1 %}
+                                                                {% if admin_pre_count.update({'admin_last_usrcnt':  user_pur_his.no_of_users}) %} {% endif %}
+
+                                                        
+                                                        {% elif user_pur_his.user_type_id == 2 %}
+                                                                {% if gen_pre_count.update({'gen_last_usrcnt':  user_pur_his.no_of_users}) %} {% endif %}
+
+                                                        {% elif user_pur_his.user_type_id == 3 %}
+                                                                {% if lim_pre_count.update({'lim_last_usrcnt':  user_pur_his.no_of_users}) %} {% endif %}
+                                            
+                                                        {% endif %}
+
+                                                    {% endif %}
+                                                    {% endfor %}
+                                            {% endfor %}
+                                               
+                                       
+                                       {% endfor %}
+                                       
+
+                                        {% set usr_pur_his_id = payment_history_reports.user_pur_his_id.split(',') %}
+
+                                        {% for usr_id in usr_pur_his_id %}
+                                            
+                                                {% for user_pur_his in user_pur_his  %}
+
+                                            
+                                                    {% if usr_id | int == user_pur_his.user_history_id | int %}
+                                                        {% if user_pur_his.user_type_id == 1 %}
+
+                                                            {% if user_pur_his.no_of_users  - admin_pre_count.admin_last_usrcnt > 0%}  
+
+                                                                <li> &#9679;   Admin User -
+                                                                
+                                                                
+                                                                    {{user_pur_his.no_of_users - admin_pre_count.admin_last_usrcnt}}
+                                                            
+                                                                
+                                                                </li>
+
+                                                            {% endif %}                                                     
+                                                           
+                                                        {% elif user_pur_his.user_type_id == 2 %}
+
+                                                             {% if user_pur_his.no_of_users  -gen_pre_count.gen_last_usrcnt > 0%}  
+                                                                <li> &#9679;  General User - {{user_pur_his.no_of_users - gen_pre_count.gen_last_usrcnt}} </li>
+
+                                                            {% endif %}    
+
+                                                        {% elif user_pur_his.user_type_id == 3 %}
+
+                                                            {% if user_pur_his.no_of_users  -lim_pre_count.lim_last_usrcnt > 0%}
+                                                              <li> &#9679;   Limited User - {{user_pur_his.no_of_users - lim_pre_count.lim_last_usrcnt}} </li>
+
+                                                            {% endif %}    
+
+
+                                                        {% endif %}
+                                                    
+                                                    {% endif %}
+                                            
+                                                
+                                                {% endfor %}
+
+
+
+                                        {% endfor %}
+                                        
+                                            </ul>
+							</div>
+                       
+				</div>
+		
+				
+		</div>
+	</div>
+										
+                </div>
+
+
+
+                                    
+
+                                {% endif %}
+
+                                {% if payment_history_reports.cld_pur_his_id != (0) or ('') or (None) %}
+
+                                <div class="col-lg-12">
+                   <div class="swiper-container swiper-container-horizontal">
+            <div class="swiper-wrapper">
+	  			<div class="swiper-slide new_card_box" style=" margin-right: 20px;">
+                       <div class="new_card_infobox">
+								<div class="new_card_info" style="background-image: linear-gradient(to bottom, #fff, #fff); color:#000">
+								<p class="card_title"> Cloud Details  </p>
+                                </div>
+					    </div>
+
+                        
+							<div class="new_card_features">
+								
+								
+								<ul>
+                                                {% for cloud_pur_his in cloud_pur_his %}
+                                                    {% if cloud_pur_his.cloud_history_id==payment_history_reports.cld_pur_his_id%}
+                                                        {% for cloud_lists in cloud_list  %}
+                                                                {% if cloud_lists.cl_type_id==cloud_pur_his.cloud_type_id%}
+                                                                    <li> &#9679; {{cloud_lists.cl_type_name}}</li>
+                                                                
+                                                                {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                    
+                                        </ul>
+							</div>
+                       
+				</div>
+		
+				
+		</div>
+	</div>
+										
+                </div>
+
+
+                                     
+    
+                            {% endif %}
+                        </div>
+             
+                        
+                        </div>
+                        
+                    </div>
+                </div>
+                    
+                </div>
+
+
+
+                <div class="container1">
+                    <!-- Trigger the modal with a button -->
+                    
+                
+                    <!-- Modal -->
+                <div class="modal fade" id="myModalInvoice{{payment_history_reports.payment_history_id}}" >
+                    <div class="modal-dialog">
+                    
+                        <!-- Modal content-->
+                        <div class="modal-content" style="width:1200px;margin-left:-341px;">
+                        <div class="modal-header">
+                            <h4 class="modal-title"> <strong>Invoice</strong> </h4>
+
+                            <button type="button" class="btn btn-main pull-right" data-dismiss="modal" style="margin-left: 182px;padding: 2px 4px; font-size: 9px;">X</button>
+
+                        </div>
+                        <div class="modal-body" style="text-align: center;">
+                
+                    <!-- <iframe src="/get_invoice" frameborder="0" width="1000px" height="800px"></iframe> -->
+
+                    <iframe src="{{url_for('get_invoice',id=payment_history_reports.payment_history_id)}}" frameborder="0" width="1000px" height="800px"></iframe>
+                        </div>
+             
+                        
+                        </div>
+                        
+                    </div>
+                </div>
+                    
+                </div>
+              
+            
+            
+            
+            
+            
+            {% endfor %}
+            
+        </tbody>
+        
+    </table>
+
+<style>
+
+.new_card_features ul li {
+    text-align: left;
+    list-style: none;
+    margin-bottom: 5px;
+    font-size: 15px !important;
+    color: #24272c;
+    opacity: 0.7;
+    padding-left: 20px;
+    background-image: url(../images/gray_tick.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+</style>
+
+
+
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+<!-- Section Testimonial End -->
+
+
+
+<style>
+
+
+.menuclass:hover {
+    outline: 0;
+    background-image: linear-gradient(to bottom, #139ee8, #0865cc);
+		color:#fff;
+		 
+  transition: 0.25s;
+}
+
+
+::selection {
+  background-color: #4EC6DE;
+}
+
+
+
+
+
+@media only screen and (max-width: 990px) {
+  
+.add_to_cart {
+    border-radius: 4px;
+    background-color: #472dc2;
+    color: #fff;
+    border: 1px solid #472dc2;
+    margin-bottom: 4px;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 4px;
+    text-align: center;
+    width: 50%;
+    height: 40px;
+    outline: none;
+}
+
+
+
+}
+
+@media only screen and (min-width: 990px) {
+
+
+
+}
+
+
+</style>
+<!-- footer Start -->
+<footer class="footer section">
+	<div class="container">
+		
+		
+		{% include 'footer.html' %}
+
+<style>
+
+.zui-table {
+    border: solid 1px #DDEEEE;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: normal 13px Arial, sans-serif;
+}
+.zui-table thead th {
+    background-color: #DDEFEF;
+    border: solid 1px #DDEEEE;
+    color: #336B6B;
+    padding: 10px;
+    text-align: left;
+    text-shadow: 1px 1px 1px #fff;
+}
+.zui-table tbody td {
+    border: solid 1px #DDEEEE;
+    color: #333;
+    padding: 10px;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+/* .new_card_box .new_card_features{ height:auto !important;border-top: 0px solid  }*/
+</style> 
+
+
+  </body>
+  </html>

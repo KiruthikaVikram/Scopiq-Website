@@ -1,0 +1,35 @@
+<ul>
+                            {% for admin_users in admin_user |sort(attribute='user_pricing_id') %}
+                            {% set admin_lower_value = admin_users.lower_value.split('>') %}
+                            <li  
+                            {% if users_count != "0" %}
+                                    {% if admin_users.higher_value != "" and admin_users.lower_value | int <= users_count1 | int <= admin_users.higher_value | int %} 
+                                    style="color:green" 
+                                
+                            {% else %}    
+                                {% if admin_users.higher_value == "" and admin_lower_value[1] | int < users_count1 | int %}
+                                    style="color:green"
+                                {% else %}
+                                    style="color:black"
+                                {% endif %}
+                            {% endif %}
+                            {% endif %}
+                            >
+                            
+                                {% if admin_users.lower_value.startswith('>') %}
+                                    {{admin_users.lower_value.replace('>','> ')}}  users	
+                                {% else %}
+                                    {{admin_users.lower_value}} to {{admin_users.higher_value}} users	
+                                {% endif %}
+                               
+                                {% if loop.index > 3 %}
+                                <span style="float: right;margin-right: 14px;font-family:sans-serif">-&nbsp;&nbsp;	{{session['currency_symbol']}}{{admin_users.amount}} / Month </span>
+                                {% else %}
+                                <span style="float: right;margin-right: 8px;font-family:sans-serif">-&nbsp;&nbsp;	{{session['currency_symbol']}}{{admin_users.amount}} / Month </span>
+                                {% endif  %}
+                            
+                            </li>
+
+                            {% endfor %}
+
+                        </ul>

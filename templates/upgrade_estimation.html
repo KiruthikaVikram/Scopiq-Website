@@ -1,0 +1,652 @@
+<link rel="stylesheet" href="static/plugins1/bootstrap/css/bootstraps.min.css">
+
+<link rel="stylesheet" href="static/css1/style.css"/>
+
+
+
+
+{% include 'headernew.html' %}
+<style>
+
+.new_card_features {
+    height: 260px!important;
+}
+
+.new_card_box .new_card_features ul li:last-child {
+    margin-bottom: 5px;
+} </style>
+<style>
+.new_card_box {  width: 100%; }
+.new_card_box .new_card_pricebox {
+    float: left;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 0px;
+	border-bottom: 1px solid rgba(36, 39, 44, 0.06);
+}
+.new_card_box .new_card_infobox {
+    float: left;
+    width: 100%;
+    height: 52px;
+}
+a { color:black}
+span { margin-left:20px; }
+
+</style>
+
+<style>
+.discount_slider {
+    border: none; 
+     box-shadow: 0 2px 4px 0 rgba(36, 39, 44, 0.15); 
+    margin-bottom: 0px;
+     overflow: hidden; 
+    width: 228px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.discount_percent_section_price {
+    display: inline-block;
+    font-size: 26px;
+    font-family: roboto, sans-serif;
+    font-weight: 500;
+    margin-top: 14px;
+    margin-bottom: 18px;
+	color:#472dc2;
+}
+
+.discount_percent_section_prices {
+    display: inline-block;
+    font-size: 20px;
+    font-family: roboto, sans-serif;
+    font-weight: 500;
+    margin-top: 22px;
+    margin-bottom: 10px;
+}
+
+
+.discount_section {
+    height: 114px;
+	padding: 1px;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #4EC6DE, #4EC6DE);
+}
+
+.discount_percent_sections {
+    background: #fff;
+    margin: 4px;
+    border-radius: 4px;
+}
+
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+
+#customers tr:nth-child(even){background-color: #fff;}
+
+#customers tr:hover {background-color: #fff;}
+
+#customers th {
+ 
+  text-align: center;
+  font-size: 12px;
+  background-color: #fff;
+  color: #000;
+
+}
+</style>
+
+
+
+<!-- Header Close --> 
+
+
+
+<!-- Section About End -->
+ 
+
+<!--  Section Services End -->
+<!-- Section Testimonial Start -->
+
+
+
+<section class="section">
+
+
+    <form class="form-register" id="form_register" action="#" method="post" novalidate="novalidate">
+{% include 'menu.html' %}
+        <div class="container">
+
+
+
+						 	
+
+
+            <div class="row" style="min-height: 700px;">
+                <div class="col-lg-12">
+                  {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                      {% for category,message in messages %}
+                              <div class="{{category}}">
+        
+                                  {{message}}
+        
+                              </div>
+        
+                      {% endfor %}
+                  {% endif %}
+              {% endwith %}
+        
+								
+								<div class="new_card_infobox">
+							
+								<div class="new_card_info" style="background-image: linear-gradient(to bottom, #139ee8, #0865cc);">
+									<p class="card_title" style="margin-bottom: 0;"> Estimation </p>
+										
+                                </div>
+					    </div>
+                    <div class="cta-item  bg-white p-5 rounded">
+                        
+                            
+                        
+  
+                
+                       
+
+
+                        <div class="row" style="height:500px;">
+
+
+
+<div class="tabbed">
+    {% if selected_pkg_prod!='' %}
+      <input type="radio" name="tabs" id="tab-nav-1" value = "1" {% if selected_pkg_prod!='' %} checked {% endif %}>
+      <label for="tab-nav-1">Product Details</label>
+    {% endif %}
+
+    {% if selected_users_amount!='' %}
+      <input type="radio" name="tabs" id="tab-nav-2" value = "2" {% if selected_pkg_prod=='' and selected_users_amount!='' %} checked {% endif %}>
+      <label for="tab-nav-2">User Details</label>
+    {% endif %}
+
+    {% if cloud_pack_amount!='' %} 
+      <input type="radio" name="tabs" id="tab-nav-3" value = "3" {% if selected_pkg_prod=='' and selected_users_amount=='' and cloud_pack_amount!='' %} checked {% endif %}>
+      <label for="tab-nav-3">Cloud Details</label>
+    {% endif %}
+	 
+    <div class="tabs">
+    {% if selected_pkg_prod!='' %}
+       <div id="prod_pkg" style="display:none">
+
+
+			 
+	  	
+<div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                   <div class="swiper-container swiper-container-horizontal">
+            <div class="swiper-wrapper">
+	  			<div class="swiper-slide new_card_box" style=" margin-right: 20px;">
+                       <div class="new_card_infobox">
+								<div class="new_card_info" style="background-image: linear-gradient(to bottom, #fff, #fff); color:#000">
+								<p class="card_title"> Product Details  </p>
+                                </div>
+					    </div>
+
+                        
+							<div class="new_card_features" style="height:auto">
+              
+                <p><b>Package Purchased</b> : {{selected_pkg_prod[1]}}</p>
+                <p><b>Total Price</b> <span style="margin-left:54px;font-family:sans-serif">: {{session['currency_symbol']}} {{selected_pkg_prod[3]}} </span> </p>
+                
+                    <ul>
+                      
+                       
+                        
+                        <p><b>Products Purchased</b></p>
+                        {% for product_lists in product_list %}
+                          {% for each_prod_id in pur_prod_only %}
+                   
+                             {% if product_lists.product_id == each_prod_id | int %}
+
+                                  <li> {{ product_lists.product_name }}</li>
+
+                              {% endif %}
+
+                          {% endfor %}
+                        {% endfor %}
+                       
+                    
+                    </ul>
+            </div>
+                       
+				</div>
+		
+				
+		</div>
+	</div>
+										
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+
+
+					
+</div>
+
+{% else %}
+<div></div>
+{% endif %}
+
+{% if selected_users_amount!='' %}
+      <div id="user_pkg" style="display:none">
+	  
+	 <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                   <div class="swiper-container swiper-container-horizontal">
+            <div class="swiper-wrapper">
+	  			<div class="swiper-slide new_card_box" style=" margin-right: 20px;">
+                       <div class="new_card_infobox">
+								<div class="new_card_info" style="background-image: linear-gradient(to bottom, #fff, #fff); color:#000">
+								<p class="card_title"> User Details  </p>
+                                </div>
+					    </div>
+
+
+						<table id="customers" style="width: 100%;">
+                      <tr>
+                        <th>Users</th>
+                        <th>Count</th>
+                        <th>Amount</th>
+                      </tr>
+                      {% if reg_user_type == F %}
+                        {% set admin_rem_users = selected_users_amount[0] %}
+                      {% else %}
+                        {% set admin_rem_users = selected_users_amount[0] - admin_exist_users %}
+                      {% endif %}
+
+                      {% if admin_rem_users > 0 %}
+                        <tr>
+                          <td>{{user_type_name[0][0]}}</td>
+                          <td>{{admin_rem_users}}</td>
+                          <td style="font-family:sans-serif">{{session['currency_symbol']}} {{selected_users_amount[1]}} </td>
+                        </tr>
+                      {% endif %}  
+
+                      
+                      {% if reg_user_type == F %}
+                         {% set gen_rem_users = selected_users_amount[2] %}
+                      {% else %}
+                          {% set gen_rem_users = selected_users_amount[2] - gen_exist_users %}
+                      {% endif %}
+
+                      {% if gen_rem_users > 0 %}
+                        <tr>
+                          <td>{{user_type_name[1][0]}}</td>
+                          <td> {{gen_rem_users}}</td>
+                          <td style="font-family:sans-serif">{{session['currency_symbol']}} {{selected_users_amount[3]}}</td>
+                        </tr>
+                      {% endif %}
+                      
+                      
+                      {% if reg_user_type == F %}
+                        {% set lim_rem_users = selected_users_amount[4] %}
+                      {% else %}
+                        {% set lim_rem_users = selected_users_amount[4] - lim_exist_users %}
+                      {% endif %}
+
+                      {% if lim_rem_users > 0 %}
+                        <tr>
+                          <td>{{user_type_name[2][0]}}</td>
+                          <td>{{lim_rem_users}}</td>
+                          <td style="font-family:sans-serif">{{session['currency_symbol']}} {{selected_users_amount[5]}}</td>
+                        </tr>
+                      {% endif %}  
+                      {% if selected_users_amount[8] == 'M' %}
+                        <tr>
+                          <td colspan="2"> Total Amount Month</td>
+                          
+                          <td style="font-family:sans-serif">{{session['currency_symbol']}} {{selected_users_amount[6]}} </td>
+                        </tr>
+                      {% else %}  
+                        <tr>
+                          <td colspan="2"> Total Amount (/Month)</td>
+                          
+                          <td style="font-family:sans-serif">{{session['currency_symbol']}} {{selected_users_amount[9]}} </td>
+                        </tr>  
+                        <tr>
+                          <td colspan="2"> Total Annual Amount </td>
+                          
+                          <td style="font-family:sans-serif">{{session['currency_symbol']}} {{((selected_users_amount[9] | float)*12)|round(2)}} </td>
+                        </tr>  
+                        <tr>
+                          <td colspan="2"> Total Amount To Be Paid </td>
+                          
+                          <td style="font-family:sans-serif">{{session['currency_symbol']}} {{(selected_users_amount[6] | float)|round(2)}} </td>
+                        </tr> 
+            
+                        <!-- <tr>
+                          <td colspan="2"> You Save </td>
+                          
+                          <td>{{session['currency_symbol']}} {{selected_users_amount[10]}} </td>
+                        </tr>  
+                        <tr>
+                          <td colspan="2"> Annualized Amount </td>
+                          
+                          <td>{{session['currency_symbol']}} {{selected_users_amount[6]}} </td>
+                        </tr>  
+             -->
+                      {% endif %}
+                    
+                      </table>
+
+
+                       
+				</div>
+		
+				
+		</div>
+	</div>
+										
+                </div>
+
+
+
+
+
+								
+
+
+
+            </div>
+        </div>
+
+
+
+	  
+    </div>
+    {% else %}
+    <div></div>
+    {% endif %}
+
+    {% if cloud_pack_amount!='' %} 
+      <div id="cloud_pkg" style="display:none">
+	  
+	  <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                   <div class="swiper-container swiper-container-horizontal">
+            <div class="swiper-wrapper">
+	  			<div class="swiper-slide new_card_box" style="margin-right: 20px;">
+                       <div class="new_card_infobox">
+								<div class="new_card_info" style="background-image: linear-gradient(to bottom, #fff, #fff); color:#000">
+								<p class="card_title"> Cloud Details  </p>
+                                </div>
+					    </div>
+
+                       
+							<div class="new_card_features">
+								<p><b>Cloud Package </b> <span style="margin-left:34px"> : {{cloud_pack_amount[2]}} </span></p>
+								<p><b>Package Price</b> <span style="margin-left:39px;font-family:sans-serif">: {{session['currency_symbol']}} {{cloud_pack_amount[1]}} </span> </p>
+								
+								<ul>
+									<p><b>Cloud Features</b></p>
+									<li> {{cloud_pack_amount[3]|safe}}</li>
+									
+								</ul>
+							</div>
+                       
+				</div>
+		
+				
+		</div>
+	</div>
+
+                </div>
+
+
+
+
+
+								
+
+
+
+            </div>
+        </div>
+
+	  </div>
+    {% else %}
+    <div></div>
+    {% endif %}
+			
+    </div>
+  </div>
+                            
+
+                        </div>
+
+<div class="new_card_btns">
+                            <a href="{{url_for('checkout')}}" >
+                          <button name="Add to Cart" style="width: 133px;" class="add_to_cart">Proceed To Pay</button>
+                            </a>		
+                        
+                     
+                      </div>    
+                      
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+
+
+
+<!-- Section Testimonial End -->
+
+
+
+<style>
+
+
+
+
+.menuclass:hover {
+    outline: 0;
+    background-image: linear-gradient(to bottom, #139ee8, #0865cc);
+		color:#fff;
+		 
+  transition: 0.25s;
+}
+
+
+::selection {
+  background-color: #4EC6DE;
+}
+
+
+
+.tabbed > input {
+  display: none;
+}
+
+.tabbed > label {
+  display: block;
+  float: left;
+  padding: 12px 20px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: background-color .3s;
+  border: 2px solid #4EC6DE;
+  
+}
+
+.tabbed > label:hover,
+.tabbed > input:checked + label {
+  background: #4EC6DE;
+  color:#fff;
+}
+
+.tabs {
+  clear: both;
+  perspective: 600px;
+}
+
+
+@media only screen and (max-width: 990px) {
+  
+.tabs > div {
+	height: 401px;
+  width: 100%;
+  position: absolute;
+  border: 2px solid #4EC6DE;
+  padding: 10px 30px 40px;
+  line-height: 1.4em;
+  opacity: 0;
+  transform: rotateX(-50deg);
+  transform-origin: top center;
+  transition: opacity .3s, transform 1s;
+  z-index: 0;
+}
+
+.tabbed {
+  width: 700px;
+	height:620px;
+  margin: 50px auto;
+  
+}
+
+
+
+
+}
+
+@media only screen and (min-width: 990px) {
+
+.tabs > div {
+	height: 363px;
+  width: 100%;
+  position: absolute;
+  border: 2px solid #4EC6DE;
+  padding: 10px 30px 40px;
+  line-height: 1.4em;
+  opacity: 0;
+  transform: rotateX(-50deg);
+  transform-origin: top center;
+  transition: opacity .3s, transform 1s;
+  z-index: 0;
+}
+
+
+.p-5 {
+    padding: 1rem!important;
+}
+
+
+.tabbed {
+  width: 850px;
+	height:400px;
+  margin: 50px auto;
+  
+}
+
+
+}
+
+
+
+#tab-nav-1:checked ~ .tabs > div:nth-of-type(1),
+#tab-nav-2:checked ~ .tabs > div:nth-of-type(2),
+#tab-nav-3:checked ~ .tabs > div:nth-of-type(3),
+#tab-nav-4:checked ~ .tabs > div:nth-of-type(4)
+
+{
+
+	
+  transform: rotateX(0);
+  opacity: 1;
+  z-index: 1;
+}
+
+
+
+</style>
+<!-- footer Start -->
+<footer class="footer section">
+	<div class="container">
+		
+		
+		{% include 'footer.html' %}
+<style>
+
+.new_card_box .new_card_features{ height:200px; overflow-y:scroll; border-top: 0px solid  }</style>
+
+
+<script>
+$(document).ready(function() {
+  var radiobtn = $("input[name='tabs']:checked").val();
+  if(radiobtn == 1)
+    {
+      // alert("hello")
+      $("#prod_pkg").show();
+    }
+
+    else if(radiobtn == 2)
+    {
+      // alert("hello1")
+      $("#user_pkg").show();
+    }
+
+    else
+    {
+      // alert("hello2")
+      $("#cloud_pkg").show();
+    }
+
+  $("input[name='tabs']").change(function(){
+      var radio_btn_value=$(this).val();
+      if(radio_btn_value == 1)
+      {
+        // alert("hello")
+        $("#prod_pkg").show();
+      }
+
+      else if(radio_btn_value == 2)
+      {
+        // alert("hello1")
+        $("#user_pkg").show();
+      }
+
+      else
+      {
+        // alert("hello2")
+        $("#cloud_pkg").show();
+      }
+  });
+});
+</script>
+  </body>
+  </html>
